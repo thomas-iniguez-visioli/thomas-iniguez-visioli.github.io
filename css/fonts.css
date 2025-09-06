@@ -1,0 +1,421 @@
+/**
+ * Modern Font Loading System
+ * Optimized font loading with font-display: swap
+ * Inter for headings, Georgia for body text
+ */
+
+/* ===== SELF-HOSTED FONT SYSTEM ===== */
+/* No external dependencies - all fonts are system fonts or self-hosted */
+
+/* ===== FONT FACE DECLARATIONS ===== */
+
+/* We'll use system fonts that are already available on most devices */
+/* This provides excellent performance and no external dependencies */
+
+/* ===== FONT STACK DEFINITIONS ===== */
+
+:root {
+  /* Modern system font stacks - no external dependencies */
+  --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-family-mono: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  
+  /* Alternative modern sans-serif stack */
+  --font-family-sans-alt: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Font loading optimization */
+  --font-display: swap;
+}
+
+/* ===== SYSTEM FONT OPTIMIZATION ===== */
+
+/* System fonts are already optimized and don't need loading */
+/* This provides the best performance and no FOUT (Flash of Unstyled Text) */
+
+/* ===== TYPOGRAPHY SYSTEM ===== */
+
+/* Base typography settings */
+html {
+  font-family: var(--font-family-serif);
+  font-size: 16px; /* Base font size */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===== HEADING TYPOGRAPHY ===== */
+
+h1, h2, h3, h4, h5, h6,
+.heading-font {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  letter-spacing: -0.025em; /* Tighter letter spacing for headings */
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.01em;
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+/* Scale typography for larger screens */
+@media (min-width: 768px) {
+  html {
+    font-size: 18px; /* Slightly larger base on tablets+ */
+  }
+  
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 20px; /* Even larger on desktop */
+  }
+  
+  h1 {
+    font-size: var(--font-size-6xl);
+  }
+}
+
+/* ===== BODY TEXT OPTIMIZATION ===== */
+
+/* Optimize body text for reading */
+p, li, blockquote {
+  font-family: var(--font-family-serif);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+/* Optimal line length for reading */
+p {
+  max-width: 65ch;
+}
+
+/* ===== CODE TYPOGRAPHY ===== */
+
+code, pre, kbd, samp {
+  font-family: var(--font-family-mono);
+  font-feature-settings: 'liga' 1, 'calt' 1; /* Enable ligatures */
+}
+
+code {
+  font-size: 0.875em;
+  background-color: var(--color-background-tertiary);
+  padding: 0.125em 0.25em;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-primary);
+}
+
+pre {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-base);
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ===== TYPOGRAPHY UTILITY CLASSES ===== */
+
+/* Font family utilities */
+.font-sans {
+  font-family: var(--font-family-sans);
+}
+
+.font-serif {
+  font-family: var(--font-family-serif);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+/* Font size utilities */
+.text-xs {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-tight);
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+}
+
+.text-5xl {
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-none);
+}
+
+.text-6xl {
+  font-size: var(--font-size-6xl);
+  line-height: var(--line-height-none);
+}
+
+/* Font weight utilities */
+.font-thin {
+  font-weight: var(--font-weight-thin);
+}
+
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-extrabold {
+  font-weight: var(--font-weight-extrabold);
+}
+
+.font-black {
+  font-weight: var(--font-weight-black);
+}
+
+/* Line height utilities */
+.leading-none {
+  line-height: var(--line-height-none);
+}
+
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+.leading-snug {
+  line-height: var(--line-height-snug);
+}
+
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.leading-loose {
+  line-height: var(--line-height-loose);
+}
+
+/* Letter spacing utilities */
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+/* Text decoration utilities */
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+/* Text transform utilities */
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+/* ===== READING OPTIMIZATION ===== */
+
+/* Optimal reading width */
+.prose {
+  max-width: 65ch;
+  line-height: var(--line-height-relaxed);
+}
+
+.prose-wide {
+  max-width: 80ch;
+}
+
+.prose-narrow {
+  max-width: 50ch;
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+  }
+}
+
+/* ===== PRINT TYPOGRAPHY ===== */
+
+@media print {
+  body {
+    font-family: Georgia, serif;
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000000;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    page-break-after: avoid;
+  }
+  
+  p, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+}

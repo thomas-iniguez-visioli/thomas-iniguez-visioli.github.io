@@ -1,0 +1,15 @@
+.metadata {
+  color: var(--commented);
+}
+
+.metadata--type {
+  font-weight: bold;
+}
+
+.metadata > li + .metadata--artifact {
+  margin-left: .5rem;
+}
+
+.metadata--artifact::before {
+  display: none;
+}

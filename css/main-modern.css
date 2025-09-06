@@ -1,0 +1,382 @@
+/**
+ * Main Modern CSS Entry Point
+ * Replaces main.less with modern CSS system
+ * Maintains compatibility while introducing modern features
+ */
+
+/* ===== IMPORT MODERN FOUNDATION ===== */
+@import url('./modern.css');
+
+/* ===== LAYOUT STRUCTURE ===== */
+
+/* Modern viewport meta tag support */
+html {
+  /* Ensure proper viewport behavior */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Main content container */
+main {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  min-height: calc(100vh - 200px); /* Account for header/footer */
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 0 var(--space-8);
+  }
+}
+
+/* ===== MODERN HEADING STYLES ===== */
+
+/* Override default heading margins for better spacing */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: var(--space-4) 0;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  padding: var(--space-6) 0;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: var(--font-size-5xl);
+    padding: var(--space-8) 0;
+  }
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  padding: var(--space-5) 0 var(--space-4) 0;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  padding: var(--space-4) 0 var(--space-3) 0;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  padding: var(--space-3) 0 var(--space-2) 0;
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  padding: var(--space-3) 0 var(--space-2) 0;
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  padding: var(--space-2) 0;
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===== MODERN SELECTION STYLES ===== */
+
+::selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-primary-900);
+  text-decoration: none;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-primary-900);
+  text-decoration: none;
+  text-shadow: none;
+}
+
+/* ===== MODERN FOCUS STYLES ===== */
+
+/* Enhanced focus styles for better accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ===== MODERN SCROLL BEHAVIOR ===== */
+
+/* Smooth scrolling for modern browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
+}
+
+/* ===== MODERN LINK STYLES ===== */
+
+/* Enhanced link styles with better hover states */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-colors);
+  border-radius: var(--border-radius-sm);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.125em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ===== MODERN FORM ELEMENTS ===== */
+
+/* Enhanced form styling */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-base);
+  padding: var(--space-3);
+  transition: var(--transition-colors);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ===== MODERN TABLE STYLES ===== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--font-size-sm);
+}
+
+th, td {
+  padding: var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-secondary);
+  font-family: var(--font-family-sans);
+}
+
+tr:hover {
+  background-color: var(--color-background-secondary);
+}
+
+/* ===== MODERN IMAGE STYLES ===== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-base);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Figure and caption styling */
+figure {
+  margin: var(--space-6) 0;
+}
+
+figcaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--space-2);
+  font-style: italic;
+}
+
+/* ===== MODERN UTILITY CLASSES ===== */
+
+/* Modern spacing utilities */
+.section {
+  padding: var(--space-16) 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-20) 0;
+  }
+}
+
+.section-sm {
+  padding: var(--space-12) 0;
+}
+
+@media (min-width: 768px) {
+  .section-sm {
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Modern content width utilities */
+.content-width {
+  max-width: 65ch; /* Optimal reading width */
+  margin: 0 auto;
+}
+
+.content-width-wide {
+  max-width: 80ch;
+  margin: 0 auto;
+}
+
+/* Modern aspect ratio utilities */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+/* ===== MODERN ANIMATION UTILITIES ===== */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Slide in animation */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+/* ===== MODERN LOADING STATES ===== */
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--color-neutral-200) 25%, 
+    var(--color-neutral-100) 50%, 
+    var(--color-neutral-200) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: var(--border-radius-base);
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== MODERN PRINT STYLES ===== */
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    font-family: serif;
+  }
+  
+  p, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  blockquote {
+    page-break-inside: avoid;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
