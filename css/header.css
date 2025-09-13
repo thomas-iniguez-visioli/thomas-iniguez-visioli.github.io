@@ -1,0 +1,410 @@
+/**
+ * Modern Header Component
+ * Fixed positioning with backdrop blur and responsive navigation
+ * Mobile hamburger menu with smooth animations
+ */
+
+/* ===== HEADER BASE STYLES ===== */
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: var(--transition-all);
+  padding: var(--space-4) 0;
+}
+
+/* Header content layout */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 60px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* ===== BRAND/LOGO SECTION ===== */
+
+.header-brand {
+  flex-shrink: 0;
+  z-index: var(--z-index-docked);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: var(--transition-all);
+  border-radius: var(--border-radius-base);
+  padding: var(--space-2);
+  margin: calc(var(--space-2) * -1);
+}
+
+.brand-link:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.brand-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Avatar styles removed */
+
+.brand-text {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+}
+
+/* ===== NAVIGATION STYLES ===== */
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0; /* Prevent navigation from shrinking */
+}
+
+/* Mobile menu toggle button */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-all);
+  z-index: var(--z-index-docked);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-background-secondary);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hamburger icon */
+.nav-toggle-icon {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 1px;
+  transition: var(--transition-all);
+  transform-origin: center;
+}
+
+.nav-toggle-icon:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+/* Animated hamburger states */
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Navigation menu */
+.nav-menu {
+  display: none; /* Hidden by default on mobile */
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-all);
+  position: relative;
+  min-height: 44px;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background-color: var(--color-background-secondary);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Active link styling */
+.nav-link[aria-current="page"],
+.nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-50);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Active link indicator */
+.nav-link[aria-current="page"]::after,
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+}
+
+/* ===== HEADER DESCRIPTION ===== */
+
+.header-description {
+  display: none;
+  max-width: 600px;
+  margin: var(--space-4) 0 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+@media (max-width: 767px) {
+  .page-header {
+    padding: var(--space-3) 0;
+  }
+  
+  .header-content {
+    min-height: 50px;
+  }
+  
+  /* Avatar styles removed */
+  
+  /* Mobile navigation menu */
+  .nav-menu {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-background);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: var(--z-index-overlay);
+  }
+  
+  /* Mobile menu open state */
+  .nav-toggle[aria-expanded="true"] + .nav-menu {
+    display: flex; /* Show when menu is opened */
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-xl);
+    padding: var(--space-4) var(--space-6);
+    min-height: 60px;
+    justify-content: center;
+  }
+  
+  /* Mobile backdrop */
+  .nav-toggle[aria-expanded="true"] + .nav-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* ===== TABLET AND DESKTOP STYLES ===== */
+
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+  
+  .header-description {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: flex; /* Show navigation on desktop */
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: transparent;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+    height: auto;
+    width: auto;
+    flex-wrap: nowrap; /* Force single line */
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-base);
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-header {
+    padding: var(--space-6) 0;
+  }
+  
+  .header-content {
+    min-height: 70px;
+  }
+  
+  /* Avatar styles removed */
+  
+  .nav-menu {
+    gap: var(--space-3);
+  }
+}
+
+/* ===== SCROLL BEHAVIOR ===== */
+
+/* Header shrinks on scroll */
+.page-header.scrolled {
+  padding: var(--space-2) 0;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-header.scrolled .header-content {
+  min-height: 50px;
+}
+
+/* Avatar styles removed */
+
+/* ===== SMOOTH SCROLL BEHAVIOR ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll padding to account for fixed header */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus trap for mobile menu */
+.nav-toggle[aria-expanded="true"] + .nav-menu {
+  position: fixed;
+  inset: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-icon,
+  .nav-link,
+  .brand-link,
+  .nav-menu {
+    transition: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .page-header {
+    background-color: #ffffff;
+    backdrop-filter: none;
+    border-bottom-color: #000000;
+  }
+  
+  .nav-toggle-icon {
+    background-color: #000000;
+  }
+  
+  .nav-link {
+    color: #000000;
+  }
+  
+  .nav-link:hover,
+  .nav-link[aria-current="page"] {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .page-header {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .nav-toggle,
+  .nav-menu {
+    display: none;
+  }
+  
+  .header-description {
+    display: block;
+    margin: var(--space-2) 0;
+  }
+}

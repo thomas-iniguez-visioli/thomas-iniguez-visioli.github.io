@@ -1,0 +1,470 @@
+/**
+ * Performance Optimizations
+ * Lazy loading, asset optimization, and caching strategies
+ * Critical CSS and loading optimizations
+ */
+
+/* ===== CRITICAL CSS OPTIMIZATIONS ===== */
+
+/* Above-the-fold critical styles */
+.critical-above-fold {
+  /* Header styles */
+  --header-height: 80px;
+  
+  /* Hero styles */
+  --hero-min-height: 60vh;
+  
+  /* Font loading optimization */
+  font-display: swap;
+}
+
+/* Preload critical resources */
+.preload-critical {
+  /* This class is used to identify critical resources for preloading */
+}
+
+/* ===== LAZY LOADING OPTIMIZATIONS ===== */
+
+/* Image lazy loading with intersection observer */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Placeholder for lazy loaded images */
+.image-placeholder {
+  background-color: var(--color-background-secondary);
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Lazy loading for background images */
+.bg-lazy {
+  background-image: none !important;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.bg-lazy.loaded {
+  /* Background image will be set via JavaScript */
+}
+
+/* ===== CONTENT LOADING OPTIMIZATIONS ===== */
+
+/* Progressive enhancement for JavaScript-dependent features */
+.no-js .js-only {
+  display: none;
+}
+
+.js .no-js-only {
+  display: none;
+}
+
+/* Loading states for dynamic content */
+.content-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.content-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  animation: loading-sweep 1.5s infinite;
+  z-index: 1;
+}
+
+@keyframes loading-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== FONT LOADING OPTIMIZATIONS ===== */
+
+/* Font loading states */
+.fonts-loading {
+  /* Use system fonts while custom fonts load */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.fonts-loaded {
+  /* Switch to custom fonts once loaded */
+  font-family: var(--font-family-serif);
+}
+
+.fonts-loaded h1,
+.fonts-loaded h2,
+.fonts-loaded h3,
+.fonts-loaded h4,
+.fonts-loaded h5,
+.fonts-loaded h6 {
+  font-family: var(--font-family-sans);
+}
+
+.fonts-loaded code,
+.fonts-loaded pre {
+  font-family: var(--font-family-mono);
+}
+
+/* Prevent layout shift during font loading */
+.font-loading-stable {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ===== ASSET OPTIMIZATION ===== */
+
+/* Optimize images for different screen densities */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* WebP support with fallback */
+.webp .webp-image {
+  /* WebP images will be loaded via JavaScript */
+}
+
+.no-webp .webp-image {
+  /* Fallback to JPEG/PNG */
+}
+
+/* Optimize SVG icons */
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.icon-inline {
+  display: inline-block;
+}
+
+.icon-block {
+  display: block;
+}
+
+/* ===== CRITICAL RESOURCE HINTS ===== */
+
+/* Preconnect to external domains */
+.preconnect-external {
+  /* This class indicates resources that should be preconnected */
+}
+
+/* Prefetch non-critical resources */
+.prefetch-resource {
+  /* This class indicates resources that can be prefetched */
+}
+
+/* ===== PERFORMANCE MONITORING ===== */
+
+/* Performance timing markers */
+.perf-mark {
+  /* Used for performance measurement */
+}
+
+/* First Contentful Paint optimization */
+.fcp-optimized {
+  /* Styles that improve FCP */
+  contain: layout style paint;
+}
+
+/* Largest Contentful Paint optimization */
+.lcp-optimized {
+  /* Styles for LCP elements */
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
+}
+
+/* Cumulative Layout Shift prevention */
+.cls-stable {
+  /* Prevent layout shifts */
+  aspect-ratio: 16 / 9; /* Set explicit aspect ratios */
+  width: 100%;
+  height: auto;
+}
+
+/* ===== CACHING OPTIMIZATIONS ===== */
+
+/* Cache-friendly animations */
+.cache-friendly-animation {
+  /* Use transform and opacity for better caching */
+  will-change: transform, opacity;
+}
+
+.cache-friendly-animation.complete {
+  will-change: auto;
+}
+
+/* ===== BANDWIDTH OPTIMIZATIONS ===== */
+
+/* Reduced data mode */
+@media (prefers-reduced-data: reduce) {
+  /* Hide non-essential images */
+  .optional-image {
+    display: none;
+  }
+  
+  /* Reduce animation complexity */
+  .complex-animation {
+    animation: none;
+  }
+  
+  /* Use simpler gradients */
+  .gradient-background {
+    background: var(--color-background-secondary);
+  }
+  
+  /* Disable video autoplay */
+  video {
+    autoplay: none;
+  }
+}
+
+/* ===== MEMORY OPTIMIZATIONS ===== */
+
+/* Efficient list rendering for large datasets */
+.virtual-list {
+  overflow-y: auto;
+  height: 400px;
+}
+
+.virtual-list-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Optimize large images */
+.large-image {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px 600px;
+}
+
+/* ===== CPU OPTIMIZATIONS ===== */
+
+/* Use CSS containment for better performance */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-style {
+  contain: style;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-size {
+  contain: size;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* Optimize animations for 60fps */
+.smooth-animation {
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== LOADING STRATEGIES ===== */
+
+/* Progressive image loading */
+.progressive-image {
+  background-size: cover;
+  background-position: center;
+  transition: filter 0.3s ease-in-out;
+}
+
+.progressive-image.loading {
+  filter: blur(5px);
+}
+
+.progressive-image.loaded {
+  filter: none;
+}
+
+/* Skeleton screens for better perceived performance */
+.skeleton-screen {
+  background: linear-gradient(90deg, 
+    var(--color-neutral-200) 25%, 
+    var(--color-neutral-100) 50%, 
+    var(--color-neutral-200) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+}
+
+.skeleton-text:last-child {
+  width: 60%;
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.skeleton-button {
+  height: 40px;
+  width: 120px;
+  border-radius: 4px;
+}
+
+/* ===== CRITICAL CSS INLINING ===== */
+
+/* Inline critical styles for above-the-fold content */
+.critical-inline {
+  /* These styles should be inlined in the HTML head */
+}
+
+/* ===== RESOURCE PRIORITIZATION ===== */
+
+/* High priority resources */
+.priority-high {
+  /* Critical resources that should load first */
+}
+
+/* Low priority resources */
+.priority-low {
+  /* Non-critical resources that can load later */
+}
+
+/* ===== COMPRESSION OPTIMIZATIONS ===== */
+
+/* Optimize for gzip compression */
+.gzip-friendly {
+  /* Repetitive patterns compress better */
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.1) 2px,
+    rgba(255, 255, 255, 0.1) 4px
+  );
+}
+
+/* ===== BROWSER OPTIMIZATIONS ===== */
+
+/* Chrome optimizations */
+@supports (-webkit-appearance: none) {
+  .chrome-optimized {
+    /* Chrome-specific optimizations */
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Firefox optimizations */
+@supports (-moz-appearance: none) {
+  .firefox-optimized {
+    /* Firefox-specific optimizations */
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Safari optimizations */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+  .safari-optimized {
+    /* Safari-specific optimizations */
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* ===== ACCESSIBILITY PERFORMANCE ===== */
+
+/* Optimize for screen readers */
+.sr-optimized {
+  /* Ensure screen reader performance */
+  speak: normal;
+  speak-punctuation: code;
+  speak-numeral: digits;
+}
+
+/* Optimize for keyboard navigation */
+.keyboard-optimized {
+  /* Ensure smooth keyboard navigation */
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+
+@media print {
+  /* Optimize for printing */
+  .print-optimized {
+    color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Hide non-essential elements when printing */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Optimize images for print */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+  
+  /* Optimize text for print */
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000000;
+    background: #ffffff;
+  }
+}
