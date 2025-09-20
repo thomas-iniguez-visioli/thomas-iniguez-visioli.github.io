@@ -1,0 +1,523 @@
+/**
+ * Responsive Improvements
+ * Test and optimize all components for mobile, tablet, and desktop
+ * Ensure touch targets meet minimum 44px requirement
+ * Implement proper responsive images with srcset attributes
+ */
+
+/* ===== RESPONSIVE BREAKPOINTS OPTIMIZATION ===== */
+
+/* Enhanced mobile-first approach with better breakpoint management */
+:root {
+  --breakpoint-xs: 375px;   /* Small phones */
+  --breakpoint-sm: 640px;   /* Large phones */
+  --breakpoint-md: 768px;   /* Tablets */
+  --breakpoint-lg: 1024px;  /* Small laptops */
+  --breakpoint-xl: 1280px;  /* Large laptops */
+  --breakpoint-2xl: 1536px; /* Desktops */
+  
+  /* Touch target sizes */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  --touch-target-large: 56px;
+}
+
+/* ===== TOUCH TARGET OPTIMIZATION ===== */
+
+/* Ensure all interactive elements meet minimum touch target requirements */
+button,
+.btn,
+a[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.nav-link,
+.card-action,
+.article-action,
+.footer-social-link,
+.hero-cta {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Comfortable touch targets for primary actions */
+.hero-cta,
+.btn-primary,
+.footer-newsletter-button {
+  min-height: var(--touch-target-comfortable);
+  min-width: var(--touch-target-comfortable);
+}
+
+/* Large touch targets for critical actions */
+.nav-toggle,
+.footer-back-to-top {
+  min-height: var(--touch-target-large);
+  min-width: var(--touch-target-large);
+}
+
+/* Expand touch area for small visual elements */
+.card-tag,
+.article-tag {
+  position: relative;
+}
+
+.card-tag::before,
+.article-tag::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  z-index: -1;
+}
+
+/* ===== RESPONSIVE IMAGES WITH SRCSET ===== */
+
+/* Base responsive image styles */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Hero avatar responsive sizing */
+.hero-avatar-image {
+  width: 100px;
+  height: 100px;
+}
+
+@media (min-width: 375px) {
+  .hero-avatar-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-avatar-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-avatar-image {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Card images responsive sizing */
+.card-image {
+  height: 160px;
+}
+
+@media (min-width: 640px) {
+  .card-image {
+    height: 180px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-image {
+    height: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-image {
+    height: 220px;
+  }
+}
+
+/* Article cover responsive sizing */
+.article-cover img {
+  max-height: 300px;
+}
+
+@media (min-width: 640px) {
+  .article-cover img {
+    max-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-cover img {
+    max-height: 500px;
+  }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+/* Extra small devices (phones < 375px) */
+@media (max-width: 374px) {
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .card {
+    padding: var(--space-3);
+  }
+  
+  .article-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .footer-grid {
+    gap: var(--space-4);
+  }
+}
+
+/* Small devices (phones 375px - 639px) */
+@media (min-width: 375px) and (max-width: 639px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+/* ===== TABLET OPTIMIZATIONS ===== */
+
+/* Medium devices (tablets 640px - 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-content {
+    text-align: center;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+  
+  .article-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-sidebar {
+    display: none;
+  }
+  
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== DESKTOP OPTIMIZATIONS ===== */
+
+/* Large devices (desktops 1024px+) */
+@media (min-width: 1024px) {
+  .hero-content {
+    grid-template-columns: auto 1fr;
+    text-align: left;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .article-wrapper {
+    grid-template-columns: 1fr 300px;
+  }
+  
+  .article-sidebar {
+    display: block;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+/* Extra large devices (large desktops 1280px+) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-6xl);
+  }
+  
+  .cards-grid {
+    gap: var(--space-8);
+  }
+  
+  .article-wrapper {
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-16);
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION OPTIMIZATIONS ===== */
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 80vh;
+    padding: var(--space-8) 0;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .page-header {
+    padding: var(--space-2) 0;
+  }
+  
+  .nav-menu {
+    padding: var(--space-4);
+  }
+}
+
+/* ===== HIGH DPI DISPLAYS ===== */
+
+/* Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-avatar-image,
+  .brand-avatar,
+  .footer-logo-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Thinner borders on high DPI */
+  .card,
+  .article-tag,
+  .footer-newsletter-input {
+    border-width: 0.5px;
+  }
+}
+
+/* ===== FOLDABLE DEVICES ===== */
+
+/* Dual screen and foldable devices */
+@media (spanning: single-fold-vertical) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .article-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+
+@media print {
+  /* Ensure proper sizing for print */
+  .hero-avatar-image {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .card-image {
+    height: auto !important;
+    max-height: 200px !important;
+  }
+  
+  .article-cover img {
+    max-height: 300px !important;
+  }
+  
+  /* Hide interactive elements */
+  .nav-toggle,
+  .hero-cta,
+  .card-action,
+  .article-action,
+  .footer-social,
+  .footer-newsletter,
+  .footer-back-to-top {
+    display: none !important;
+  }
+  
+  /* Optimize spacing for print */
+  .hero,
+  .section {
+    padding: var(--space-4) 0 !important;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-3) !important;
+  }
+}
+
+/* ===== ACCESSIBILITY RESPONSIVE FEATURES ===== */
+
+/* Large text support */
+@media (prefers-reduced-data: reduce) {
+  .card-image,
+  .article-cover img,
+  .hero-avatar-image {
+    display: none;
+  }
+  
+  .card-image-wrapper::after {
+    content: 'Image cachée pour économiser les données';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .card,
+  .article-tag,
+  .footer-social-link {
+    border: 1px solid ButtonText;
+  }
+  
+  .hero-cta,
+  .btn-primary {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+  
+  .page-header {
+    background-color: Canvas;
+    border-bottom: 1px solid ButtonText;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Reduce animations on slower devices */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .hero-cta:hover,
+  .nav-link:hover,
+  .footer-social-link:hover {
+    transform: none;
+  }
+  
+  .hero-content > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Battery saving mode */
+@media (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) {
+  .page-header {
+    backdrop-filter: none;
+    background-color: var(--color-neutral-900);
+  }
+  
+  .hero::before,
+  .page-footer::before {
+    display: none;
+  }
+}
+
+/* ===== CONTAINER QUERIES (Future-proofing) ===== */
+
+/* When container queries are supported */
+@supports (container-type: inline-size) {
+  .cards-container {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 600px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @container (min-width: 900px) {
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ===== RESPONSIVE DEBUGGING (Development only) ===== */
+
+/* Uncomment for responsive debugging */
+/*
+.debug-responsive::before {
+  content: 'XS';
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  z-index: 9999;
+}
+
+@media (min-width: 640px) {
+  .debug-responsive::before { content: 'SM'; background: orange; }
+}
+
+@media (min-width: 768px) {
+  .debug-responsive::before { content: 'MD'; background: yellow; color: black; }
+}
+
+@media (min-width: 1024px) {
+  .debug-responsive::before { content: 'LG'; background: green; }
+}
+
+@media (min-width: 1280px) {
+  .debug-responsive::before { content: 'XL'; background: blue; }
+}
+
+@media (min-width: 1536px) {
+  .debug-responsive::before { content: '2XL'; background: purple; }
+}
+*/
