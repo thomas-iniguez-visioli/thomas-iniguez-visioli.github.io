@@ -1,0 +1,75 @@
+pre {
+  background: var(--code-background);
+  color: var(--code-foreground);
+}
+
+p code {
+  color: var(--dark-accent);
+}
+
+figure.highlight {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+figure.highlight figcaption {
+  color: var(--dark-accent);
+  font-family: var(--type-code);
+}
+
+figure.highlight table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+figure.highlight table td {
+  padding: 0;
+}
+
+figure.highlight pre {
+  line-height: var(--main-font-gap);
+  margin: 0;
+  padding: calc(var(--main-font-gap) - 2px);
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+figure.highlight .gutter pre {
+  border: 2px solid var(--brand-color);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  color: var(--light-accent);
+  text-align: right;
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+figure.highlight .code pre {
+  border: 2px solid var(--brand-color);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  max-width: 70vw;
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+figure.highlight .hljs {
+  padding: 0 !important;
+}
+
+@media (min-width: 768px) {
+
+  figure.highlight {
+    margin-left: -6rem;
+    margin-right: -6rem;
+  }
+}
+
+.next h2:first-child,
+.next .h2:first-child,
+section.aside h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}

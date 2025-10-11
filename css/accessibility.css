@@ -1,0 +1,598 @@
+/**
+ * Accessibility Compliance
+ * WCAG 2.1 AA compliance, ARIA labels, and keyboard navigation
+ * Semantic HTML structure and assistive technology support
+ */
+
+/* ===== FOCUS MANAGEMENT ===== */
+
+/* Enhanced focus indicators */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Remove default focus outline when not using keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High contrast focus indicators */
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 2px;
+    background-color: #ffff00;
+    color: #000000;
+  }
+}
+
+/* Focus trap for modals and menus */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  border-radius: var(--border-radius-base);
+  z-index: var(--z-index-skiplink);
+  transition: var(--transition-all);
+  font-weight: var(--font-weight-medium);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ===== SCREEN READER SUPPORT ===== */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Show screen reader content on focus */
+.sr-only:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: var(--space-2) var(--space-4) !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-radius: var(--border-radius-base);
+}
+
+/* Visually hidden but available to screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ===== COLOR CONTRAST ===== */
+
+/* Ensure WCAG AA compliance (4.5:1 ratio) */
+:root {
+  /* High contrast color palette */
+  --color-text-high-contrast: #000000;
+  --color-background-high-contrast: #ffffff;
+  --color-link-high-contrast: #0000ee;
+  --color-link-visited-high-contrast: #551a8b;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: var(--color-text-high-contrast);
+    --color-background: var(--color-background-high-contrast);
+    --color-primary: var(--color-link-high-contrast);
+  }
+  
+  a:visited {
+    color: var(--color-link-visited-high-contrast);
+  }
+  
+  .card,
+  .btn,
+  .article-tag {
+    border: 2px solid #000000;
+  }
+  
+  .page-header {
+    background-color: #ffffff;
+    border-bottom: 2px solid #000000;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .card {
+    border: 1px solid ButtonText;
+  }
+  
+  .btn {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+  
+  .btn:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  
+  .nav-link:focus {
+    outline: 2px solid Highlight;
+  }
+}
+
+/* ===== KEYBOARD NAVIGATION ===== */
+
+/* Keyboard navigation indicators */
+.keyboard-navigation *:focus {
+  outline: 2px solid var(--color-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Tab order optimization */
+.tab-order-1 { order: 1; }
+.tab-order-2 { order: 2; }
+.tab-order-3 { order: 3; }
+.tab-order-4 { order: 4; }
+.tab-order-5 { order: 5; }
+
+/* Keyboard shortcuts */
+[accesskey] {
+  position: relative;
+}
+
+[accesskey]::after {
+  content: " (Alt + " attr(accesskey) ")";
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Hide accesskey hints by default */
+[accesskey]::after {
+  display: none;
+}
+
+/* Show accesskey hints on focus or when Alt is pressed */
+[accesskey]:focus::after,
+.show-accesskeys [accesskey]::after {
+  display: inline;
+}
+
+/* ===== TOUCH AND POINTER ACCESSIBILITY ===== */
+
+/* Minimum touch target size (44px) */
+button,
+.btn,
+a[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.nav-link,
+.card-action,
+.footer-social-link {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Comfortable spacing between touch targets */
+.touch-target-group > * + * {
+  margin-left: var(--space-2);
+}
+
+/* Pointer coarse (touch) optimizations */
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .card-action {
+    min-height: 48px;
+    min-width: 48px;
+    padding: var(--space-3) var(--space-4);
+  }
+  
+  .nav-menu {
+    gap: var(--space-4);
+  }
+}
+
+/* ===== MOTION AND ANIMATION ACCESSIBILITY ===== */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable parallax effects */
+  .parallax {
+    transform: none !important;
+  }
+  
+  /* Disable hover animations */
+  .card:hover,
+  .btn:hover,
+  .footer-social-link:hover {
+    transform: none !important;
+  }
+  
+  /* Keep essential animations but make them instant */
+  .loading,
+  .skeleton {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ===== SEMANTIC HTML ENHANCEMENTS ===== */
+
+/* Landmark roles */
+[role="banner"],
+[role="navigation"],
+[role="main"],
+[role="complementary"],
+[role="contentinfo"] {
+  position: relative;
+}
+
+/* Heading hierarchy indicators for screen readers */
+h1::before { content: "Niveau 1: "; }
+h2::before { content: "Niveau 2: "; }
+h3::before { content: "Niveau 3: "; }
+h4::before { content: "Niveau 4: "; }
+h5::before { content: "Niveau 5: "; }
+h6::before { content: "Niveau 6: "; }
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ===== FORM ACCESSIBILITY ===== */
+
+/* Form labels and inputs */
+label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+/* Required field indicators */
+.required::after {
+  content: " *";
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Error states */
+.error,
+[aria-invalid="true"] {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.error-message::before {
+  content: "⚠";
+  font-weight: var(--font-weight-bold);
+}
+
+/* Success states */
+.success,
+[aria-invalid="false"] {
+  border-color: var(--color-success) !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Help text */
+.help-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* Fieldset and legend styling */
+fieldset {
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-base);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+legend {
+  font-weight: var(--font-weight-semibold);
+  padding: 0 var(--space-2);
+  color: var(--color-text-primary);
+}
+
+/* ===== TABLE ACCESSIBILITY ===== */
+
+/* Table headers */
+th {
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  background-color: var(--color-background-secondary);
+}
+
+/* Table captions */
+caption {
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+/* Sortable table headers */
+th[aria-sort] {
+  cursor: pointer;
+  position: relative;
+}
+
+th[aria-sort="ascending"]::after {
+  content: " ↑";
+}
+
+th[aria-sort="descending"]::after {
+  content: " ↓";
+}
+
+th[aria-sort="none"]::after {
+  content: " ↕";
+  opacity: 0.5;
+}
+
+/* ===== LIVE REGIONS ===== */
+
+/* Announcements for screen readers */
+.live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.live-region[aria-live="polite"] {
+  /* Polite announcements */
+}
+
+.live-region[aria-live="assertive"] {
+  /* Urgent announcements */
+}
+
+/* Status messages */
+.status-message {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-radius-base);
+  margin: var(--space-4) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.status-message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--color-success);
+  color: var(--color-success-dark);
+}
+
+.status-message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--color-error);
+  color: var(--color-error-dark);
+}
+
+.status-message.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.status-message.info {
+  background-color: rgba(6, 182, 212, 0.1);
+  border: 1px solid var(--color-info);
+  color: var(--color-info-dark);
+}
+
+/* ===== MODAL AND DIALOG ACCESSIBILITY ===== */
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-index-modal);
+}
+
+/* Modal content */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: calc(var(--z-index-modal) + 1);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Modal header */
+.modal-header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--border-radius-base);
+  color: var(--color-text-secondary);
+}
+
+.modal-close:hover {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-primary);
+}
+
+/* ===== TOOLTIP ACCESSIBILITY ===== */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip content */
+.tooltip-content {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--border-radius-base);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  z-index: var(--z-index-tooltip);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-all);
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip:focus .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tooltip arrow */
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-neutral-900);
+}
+
+/* ===== PRINT ACCESSIBILITY ===== */
+
+@media print {
+  /* Ensure good contrast for printing */
+  * {
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+  
+  /* Show URLs for links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666666;
+  }
+  
+  /* Hide interactive elements */
+  button,
+  .btn,
+  .nav-toggle,
+  .modal,
+  .tooltip {
+    display: none !important;
+  }
+  
+  /* Optimize headings for print */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    font-family: serif;
+  }
+  
+  /* Avoid breaking content */
+  .card,
+  .article-content > *,
+  blockquote {
+    page-break-inside: avoid;
+  }
+}

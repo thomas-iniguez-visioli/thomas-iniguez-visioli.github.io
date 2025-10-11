@@ -1,0 +1,464 @@
+/**
+ * Color Utilities - Developer Theme
+ * WCAG AA compliant color utilities with developer-focused palette
+ * Includes background, text, border, and accent color utilities
+ */
+
+/* ===== BACKGROUND COLOR UTILITIES ===== */
+
+/* Primary Backgrounds */
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-primary-50 { background-color: var(--color-primary-50) !important; }
+.bg-primary-100 { background-color: var(--color-primary-100) !important; }
+.bg-primary-200 { background-color: var(--color-primary-200) !important; }
+.bg-primary-300 { background-color: var(--color-primary-300) !important; }
+.bg-primary-400 { background-color: var(--color-primary-400) !important; }
+.bg-primary-500 { background-color: var(--color-primary-500) !important; }
+.bg-primary-600 { background-color: var(--color-primary-600) !important; }
+.bg-primary-700 { background-color: var(--color-primary-700) !important; }
+.bg-primary-800 { background-color: var(--color-primary-800) !important; }
+.bg-primary-900 { background-color: var(--color-primary-900) !important; }
+
+/* Neutral Backgrounds */
+.bg-neutral-50 { background-color: var(--color-neutral-50) !important; }
+.bg-neutral-100 { background-color: var(--color-neutral-100) !important; }
+.bg-neutral-200 { background-color: var(--color-neutral-200) !important; }
+.bg-neutral-300 { background-color: var(--color-neutral-300) !important; }
+.bg-neutral-400 { background-color: var(--color-neutral-400) !important; }
+.bg-neutral-500 { background-color: var(--color-neutral-500) !important; }
+.bg-neutral-600 { background-color: var(--color-neutral-600) !important; }
+.bg-neutral-700 { background-color: var(--color-neutral-700) !important; }
+.bg-neutral-800 { background-color: var(--color-neutral-800) !important; }
+.bg-neutral-900 { background-color: var(--color-neutral-900) !important; }
+
+/* Semantic Backgrounds */
+.bg-success { background-color: var(--color-success) !important; }
+.bg-success-light { background-color: var(--color-success-light) !important; }
+.bg-success-dark { background-color: var(--color-success-dark) !important; }
+
+.bg-warning { background-color: var(--color-warning) !important; }
+.bg-warning-light { background-color: var(--color-warning-light) !important; }
+.bg-warning-dark { background-color: var(--color-warning-dark) !important; }
+
+.bg-error { background-color: var(--color-error) !important; }
+.bg-error-light { background-color: var(--color-error-light) !important; }
+.bg-error-dark { background-color: var(--color-error-dark) !important; }
+
+.bg-info { background-color: var(--color-info) !important; }
+.bg-info-light { background-color: var(--color-info-light) !important; }
+.bg-info-dark { background-color: var(--color-info-dark) !important; }
+
+/* System Backgrounds */
+.bg-background { background-color: var(--color-background) !important; }
+.bg-background-secondary { background-color: var(--color-background-secondary) !important; }
+.bg-background-tertiary { background-color: var(--color-background-tertiary) !important; }
+
+/* Developer-specific Backgrounds */
+.bg-terminal { background-color: var(--dev-terminal-bg) !important; }
+.bg-ide-sidebar { background-color: var(--dev-ide-sidebar) !important; }
+.bg-ide-editor { background-color: var(--dev-ide-editor) !important; }
+.bg-ide-panel { background-color: var(--dev-ide-panel) !important; }
+.bg-code { background-color: var(--dev-code-bg) !important; }
+
+/* Transparent Backgrounds */
+.bg-transparent { background-color: transparent !important; }
+.bg-white { background-color: #ffffff !important; }
+.bg-black { background-color: #000000 !important; }
+
+/* ===== TEXT COLOR UTILITIES ===== */
+
+/* Primary Text Colors */
+.text-primary { color: var(--color-primary) !important; }
+.text-primary-50 { color: var(--color-primary-50) !important; }
+.text-primary-100 { color: var(--color-primary-100) !important; }
+.text-primary-200 { color: var(--color-primary-200) !important; }
+.text-primary-300 { color: var(--color-primary-300) !important; }
+.text-primary-400 { color: var(--color-primary-400) !important; }
+.text-primary-500 { color: var(--color-primary-500) !important; }
+.text-primary-600 { color: var(--color-primary-600) !important; }
+.text-primary-700 { color: var(--color-primary-700) !important; }
+.text-primary-800 { color: var(--color-primary-800) !important; }
+.text-primary-900 { color: var(--color-primary-900) !important; }
+
+/* Neutral Text Colors */
+.text-neutral-50 { color: var(--color-neutral-50) !important; }
+.text-neutral-100 { color: var(--color-neutral-100) !important; }
+.text-neutral-200 { color: var(--color-neutral-200) !important; }
+.text-neutral-300 { color: var(--color-neutral-300) !important; }
+.text-neutral-400 { color: var(--color-neutral-400) !important; }
+.text-neutral-500 { color: var(--color-neutral-500) !important; }
+.text-neutral-600 { color: var(--color-neutral-600) !important; }
+.text-neutral-700 { color: var(--color-neutral-700) !important; }
+.text-neutral-800 { color: var(--color-neutral-800) !important; }
+.text-neutral-900 { color: var(--color-neutral-900) !important; }
+
+/* Semantic Text Colors */
+.text-success { color: var(--color-success) !important; }
+.text-success-light { color: var(--color-success-light) !important; }
+.text-success-dark { color: var(--color-success-dark) !important; }
+
+.text-warning { color: var(--color-warning) !important; }
+.text-warning-light { color: var(--color-warning-light) !important; }
+.text-warning-dark { color: var(--color-warning-dark) !important; }
+
+.text-error { color: var(--color-error) !important; }
+.text-error-light { color: var(--color-error-light) !important; }
+.text-error-dark { color: var(--color-error-dark) !important; }
+
+.text-info { color: var(--color-info) !important; }
+.text-info-light { color: var(--color-info-light) !important; }
+.text-info-dark { color: var(--color-info-dark) !important; }
+
+/* System Text Colors */
+.text-primary-color { color: var(--color-text-primary) !important; }
+.text-secondary { color: var(--color-text-secondary) !important; }
+.text-tertiary { color: var(--color-text-tertiary) !important; }
+.text-muted { color: var(--color-text-muted) !important; }
+.text-inverse { color: var(--color-text-inverse) !important; }
+
+/* Developer-specific Text Colors */
+.text-terminal { color: var(--dev-terminal-text) !important; }
+.text-syntax-keyword { color: var(--dev-syntax-keyword) !important; }
+.text-syntax-string { color: var(--dev-syntax-string) !important; }
+.text-syntax-comment { color: var(--dev-syntax-comment) !important; }
+.text-syntax-number { color: var(--dev-syntax-number) !important; }
+.text-syntax-function { color: var(--dev-syntax-function) !important; }
+.text-syntax-variable { color: var(--dev-syntax-variable) !important; }
+
+/* Status Text Colors */
+.text-online { color: var(--dev-status-online) !important; }
+.text-busy { color: var(--dev-status-busy) !important; }
+.text-away { color: var(--dev-status-away) !important; }
+.text-offline { color: var(--dev-status-offline) !important; }
+
+/* Basic Text Colors */
+.text-white { color: #ffffff !important; }
+.text-black { color: #000000 !important; }
+.text-transparent { color: transparent !important; }
+
+/* ===== BORDER COLOR UTILITIES ===== */
+
+/* Primary Border Colors */
+.border-primary { border-color: var(--color-primary) !important; }
+.border-primary-50 { border-color: var(--color-primary-50) !important; }
+.border-primary-100 { border-color: var(--color-primary-100) !important; }
+.border-primary-200 { border-color: var(--color-primary-200) !important; }
+.border-primary-300 { border-color: var(--color-primary-300) !important; }
+.border-primary-400 { border-color: var(--color-primary-400) !important; }
+.border-primary-500 { border-color: var(--color-primary-500) !important; }
+.border-primary-600 { border-color: var(--color-primary-600) !important; }
+.border-primary-700 { border-color: var(--color-primary-700) !important; }
+.border-primary-800 { border-color: var(--color-primary-800) !important; }
+.border-primary-900 { border-color: var(--color-primary-900) !important; }
+
+/* Neutral Border Colors */
+.border-neutral-50 { border-color: var(--color-neutral-50) !important; }
+.border-neutral-100 { border-color: var(--color-neutral-100) !important; }
+.border-neutral-200 { border-color: var(--color-neutral-200) !important; }
+.border-neutral-300 { border-color: var(--color-neutral-300) !important; }
+.border-neutral-400 { border-color: var(--color-neutral-400) !important; }
+.border-neutral-500 { border-color: var(--color-neutral-500) !important; }
+.border-neutral-600 { border-color: var(--color-neutral-600) !important; }
+.border-neutral-700 { border-color: var(--color-neutral-700) !important; }
+.border-neutral-800 { border-color: var(--color-neutral-800) !important; }
+.border-neutral-900 { border-color: var(--color-neutral-900) !important; }
+
+/* Semantic Border Colors */
+.border-success { border-color: var(--color-success) !important; }
+.border-warning { border-color: var(--color-warning) !important; }
+.border-error { border-color: var(--color-error) !important; }
+.border-info { border-color: var(--color-info) !important; }
+
+/* System Border Colors */
+.border-default { border-color: var(--color-border) !important; }
+.border-light { border-color: var(--color-border-light) !important; }
+.border-dark { border-color: var(--color-border-dark) !important; }
+
+/* Developer-specific Border Colors */
+.border-terminal { border-color: var(--dev-terminal-bg) !important; }
+.border-ide { border-color: var(--dev-ide-border) !important; }
+.border-code { border-color: var(--dev-code-border) !important; }
+
+/* Basic Border Colors */
+.border-white { border-color: #ffffff !important; }
+.border-black { border-color: #000000 !important; }
+.border-transparent { border-color: transparent !important; }
+
+/* ===== DEVELOPER BADGE UTILITIES ===== */
+
+/* Technology Badge Colors */
+.badge-javascript { 
+  background-color: var(--dev-badge-javascript) !important; 
+  color: #000000 !important; 
+}
+.badge-typescript { 
+  background-color: var(--dev-badge-typescript) !important; 
+  color: #ffffff !important; 
+}
+.badge-react { 
+  background-color: var(--dev-badge-react) !important; 
+  color: #000000 !important; 
+}
+.badge-vue { 
+  background-color: var(--dev-badge-vue) !important; 
+  color: #ffffff !important; 
+}
+.badge-angular { 
+  background-color: var(--dev-badge-angular) !important; 
+  color: #ffffff !important; 
+}
+.badge-node { 
+  background-color: var(--dev-badge-node) !important; 
+  color: #ffffff !important; 
+}
+.badge-python { 
+  background-color: var(--dev-badge-python) !important; 
+  color: #ffffff !important; 
+}
+.badge-java { 
+  background-color: var(--dev-badge-java) !important; 
+  color: #ffffff !important; 
+}
+.badge-csharp { 
+  background-color: var(--dev-badge-csharp) !important; 
+  color: #ffffff !important; 
+}
+.badge-php { 
+  background-color: var(--dev-badge-php) !important; 
+  color: #ffffff !important; 
+}
+.badge-ruby { 
+  background-color: var(--dev-badge-ruby) !important; 
+  color: #ffffff !important; 
+}
+.badge-go { 
+  background-color: var(--dev-badge-go) !important; 
+  color: #ffffff !important; 
+}
+.badge-rust { 
+  background-color: var(--dev-badge-rust) !important; 
+  color: #ffffff !important; 
+}
+
+/* Tool Badge Colors */
+.badge-git { 
+  background-color: var(--dev-badge-git) !important; 
+  color: #ffffff !important; 
+}
+.badge-docker { 
+  background-color: var(--dev-badge-docker) !important; 
+  color: #ffffff !important; 
+}
+.badge-kubernetes { 
+  background-color: var(--dev-badge-kubernetes) !important; 
+  color: #ffffff !important; 
+}
+.badge-aws { 
+  background-color: var(--dev-badge-aws) !important; 
+  color: #000000 !important; 
+}
+.badge-azure { 
+  background-color: var(--dev-badge-azure) !important; 
+  color: #ffffff !important; 
+}
+.badge-gcp { 
+  background-color: var(--dev-badge-gcp) !important; 
+  color: #ffffff !important; 
+}
+.badge-vscode { 
+  background-color: var(--dev-badge-vscode) !important; 
+  color: #ffffff !important; 
+}
+.badge-github { 
+  background-color: var(--dev-badge-github) !important; 
+  color: #ffffff !important; 
+}
+.badge-gitlab { 
+  background-color: var(--dev-badge-gitlab) !important; 
+  color: #ffffff !important; 
+}
+
+/* Skill Level Badge Colors */
+.badge-beginner { 
+  background-color: var(--dev-skill-beginner) !important; 
+  color: #ffffff !important; 
+}
+.badge-intermediate { 
+  background-color: var(--dev-skill-intermediate) !important; 
+  color: #000000 !important; 
+}
+.badge-advanced { 
+  background-color: var(--dev-skill-advanced) !important; 
+  color: #ffffff !important; 
+}
+.badge-expert { 
+  background-color: var(--dev-skill-expert) !important; 
+  color: #ffffff !important; 
+}
+
+/* ===== ACCENT COLOR UTILITIES ===== */
+
+/* Accent borders (useful for focus states, highlights) */
+.accent-primary { 
+  border-left: 4px solid var(--color-primary) !important; 
+}
+.accent-success { 
+  border-left: 4px solid var(--color-success) !important; 
+}
+.accent-warning { 
+  border-left: 4px solid var(--color-warning) !important; 
+}
+.accent-error { 
+  border-left: 4px solid var(--color-error) !important; 
+}
+.accent-info { 
+  border-left: 4px solid var(--color-info) !important; 
+}
+
+/* ===== HOVER STATE UTILITIES ===== */
+
+/* Hover Background Colors */
+.hover\:bg-primary:hover { background-color: var(--color-primary) !important; }
+.hover\:bg-primary-50:hover { background-color: var(--color-primary-50) !important; }
+.hover\:bg-primary-100:hover { background-color: var(--color-primary-100) !important; }
+.hover\:bg-primary-200:hover { background-color: var(--color-primary-200) !important; }
+.hover\:bg-primary-300:hover { background-color: var(--color-primary-300) !important; }
+.hover\:bg-primary-400:hover { background-color: var(--color-primary-400) !important; }
+.hover\:bg-primary-500:hover { background-color: var(--color-primary-500) !important; }
+.hover\:bg-primary-600:hover { background-color: var(--color-primary-600) !important; }
+.hover\:bg-primary-700:hover { background-color: var(--color-primary-700) !important; }
+.hover\:bg-primary-800:hover { background-color: var(--color-primary-800) !important; }
+.hover\:bg-primary-900:hover { background-color: var(--color-primary-900) !important; }
+
+.hover\:bg-neutral-50:hover { background-color: var(--color-neutral-50) !important; }
+.hover\:bg-neutral-100:hover { background-color: var(--color-neutral-100) !important; }
+.hover\:bg-neutral-200:hover { background-color: var(--color-neutral-200) !important; }
+.hover\:bg-neutral-300:hover { background-color: var(--color-neutral-300) !important; }
+
+/* Hover Text Colors */
+.hover\:text-primary:hover { color: var(--color-primary) !important; }
+.hover\:text-primary-600:hover { color: var(--color-primary-600) !important; }
+.hover\:text-primary-700:hover { color: var(--color-primary-700) !important; }
+.hover\:text-white:hover { color: #ffffff !important; }
+.hover\:text-neutral-900:hover { color: var(--color-neutral-900) !important; }
+
+/* Hover Border Colors */
+.hover\:border-primary:hover { border-color: var(--color-primary) !important; }
+.hover\:border-primary-600:hover { border-color: var(--color-primary-600) !important; }
+.hover\:border-primary-700:hover { border-color: var(--color-primary-700) !important; }
+
+/* ===== FOCUS STATE UTILITIES ===== */
+
+/* Focus colors for accessibility */
+.focus\:bg-primary:focus { background-color: var(--color-primary) !important; }
+.focus\:text-primary:focus { color: var(--color-primary) !important; }
+.focus\:border-primary:focus { border-color: var(--color-primary) !important; }
+
+/* Focus ring utilities for accessibility */
+.focus\:ring-primary:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+.focus\:ring-success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+.focus\:ring-warning:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+}
+.focus\:ring-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ===== WCAG AA COMPLIANCE UTILITIES ===== */
+
+/* High contrast text combinations that meet WCAG AA standards */
+.text-contrast-high {
+  color: var(--color-neutral-900) !important;
+  background-color: var(--color-neutral-50) !important;
+}
+
+.text-contrast-high-inverse {
+  color: var(--color-neutral-50) !important;
+  background-color: var(--color-neutral-900) !important;
+}
+
+/* Medium contrast combinations */
+.text-contrast-medium {
+  color: var(--color-neutral-700) !important;
+  background-color: var(--color-neutral-100) !important;
+}
+
+.text-contrast-medium-inverse {
+  color: var(--color-neutral-200) !important;
+  background-color: var(--color-neutral-800) !important;
+}
+
+/* ===== CROSS-BROWSER FALLBACKS ===== */
+
+/* Fallbacks for browsers without CSS custom properties support */
+@supports not (--css: variables) {
+  .bg-primary { background-color: #2563eb !important; }
+  .bg-neutral-100 { background-color: #f1f5f9 !important; }
+  .bg-neutral-800 { background-color: #1e293b !important; }
+  .bg-neutral-900 { background-color: #0f172a !important; }
+  
+  .text-primary { color: #2563eb !important; }
+  .text-neutral-100 { color: #f1f5f9 !important; }
+  .text-neutral-600 { color: #475569 !important; }
+  .text-neutral-900 { color: #0f172a !important; }
+  
+  .text-success { color: #10b981 !important; }
+  .text-warning { color: #f59e0b !important; }
+  .text-error { color: #ef4444 !important; }
+  .text-info { color: #06b6d4 !important; }
+  
+  .border-primary { border-color: #2563eb !important; }
+  .border-neutral-200 { border-color: #e2e8f0 !important; }
+  .border-neutral-700 { border-color: #334155 !important; }
+  
+  .bg-terminal { background-color: #1e1e1e !important; }
+  .text-terminal { color: #d4d4d4 !important; }
+  
+  .badge-javascript { 
+    background-color: #f7df1e !important; 
+    color: #000000 !important; 
+  }
+  .badge-typescript { 
+    background-color: #3178c6 !important; 
+    color: #ffffff !important; 
+  }
+  .badge-react { 
+    background-color: #61dafb !important; 
+    color: #000000 !important; 
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  /* Ensure good contrast in print */
+  .bg-primary,
+  .bg-neutral-800,
+  .bg-neutral-900,
+  .bg-terminal {
+    background-color: transparent !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+  
+  .text-white,
+  .text-neutral-100,
+  .text-neutral-200 {
+    color: #000000 !important;
+  }
+  
+  /* Hide decorative colors in print */
+  .badge-javascript,
+  .badge-typescript,
+  .badge-react,
+  .badge-vue,
+  .badge-angular {
+    background-color: transparent !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+  }
+}

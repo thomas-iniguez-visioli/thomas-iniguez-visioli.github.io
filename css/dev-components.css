@@ -1,0 +1,746 @@
+/**
+ * Developer Components CSS
+ * Specialized components for developer portfolios and technical blogs
+ * Includes tech badges, code blocks, terminal interfaces, and developer-specific UI elements
+ */
+
+/* ===== DEVELOPER TECH BADGES ===== */
+
+.dev-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+}
+
+.dev-tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-base);
+  text-decoration: none;
+  transition: var(--transition-all);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.dev-tech-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-primary);
+  transition: var(--transition-all);
+}
+
+.dev-tech-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: var(--color-background);
+}
+
+/* Technology-specific badge colors */
+.badge-javascript,
+.dev-tech-badge.javascript {
+  background: var(--dev-badge-javascript);
+  color: #000000;
+}
+
+.badge-javascript::before,
+.dev-tech-badge.javascript::before {
+  background: #000000;
+}
+
+.badge-typescript,
+.dev-tech-badge.typescript {
+  background: var(--dev-badge-typescript);
+  color: #ffffff;
+}
+
+.badge-react,
+.dev-tech-badge.react {
+  background: var(--dev-badge-react);
+  color: #000000;
+}
+
+.badge-vue,
+.dev-tech-badge.vue {
+  background: var(--dev-badge-vue);
+  color: #ffffff;
+}
+
+.badge-angular,
+.dev-tech-badge.angular {
+  background: #dd0031;
+  color: #ffffff;
+}
+
+.badge-node,
+.dev-tech-badge.node {
+  background: var(--dev-badge-node);
+  color: #ffffff;
+}
+
+.badge-python,
+.dev-tech-badge.python {
+  background: var(--dev-badge-python);
+  color: #ffffff;
+}
+
+.badge-java,
+.dev-tech-badge.java {
+  background: #ed8b00;
+  color: #ffffff;
+}
+
+.badge-csharp,
+.dev-tech-badge.csharp {
+  background: #239120;
+  color: #ffffff;
+}
+
+.badge-php,
+.dev-tech-badge.php {
+  background: #777bb4;
+  color: #ffffff;
+}
+
+.badge-ruby,
+.dev-tech-badge.ruby {
+  background: #cc342d;
+  color: #ffffff;
+}
+
+.badge-go,
+.dev-tech-badge.go {
+  background: #00add8;
+  color: #ffffff;
+}
+
+.badge-rust,
+.dev-tech-badge.rust {
+  background: #000000;
+  color: #ffffff;
+}
+
+.badge-docker,
+.dev-tech-badge.docker {
+  background: var(--dev-badge-docker);
+  color: #ffffff;
+}
+
+.badge-kubernetes,
+.dev-tech-badge.kubernetes {
+  background: #326ce5;
+  color: #ffffff;
+}
+
+.badge-aws,
+.dev-tech-badge.aws {
+  background: var(--dev-badge-aws);
+  color: #000000;
+}
+
+.badge-azure,
+.dev-tech-badge.azure {
+  background: #0078d4;
+  color: #ffffff;
+}
+
+.badge-gcp,
+.dev-tech-badge.gcp {
+  background: #4285f4;
+  color: #ffffff;
+}
+
+.badge-git,
+.dev-tech-badge.git {
+  background: var(--dev-badge-git);
+  color: #ffffff;
+}
+
+.badge-github,
+.dev-tech-badge.github {
+  background: #181717;
+  color: #ffffff;
+}
+
+.badge-gitlab,
+.dev-tech-badge.gitlab {
+  background: #fc6d26;
+  color: #ffffff;
+}
+
+.badge-vscode,
+.dev-tech-badge.vscode {
+  background: var(--dev-badge-vscode);
+  color: #ffffff;
+}
+
+/* ===== DEVELOPER STATUS INDICATORS ===== */
+
+.dev-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.dev-status::before {
+  content: '';
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  background: var(--dev-status-offline);
+  animation: dev-pulse 2s infinite;
+}
+
+.dev-status--online::before {
+  background: var(--dev-status-online);
+}
+
+.dev-status--busy::before {
+  background: var(--dev-status-busy);
+}
+
+.dev-status--away::before {
+  background: var(--dev-status-away);
+  animation: none;
+}
+
+.dev-status--offline::before {
+  background: var(--dev-status-offline);
+  animation: none;
+}
+
+@keyframes dev-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== DEVELOPER CODE BLOCKS ===== */
+
+.dev-code-block {
+  background: var(--dev-code-bg);
+  border: 1px solid var(--dev-code-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  margin: var(--space-6) 0;
+  font-family: var(--font-family-mono);
+}
+
+.dev-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-neutral-100);
+  border-bottom: 1px solid var(--dev-code-border);
+}
+
+.dev-code-language {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dev-code-copy {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.dev-code-copy:hover {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.dev-code-copy-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.dev-code-content {
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+
+.dev-code-content pre {
+  margin: 0;
+  background: none;
+  padding: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== DEVELOPER TERMINAL ===== */
+
+.dev-terminal {
+  background: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  margin: var(--space-6) 0;
+  font-family: var(--font-family-mono);
+  box-shadow: var(--shadow-lg);
+}
+
+.dev-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-neutral-800);
+  border-bottom: 1px solid var(--color-neutral-700);
+}
+
+.dev-terminal-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-300);
+}
+
+.dev-terminal-controls {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.dev-terminal-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dev-terminal-control--close {
+  background: #ff5f57;
+}
+
+.dev-terminal-control--minimize {
+  background: #ffbd2e;
+}
+
+.dev-terminal-control--maximize {
+  background: #28ca42;
+}
+
+.dev-terminal-content {
+  padding: var(--space-4);
+  min-height: 200px;
+}
+
+.dev-terminal-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.dev-terminal-prompt {
+  color: var(--dev-status-online);
+  margin-right: var(--space-2);
+  font-weight: var(--font-weight-bold);
+}
+
+.dev-terminal-command {
+  color: var(--dev-terminal-text);
+}
+
+.dev-terminal-output {
+  margin: var(--space-2) 0;
+  padding-left: var(--space-4);
+  color: var(--color-neutral-400);
+}
+
+.dev-terminal-output-success {
+  color: var(--dev-status-online);
+}
+
+.dev-terminal-output-error {
+  color: var(--dev-status-offline);
+}
+
+.dev-terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--dev-terminal-cursor);
+  animation: dev-cursor-blink 1s infinite;
+}
+
+@keyframes dev-cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ===== DEVELOPER PROJECT SHOWCASE ===== */
+
+.dev-project-showcase {
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  background: var(--color-background);
+  transition: var(--transition-all);
+}
+
+.dev-project-showcase:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .dev-project-showcase {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dev-project-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-neutral-100);
+  min-height: 250px;
+}
+
+.dev-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-transform);
+}
+
+.dev-project-showcase:hover .dev-project-image img {
+  transform: scale(1.05);
+}
+
+.dev-project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-opacity);
+}
+
+.dev-project-showcase:hover .dev-project-overlay {
+  opacity: 1;
+}
+
+.dev-project-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.dev-project-info {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dev-project-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text-primary);
+}
+
+.dev-project-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.dev-project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.dev-project-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.dev-project-stat {
+  text-align: center;
+}
+
+.dev-project-stat-value {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  font-family: var(--font-family-mono);
+}
+
+.dev-project-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-1);
+}
+
+/* ===== DEVELOPER SKILL BARS ===== */
+
+.dev-skills {
+  margin: var(--space-8) 0;
+}
+
+.dev-skill {
+  margin-bottom: var(--space-4);
+}
+
+.dev-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.dev-skill-name {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.dev-skill-level {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.dev-skill-bar {
+  height: 8px;
+  background: var(--color-neutral-200);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+.dev-skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-700));
+  border-radius: var(--border-radius-full);
+  transition: width 1s ease-out;
+  position: relative;
+}
+
+.dev-skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: dev-skill-shine 2s infinite;
+}
+
+@keyframes dev-skill-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== DEVELOPER TIMELINE ===== */
+
+.dev-timeline {
+  position: relative;
+  margin: var(--space-8) 0;
+}
+
+.dev-timeline::before {
+  content: '';
+  position: absolute;
+  left: var(--space-4);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.dev-timeline-item {
+  position: relative;
+  padding-left: var(--space-12);
+  margin-bottom: var(--space-8);
+}
+
+.dev-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-1);
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  border: 2px solid var(--color-background);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.dev-timeline-date {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.dev-timeline-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.dev-timeline-description {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+@media (max-width: 767px) {
+  .dev-tech-badges {
+    gap: var(--space-1);
+  }
+  
+  .dev-tech-badge {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-1-5);
+  }
+  
+  .dev-project-showcase {
+    grid-template-columns: 1fr;
+  }
+  
+  .dev-project-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dev-timeline::before {
+    left: var(--space-2);
+  }
+  
+  .dev-timeline-item {
+    padding-left: var(--space-8);
+  }
+  
+  .dev-timeline-item::before {
+    left: calc(var(--space-2) - 5px);
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  .dev-code-block {
+    background: var(--dev-code-bg-dark);
+    border-color: var(--dev-code-border-dark);
+  }
+  
+  .dev-code-header {
+    background: var(--color-neutral-800);
+    border-color: var(--dev-code-border-dark);
+  }
+  
+  .dev-skill-bar {
+    background: var(--color-neutral-700);
+  }
+}
+
+[data-theme="dark"] {
+  .dev-code-block {
+    background: var(--dev-code-bg-dark);
+    border-color: var(--dev-code-border-dark);
+  }
+  
+  .dev-code-header {
+    background: var(--color-neutral-800);
+    border-color: var(--dev-code-border-dark);
+  }
+  
+  .dev-skill-bar {
+    background: var(--color-neutral-700);
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .dev-tech-badge:hover,
+  .dev-project-showcase:hover,
+  .dev-project-showcase:hover .dev-project-image img {
+    transform: none;
+  }
+  
+  .dev-skill-progress,
+  .dev-cursor,
+  .dev-status::before {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .dev-tech-badge,
+  .dev-code-block,
+  .dev-terminal {
+    border: 2px solid #000000;
+  }
+  
+  .dev-tech-badge {
+    background: #ffffff;
+    color: #000000;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .dev-terminal,
+  .dev-project-overlay,
+  .dev-code-copy {
+    display: none;
+  }
+  
+  .dev-tech-badge {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+  
+  .dev-project-showcase {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000000;
+  }
+}

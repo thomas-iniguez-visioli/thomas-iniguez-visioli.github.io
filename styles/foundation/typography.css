@@ -1,0 +1,634 @@
+/**
+ * Developer Typography System
+ * Modern typography system optimized for developer content
+ * Features JetBrains Mono and Inter with system font fallbacks
+ */
+
+/* ===== FONT FACE DECLARATIONS ===== */
+
+/* JetBrains Mono - Developer monospace font */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('data:font/woff2;base64,IyBKZXRCcmFpbnMgTW9ubyBSZWd1bGFyIEZvbnQgRmlsZQ0KIyBUaGlzIGlzIGEgcGxhY2Vob2xkZXIgLSBpbiBwcm9kdWN0aW9uLCB0aGlzIHdvdWxkIGJlIHRoZSBhY3R1YWwgLndvZmYyIGZvbnQgZmlsZQ0KIyBEb3dubG9hZCBmcm9tOiBodHRwczovL3d3dy5qZXRicmFpbnMuY29tL2xwL21vbm8v') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('data:font/woff2;base64,IyBKZXRCcmFpbnMgTW9ubyBNZWRpdW0gRm9udCBGaWxlDQojIFRoaXMgaXMgYSBwbGFjZWhvbGRlciAtIGluIHByb2R1Y3Rpb24sIHRoaXMgd291bGQgYmUgdGhlIGFjdHVhbCAud29mZjIgZm9udCBmaWxlDQojIERvd25sb2FkIGZyb206IGh0dHBzOi8vd3d3LmpldGJyYWlucy5jb20vbHAvbW9uby8=') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('data:font/woff2;base64,IyBKZXRCcmFpbnMgTW9ubyBCb2xkIEZvbnQgRmlsZQ0KIyBUaGlzIGlzIGEgcGxhY2Vob2xkZXIgLSBpbiBwcm9kdWN0aW9uLCB0aGlzIHdvdWxkIGJlIHRoZSBhY3R1YWwgLndvZmYyIGZvbnQgZmlsZQ0KIyBEb3dubG9hZCBmcm9tOiBodHRwczovL3d3dy5qZXRicmFpbnMuY29tL2xwL21vbm8v') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter - Modern sans-serif for headings */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('data:font/woff2;base64,IyBJbnRlciBSZWd1bGFyIEZvbnQgRmlsZQ0KIyBUaGlzIGlzIGEgcGxhY2Vob2xkZXIgLSBpbiBwcm9kdWN0aW9uLCB0aGlzIHdvdWxkIGJlIHRoZSBhY3R1YWwgLndvZmYyIGZvbnQgZmlsZQ0KIyBEb3dubG9hZCBmcm9tOiBodHRwczovL3JzbXMubWUvaW50ZXIv') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('data:font/woff2;base64,IyBJbnRlciBNZWRpdW0gRm9udCBGaWxlDQojIFRoaXMgaXMgYSBwbGFjZWhvbGRlciAtIGluIHByb2R1Y3Rpb24sIHRoaXMgd291bGQgYmUgdGhlIGFjdHVhbCAud29mZjIgZm9udCBmaWxlDQojIERvd25sb2FkIGZyb206IGh0dHBzOi8vcnNtcy5tZS9pbnRlci8=') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('data:font/woff2;base64,IyBJbnRlciBTZW1pQm9sZCBGb250IEZpbGUNCiMgVGhpcyBpcyBhIHBsYWNlaG9sZGVyIC0gaW4gcHJvZHVjdGlvbiwgdGhpcyB3b3VsZCBiZSB0aGUgYWN0dWFsIC53b2ZmMiBmb250IGZpbGUNCiMgRG93bmxvYWQgZnJvbTogaHR0cHM6Ly9yc21zLm1lL2ludGVyLw==') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('data:font/woff2;base64,IyBJbnRlciBCb2xkIEZvbnQgRmlsZQ0KIyBUaGlzIGlzIGEgcGxhY2Vob2xkZXIgLSBpbiBwcm9kdWN0aW9uLCB0aGlzIHdvdWxkIGJlIHRoZSBhY3R1YWwgLndvZmYyIGZvbnQgZmlsZQ0KIyBEb3dubG9hZCBmcm9tOiBodHRwczovL3JzbXMubWUvaW50ZXIv') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== DEVELOPER FONT STACKS ===== */
+
+:root {
+  /* Developer-optimized font stacks with system fallbacks */
+  --font-family-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  
+  /* Developer-specific font features */
+  --font-feature-mono: 'liga' 1, 'calt' 1, 'ss01' 1; /* Enable ligatures and stylistic sets */
+  --font-feature-sans: 'kern' 1, 'liga' 1, 'clig' 1; /* Enable kerning and ligatures */
+  
+  /* Typography scale optimized for developer content */
+  --font-size-xs: 0.75rem;     /* 12px - Small annotations */
+  --font-size-sm: 0.875rem;    /* 14px - Code comments */
+  --font-size-base: 1rem;      /* 16px - Body text */
+  --font-size-lg: 1.125rem;    /* 18px - Large body text */
+  --font-size-xl: 1.25rem;     /* 20px - Small headings */
+  --font-size-2xl: 1.5rem;     /* 24px - Medium headings */
+  --font-size-3xl: 1.875rem;   /* 30px - Large headings */
+  --font-size-4xl: 2.25rem;    /* 36px - Extra large headings */
+  --font-size-5xl: 3rem;       /* 48px - Hero headings */
+  --font-size-6xl: 3.75rem;    /* 60px - Display headings */
+  
+  /* Line heights optimized for code and text readability */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;   /* For headings */
+  --line-height-snug: 1.375;   /* For large text */
+  --line-height-normal: 1.5;   /* For body text */
+  --line-height-relaxed: 1.625; /* For long-form content */
+  --line-height-loose: 2;      /* For very relaxed reading */
+  --line-height-code: 1.6;     /* Optimized for code blocks */
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Letter spacing for developer content */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+}
+
+/* ===== BASE TYPOGRAPHY ===== */
+
+html {
+  font-family: var(--font-family-serif);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", common-ligatures contextual;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+}
+
+body {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-normal);
+  font-feature-settings: var(--font-feature-sans);
+}
+
+/* ===== DEVELOPER HEADING SYSTEM ===== */
+
+h1, h2, h3, h4, h5, h6,
+.heading-font {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  margin: 0 0 var(--space-4) 0;
+  font-feature-settings: var(--font-feature-sans);
+}
+
+/* Heading hierarchy with clear visual distinction */
+
+h1, .h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tighter);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-6);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-5);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-snug);
+  margin-bottom: var(--space-4);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-snug);
+  margin-bottom: var(--space-3);
+}
+
+h5, .h5 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-3);
+}
+
+h6, .h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-normal);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+/* ===== DEVELOPER CODE TYPOGRAPHY ===== */
+
+code, pre, kbd, samp,
+.code-font {
+  font-family: var(--font-family-mono);
+  font-feature-settings: var(--font-feature-mono), common-ligatures contextual;
+  font-variant-ligatures: common-ligatures contextual;
+}
+
+/* Inline code */
+
+code {
+  font-size: 0.875em;
+  background-color: var(--dev-code-bg);
+  color: var(--color-text-primary);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--dev-code-border);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Code blocks */
+
+pre {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  background-color: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-lg);
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+  border: 1px solid var(--dev-ide-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: var(--font-weight-normal);
+}
+
+/* Keyboard input styling */
+
+kbd {
+  font-size: var(--font-size-sm);
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-neutral-300);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Sample output styling */
+
+samp {
+  font-size: var(--font-size-sm);
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-700);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
+/* ===== SYNTAX HIGHLIGHTING STYLES ===== */
+
+/* Base syntax highlighting for code blocks */
+
+.hljs {
+  background: var(--dev-terminal-bg) !important;
+  color: var(--dev-terminal-text) !important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: var(--dev-syntax-keyword) !important;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: var(--dev-syntax-string) !important;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--dev-syntax-comment) !important;
+  font-style: italic;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: var(--dev-syntax-number) !important;
+}
+
+.hljs-function,
+.hljs-title {
+  color: var(--dev-syntax-function) !important;
+}
+
+.hljs-variable,
+.hljs-name {
+  color: var(--dev-syntax-variable) !important;
+}
+
+.hljs-operator,
+.hljs-punctuation {
+  color: var(--dev-syntax-operator) !important;
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+/* Mobile-first responsive typography */
+
+@media (min-width: 640px) {
+  html {
+    font-size: 17px;
+  }
+  
+  h1, .h1 {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h2, .h2 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h3, .h3 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  
+  h1, .h1 {
+    font-size: var(--font-size-6xl);
+  }
+  
+  h2, .h2 {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h3, .h3 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h4, .h4 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 19px;
+  }
+  
+  /* Larger code blocks on desktop */
+  pre {
+    font-size: var(--font-size-base);
+    padding: var(--space-6);
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* ===== TYPOGRAPHY UTILITY CLASSES ===== */
+
+/* Font family utilities */
+
+.font-sans {
+  font-family: var(--font-family-sans);
+  font-feature-settings: var(--font-feature-sans);
+}
+
+.font-serif {
+  font-family: var(--font-family-serif);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* Font size utilities */
+
+.text-xs { font-size: var(--font-size-xs); }
+
+.text-sm { font-size: var(--font-size-sm); }
+
+.text-base { font-size: var(--font-size-base); }
+
+.text-lg { font-size: var(--font-size-lg); }
+
+.text-xl { font-size: var(--font-size-xl); }
+
+.text-2xl { font-size: var(--font-size-2xl); }
+
+.text-3xl { font-size: var(--font-size-3xl); }
+
+.text-4xl { font-size: var(--font-size-4xl); }
+
+.text-5xl { font-size: var(--font-size-5xl); }
+
+.text-6xl { font-size: var(--font-size-6xl); }
+
+/* Font weight utilities */
+
+.font-light { font-weight: var(--font-weight-light); }
+
+.font-normal { font-weight: var(--font-weight-normal); }
+
+.font-medium { font-weight: var(--font-weight-medium); }
+
+.font-semibold { font-weight: var(--font-weight-semibold); }
+
+.font-bold { font-weight: var(--font-weight-bold); }
+
+.font-extrabold { font-weight: var(--font-weight-extrabold); }
+
+/* Line height utilities */
+
+.leading-none { line-height: var(--line-height-none); }
+
+.leading-tight { line-height: var(--line-height-tight); }
+
+.leading-snug { line-height: var(--line-height-snug); }
+
+.leading-normal { line-height: var(--line-height-normal); }
+
+.leading-relaxed { line-height: var(--line-height-relaxed); }
+
+.leading-loose { line-height: var(--line-height-loose); }
+
+.leading-code { line-height: var(--line-height-code); }
+
+/* Letter spacing utilities */
+
+.tracking-tighter { letter-spacing: var(--letter-spacing-tighter); }
+
+.tracking-tight { letter-spacing: var(--letter-spacing-tight); }
+
+.tracking-normal { letter-spacing: var(--letter-spacing-normal); }
+
+.tracking-wide { letter-spacing: var(--letter-spacing-wide); }
+
+.tracking-wider { letter-spacing: var(--letter-spacing-wider); }
+
+.tracking-widest { letter-spacing: var(--letter-spacing-widest); }
+
+/* Text decoration utilities */
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.0625em;
+}
+
+.no-underline { text-decoration: none; }
+
+.line-through { text-decoration: line-through; }
+
+/* Text transform utilities */
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.lowercase { text-transform: lowercase; }
+
+.capitalize { text-transform: capitalize; }
+
+.normal-case { text-transform: none; }
+
+/* ===== DEVELOPER-SPECIFIC TYPOGRAPHY COMPONENTS ===== */
+
+/* Terminal-style text */
+
+.terminal-text {
+  font-family: var(--font-family-mono);
+  background-color: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-radius-base);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  overflow-x: auto;
+}
+
+/* Code snippet with language label */
+
+.code-snippet {
+  position: relative;
+  margin: var(--space-4) 0;
+}
+
+.code-snippet::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: var(--space-3);
+  background-color: var(--color-neutral-700);
+  color: var(--color-neutral-200);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Developer badge text */
+
+.dev-badge {
+  display: inline-block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1;
+}
+
+/* Stack technology text */
+
+.tech-stack {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* ===== READING OPTIMIZATION ===== */
+
+/* Optimal reading width for developer content */
+
+.prose {
+  max-width: 65ch;
+  line-height: var(--line-height-relaxed);
+}
+
+.prose-wide {
+  max-width: 80ch;
+}
+
+.prose-narrow {
+  max-width: 50ch;
+}
+
+/* Code-heavy content optimization */
+
+.prose-code {
+  max-width: 90ch; /* Wider for code examples */
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Respect user motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  code, pre {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+  
+  kbd {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+  }
+}
+
+/* ===== PRINT TYPOGRAPHY ===== */
+
+@media print {
+  body {
+    font-family: Georgia, serif;
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000000;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    page-break-after: avoid;
+  }
+  
+  code, pre {
+    font-family: 'Courier New', monospace;
+    background: #f5f5f5 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+  
+  pre {
+    page-break-inside: avoid;
+  }
+  
+  p, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+}
