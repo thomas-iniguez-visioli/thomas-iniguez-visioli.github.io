@@ -1,0 +1,590 @@
+/**
+ * Developer Theme Layering Fixes
+ * Resolves z-index and positioning conflicts specific to dev-theme
+ */
+
+/* ===== DEV-THEME Z-INDEX FIXES ===== */
+
+:root {
+  /* Ensure z-index variables are available */
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skiplink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+}
+
+/* ===== DEV-THEME SPECIFIC FIXES ===== */
+
+/* Fix dev-theme sidebar positioning */
+
+.dev-sidebar,
+#dev-sidebar {
+  position: sticky !important;
+  top: 0;
+  z-index: var(--z-index-docked);
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+/* Fix dev-theme header */
+
+.dev-header,
+.page-header {
+  position: sticky !important;
+  top: 0;
+  z-index: var(--z-index-sticky);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+/* Fix dev-theme mobile sidebar */
+
+@media (max-width: 1023px) {
+  .dev-sidebar-toggle {
+    position: fixed !important;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: calc(var(--z-index-modal) + 2);
+    background: var(--dev-ide-sidebar, #252526);
+    border: 1px solid var(--dev-ide-border, #3e3e42);
+    border-radius: var(--border-radius-md, 6px);
+    padding: var(--space-3, 12px);
+    cursor: pointer;
+    transition: var(--transition-all, all 0.15s ease-in-out);
+  }
+  
+  .dev-sidebar,
+  #dev-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-modal);
+    width: 320px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    box-shadow: var(--shadow-2xl, 0 25px 50px -12px rgba(0, 0, 0, 0.25));
+  }
+  
+  .dev-sidebar.dev-sidebar-open,
+  .dev-sidebar.dev-sidebar--open,
+  #dev-sidebar.dev-sidebar-open,
+  #dev-sidebar.dev-sidebar--open {
+    transform: translateX(0);
+  }
+  
+  .dev-sidebar-backdrop {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: calc(var(--z-index-modal) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-opacity, opacity 0.15s ease-in-out);
+  }
+  
+  .dev-sidebar-backdrop.dev-sidebar-backdrop-visible,
+  .dev-sidebar-backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Fix dev-theme navigation */
+
+@media (max-width: 767px) {
+  .nav-menu,
+  .dev-nav-menu {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-index-modal);
+    background-color: var(--color-background, #ffffff);
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-toggle[aria-expanded="true"] + .nav-menu,
+  .nav-toggle[aria-expanded="true"] + .dev-nav-menu {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-toggle {
+    position: relative;
+    z-index: calc(var(--z-index-modal) + 1);
+  }
+}
+
+/* ===== DEV-THEME LAYOUT FIXES ===== */
+
+/* Fix dev-theme page grid */
+
+.dev-page-grid,
+.page-grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Prevent overflow issues */
+  overflow-x: hidden;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+@supports (display: grid) {
+  .dev-page-grid,
+  .page-grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+      "header"
+      "main"
+      "footer";
+  }
+}
+
+/* Fix dev-theme layout container */
+
+.dev-layout-container,
+.layout-with-sidebar {
+  display: flex;
+  flex: 1;
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  max-width: 100vw;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+@supports (display: grid) {
+  .dev-layout-container,
+  .layout-with-sidebar {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-areas: "sidebar content";
+    grid-gap: 0;
+    gap: 0;
+  }
+}
+
+/* Fix dev-theme main content */
+
+.dev-main-content,
+.main-content {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
+  /* Ensure content doesn't overflow */
+  overflow-x: hidden;
+  width: 100%;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+@supports (display: grid) {
+  .dev-main-content,
+  .main-content {
+    grid-area: content;
+    min-width: 0;
+  }
+}
+
+/* ===== DEV-THEME RESPONSIVE FIXES ===== */
+
+@media (max-width: 1023px) {
+  .dev-layout-container,
+  .layout-with-sidebar {
+    flex-direction: column;
+  }
+  
+  @supports (display: grid) {
+    .dev-layout-container,
+    .layout-with-sidebar {
+      grid-template-columns: 1fr;
+      grid-template-areas: "content";
+    }
+  }
+  
+  .dev-main-content,
+  .main-content {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ===== DEV-THEME COMPONENT FIXES ===== */
+
+/* Fix dev-theme cards */
+
+.dev-card,
+.card {
+  position: relative;
+  z-index: var(--z-index-base);
+  /* Prevent cards from overflowing */
+  overflow: hidden;
+  word-wrap: break-word;
+  min-width: 0;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+.dev-card:hover,
+.card:hover {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* Fix dev-theme buttons */
+
+.dev-btn,
+.btn {
+  position: relative;
+  z-index: var(--z-index-base);
+}
+
+.dev-btn:focus,
+.dev-btn:hover,
+.btn:focus,
+.btn:hover {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* Fix dev-theme modals */
+
+.dev-modal,
+.modal {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-index-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+.dev-modal-backdrop,
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.dev-modal-container,
+.modal-container {
+  position: relative;
+  z-index: 1;
+  background: var(--color-background, #ffffff);
+  border-radius: var(--border-radius-xl, 16px);
+  box-shadow: var(--shadow-2xl, 0 25px 50px -12px rgba(0, 0, 0, 0.25));
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* ===== DEV-THEME SKIP LINK FIXES ===== */
+
+.dev-skip-link,
+.skip-link {
+  position: absolute !important;
+  top: -40px;
+  left: 6px;
+  z-index: var(--z-index-skiplink);
+  background: var(--color-primary, #2563eb);
+  color: var(--color-text-inverse, #ffffff);
+  padding: var(--space-2, 8px) var(--space-4, 16px);
+  text-decoration: none;
+  border-radius: var(--border-radius-base, 4px);
+  transition: var(--transition-all, all 0.15s ease-in-out);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.dev-skip-link:focus,
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ===== DEV-THEME ACCESSIBILITY FIXES ===== */
+
+/* Ensure focus outlines appear above other elements */
+
+.dev-theme *.focus-visible,
+*.focus-visible {
+  position: relative;
+  z-index: calc(var(--z-index-tooltip) + 1);
+}
+
+.dev-theme *:focus-visible,
+*:focus-visible {
+  position: relative;
+  z-index: calc(var(--z-index-tooltip) + 1);
+}
+
+/* ===== DEV-THEME CROSS-BROWSER FIXES ===== */
+
+/* Safari z-index bug fix */
+
+@supports (-webkit-appearance: none) {
+  .dev-header,
+  .page-header,
+  .dev-sidebar,
+  #dev-sidebar,
+  .dev-modal,
+  .modal {
+    transform: translateZ(0);
+  }
+}
+
+/* IE11 z-index fixes */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .dev-header,
+  .page-header {
+    z-index: 1100;
+  }
+  
+  .dev-sidebar,
+  #dev-sidebar {
+    z-index: 10;
+  }
+  
+  .dev-modal,
+  .modal {
+    z-index: 1400;
+  }
+}
+
+/* ===== DEV-THEME PRINT FIXES ===== */
+
+@media print {
+  /* Reset z-index for print */
+  .dev-header,
+  .page-header,
+  .dev-sidebar,
+  #dev-sidebar,
+  .dev-modal,
+  .modal,
+  .dev-sidebar-toggle {
+    position: static !important;
+    z-index: auto !important;
+  }
+  
+  /* Hide interactive elements */
+  .dev-sidebar-toggle,
+  .nav-toggle,
+  .dev-modal,
+  .modal {
+    display: none !important;
+  }
+}
+
+/* ===== DEV-THEME DEBUG MODE ===== */
+
+.debug-mode .dev-header::before,
+.debug-mode .page-header::before {
+  content: 'Dev Header: ' var(--z-index-sticky);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+.debug-mode .dev-sidebar::before,
+.debug-mode #dev-sidebar::before {
+  content: 'Dev Sidebar: ' var(--z-index-docked);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: blue;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+.debug-mode .dev-modal::before,
+.debug-mode .modal::before {
+  content: 'Dev Modal: ' var(--z-index-modal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: green;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+/* ===== DEV-THEME ANIMATION FIXES ===== */
+
+/* Ensure animations don't break stacking context */
+
+@keyframes devSlideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes devFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dev-animate-slide-in {
+  animation: devSlideIn 0.3s ease-out;
+  /* Maintain z-index during animation */
+  z-index: inherit;
+}
+
+.dev-animate-fade-in {
+  animation: devFadeIn 0.3s ease-out;
+  /* Maintain z-index during animation */
+  z-index: inherit;
+}
+
+/* ===== DEV-THEME UTILITY FIXES ===== */
+
+/* Prevent horizontal scroll on body */
+
+body.dev-theme,
+body.dev-theme-loaded {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html.dev-theme {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Fix dev-theme container overflow */
+
+.dev-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Fix dev-theme content wrapper */
+
+.dev-content-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* ===== DEV-THEME SPECIFIC COMPONENT FIXES ===== */
+
+/* Fix dev-theme tech badges */
+
+.dev-tech-badge {
+  position: relative;
+  z-index: var(--z-index-base);
+}
+
+.dev-tech-badge:hover {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* Fix dev-theme navigation links */
+
+.dev-nav-link {
+  position: relative;
+  z-index: var(--z-index-base);
+}
+
+.dev-nav-link:hover,
+.dev-nav-link:focus {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* Fix dev-theme social links */
+
+.dev-social-link {
+  position: relative;
+  z-index: var(--z-index-base);
+}
+
+.dev-social-link:hover,
+.dev-social-link:focus {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* ===== DEV-THEME MOBILE SPECIFIC FIXES ===== */
+
+@media (max-width: 767px) {
+  /* Prevent mobile viewport issues */
+  .dev-page-grid,
+  .page-grid,
+  .dev-layout-container,
+  .layout-with-sidebar,
+  .dev-main-content,
+  .main-content {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Fix mobile menu positioning */
+  .dev-nav-menu,
+  .nav-menu {
+    width: 100vw;
+    height: 100vh;
+    /* Prevent menu from causing scroll issues */
+    overflow: hidden;
+  }
+}
+
+/* ===== DEV-THEME REDUCED MOTION SUPPORT ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .dev-sidebar,
+  #dev-sidebar,
+  .dev-nav-menu,
+  .nav-menu,
+  .dev-modal,
+  .modal {
+    transition: none !important;
+    animation: none !important;
+  }
+}

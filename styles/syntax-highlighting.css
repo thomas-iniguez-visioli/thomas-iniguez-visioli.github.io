@@ -1,0 +1,494 @@
+/**
+ * Developer Syntax Highlighting System
+ * Comprehensive syntax highlighting for code blocks
+ * Optimized for JetBrains Mono and developer readability
+ */
+
+/* ===== BASE SYNTAX HIGHLIGHTING ===== */
+
+.hljs {
+  background: var(--dev-terminal-bg) !important;
+  color: var(--dev-terminal-text) !important;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-lg);
+  overflow-x: auto;
+  border: 1px solid var(--dev-ide-border);
+  font-feature-settings: var(--font-feature-mono), common-ligatures contextual;
+  font-variant-ligatures: common-ligatures contextual;
+}
+
+/* ===== SYNTAX ELEMENT STYLES ===== */
+
+/* Keywords and built-in functions */
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: var(--dev-syntax-keyword) !important;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Strings and attributes */
+
+.hljs-string,
+.hljs-attr,
+.hljs-template-variable,
+.hljs-template-tag,
+.hljs-addition {
+  color: var(--dev-syntax-string) !important;
+}
+
+/* Comments and documentation */
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: var(--dev-syntax-comment) !important;
+  font-style: italic;
+}
+
+/* Numbers and literals */
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link {
+  color: var(--dev-syntax-number) !important;
+}
+
+/* Function names and titles */
+
+.hljs-function,
+.hljs-title,
+.hljs-section,
+.hljs-type {
+  color: var(--dev-syntax-function) !important;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Variables and names */
+
+.hljs-variable,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: var(--dev-syntax-variable) !important;
+}
+
+/* Operators and punctuation */
+
+.hljs-operator,
+.hljs-punctuation,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-emphasis {
+  color: var(--dev-syntax-operator) !important;
+}
+
+/* Special highlighting for important elements */
+
+.hljs-strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+/* ===== LANGUAGE-SPECIFIC HIGHLIGHTING ===== */
+
+/* JavaScript/TypeScript specific */
+
+.hljs-javascript .hljs-function,
+.hljs-typescript .hljs-function,
+.hljs-js .hljs-function,
+.hljs-ts .hljs-function {
+  color: var(--dev-syntax-function) !important;
+}
+
+.hljs-javascript .hljs-keyword,
+.hljs-typescript .hljs-keyword,
+.hljs-js .hljs-keyword,
+.hljs-ts .hljs-keyword {
+  color: var(--dev-syntax-keyword) !important;
+}
+
+/* CSS specific */
+
+.hljs-css .hljs-selector-tag,
+.hljs-css .hljs-selector-id,
+.hljs-css .hljs-selector-class {
+  color: var(--dev-syntax-function) !important;
+}
+
+.hljs-css .hljs-attribute {
+  color: var(--dev-syntax-variable) !important;
+}
+
+.hljs-css .hljs-number,
+.hljs-css .hljs-string {
+  color: var(--dev-syntax-string) !important;
+}
+
+/* HTML specific */
+
+.hljs-xml .hljs-tag,
+.hljs-html .hljs-tag {
+  color: var(--dev-syntax-keyword) !important;
+}
+
+.hljs-xml .hljs-name,
+.hljs-html .hljs-name {
+  color: var(--dev-syntax-function) !important;
+}
+
+.hljs-xml .hljs-attr,
+.hljs-html .hljs-attr {
+  color: var(--dev-syntax-variable) !important;
+}
+
+/* JSON specific */
+
+.hljs-json .hljs-attr {
+  color: var(--dev-syntax-variable) !important;
+}
+
+.hljs-json .hljs-string {
+  color: var(--dev-syntax-string) !important;
+}
+
+.hljs-json .hljs-number,
+.hljs-json .hljs-literal {
+  color: var(--dev-syntax-number) !important;
+}
+
+/* Python specific */
+
+.hljs-python .hljs-function,
+.hljs-python .hljs-class {
+  color: var(--dev-syntax-function) !important;
+}
+
+.hljs-python .hljs-decorator {
+  color: var(--dev-syntax-variable) !important;
+}
+
+/* Shell/Bash specific */
+
+.hljs-bash .hljs-built_in,
+.hljs-shell .hljs-built_in {
+  color: var(--dev-syntax-keyword) !important;
+}
+
+.hljs-bash .hljs-variable,
+.hljs-shell .hljs-variable {
+  color: var(--dev-syntax-variable) !important;
+}
+
+/* ===== CODE BLOCK ENHANCEMENTS ===== */
+
+/* Line numbers support */
+
+.hljs-ln {
+  border-collapse: collapse;
+}
+
+.hljs-ln td {
+  padding: 0;
+}
+
+.hljs-ln-n {
+  color: var(--dev-syntax-comment);
+  text-align: right;
+  padding-right: var(--space-3);
+  -webkit-user-select: none;
+          user-select: none;
+  border-right: 1px solid var(--dev-ide-border);
+  margin-right: var(--space-3);
+}
+
+.hljs-ln-code {
+  padding-left: var(--space-3);
+}
+
+/* Code block with language label */
+
+.code-block-with-lang {
+  position: relative;
+  margin: var(--space-4) 0;
+}
+
+.code-block-with-lang::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: var(--space-3);
+  background-color: var(--color-neutral-700);
+  color: var(--color-neutral-200);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+  z-index: 1;
+}
+
+/* Copy button styling */
+
+.code-copy-btn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: var(--color-neutral-700);
+  color: var(--color-neutral-200);
+  border: 1px solid var(--dev-ide-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition-opacity);
+  z-index: 2;
+}
+
+.code-block-with-lang:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: var(--color-neutral-600);
+}
+
+/* ===== TERMINAL-STYLE CODE BLOCKS ===== */
+
+.terminal-block {
+  background: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  font-family: var(--font-family-mono);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid var(--dev-ide-border);
+}
+
+.terminal-block::before {
+  content: "";
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-3);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-error);
+  box-shadow: 
+    20px 0 0 var(--color-warning),
+    40px 0 0 var(--color-success);
+}
+
+.terminal-block .terminal-prompt {
+  color: var(--dev-syntax-comment);
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+.terminal-block .terminal-command {
+  color: var(--dev-terminal-text);
+}
+
+.terminal-block .terminal-output {
+  color: var(--dev-syntax-comment);
+  margin-top: var(--space-2);
+}
+
+/* ===== DIFF HIGHLIGHTING ===== */
+
+.hljs-addition {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-success) !important;
+}
+
+.hljs-deletion {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-error) !important;
+}
+
+/* Line-level diff highlighting */
+
+.diff-line-added {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid var(--color-success);
+  padding-left: var(--space-2);
+}
+
+.diff-line-removed {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid var(--color-error);
+  padding-left: var(--space-2);
+}
+
+/* ===== RESPONSIVE SYNTAX HIGHLIGHTING ===== */
+
+@media (min-width: 768px) {
+  .hljs {
+    font-size: var(--font-size-base);
+    padding: var(--space-6);
+  }
+  
+  .terminal-block {
+    padding: var(--space-6);
+  }
+  
+  .terminal-block::before {
+    top: var(--space-3);
+    left: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hljs {
+    padding: var(--space-8);
+  }
+  
+  .terminal-block {
+    padding: var(--space-8);
+  }
+}
+
+/* ===== DARK MODE SYNTAX HIGHLIGHTING ===== */
+
+@media (prefers-color-scheme: dark) {
+  .code-copy-btn {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-300);
+    border-color: var(--color-neutral-600);
+  }
+  
+  .code-copy-btn:hover {
+    background: var(--color-neutral-700);
+  }
+  
+  .code-block-with-lang::before {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-300);
+  }
+}
+
+[data-theme="dark"] .code-copy-btn {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-300);
+    border-color: var(--color-neutral-600);
+  }
+
+[data-theme="dark"] .code-copy-btn:hover {
+    background: var(--color-neutral-700);
+  }
+
+[data-theme="dark"] .code-block-with-lang::before {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-300);
+  }
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast mode */
+
+@media (prefers-contrast: high) {
+  .hljs {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+  
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-built_in,
+  .hljs-name,
+  .hljs-tag {
+    color: #ffffff !important;
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .hljs-string,
+  .hljs-attr,
+  .hljs-template-variable,
+  .hljs-template-tag,
+  .hljs-addition {
+    color: #ffffff !important;
+  }
+  
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-deletion,
+  .hljs-meta {
+    color: #cccccc !important;
+  }
+  
+  .terminal-block {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  .code-copy-btn {
+    transition: none;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .hljs,
+  .terminal-block {
+    background: #f8f8f8 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+    page-break-inside: avoid;
+  }
+  
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-built_in,
+  .hljs-name,
+  .hljs-tag {
+    color: #000000 !important;
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .hljs-string,
+  .hljs-attr,
+  .hljs-template-variable,
+  .hljs-template-tag,
+  .hljs-addition {
+    color: #333333 !important;
+  }
+  
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-deletion,
+  .hljs-meta {
+    color: #666666 !important;
+  }
+  
+  .code-copy-btn {
+    display: none !important;
+  }
+  
+  .terminal-block::before {
+    display: none !important;
+  }
+}

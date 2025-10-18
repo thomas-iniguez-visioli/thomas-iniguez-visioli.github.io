@@ -1,0 +1,874 @@
+/**
+ * Legacy Browser Support and Polyfills
+ * Comprehensive fallbacks for older browsers (IE11, older Safari, Firefox)
+ * Ensures consistent functionality across all target browsers
+ */
+
+/* ===== CSS CUSTOM PROPERTIES POLYFILL ===== */
+
+/* Fallback values for browsers without CSS custom properties support */
+.no-css-variables,
+.no-css-vars {
+  /* Base colors */
+  color: #0f172a;
+  background-color: #ffffff;
+  
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.no-css-variables h1,
+.no-css-vars h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.no-css-variables h2,
+.no-css-vars h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.no-css-variables h3,
+.no-css-vars h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.no-css-variables a,
+.no-css-vars a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.no-css-variables a:hover,
+.no-css-vars a:hover {
+  color: #1d4ed8;
+}
+
+.no-css-variables code,
+.no-css-variables pre,
+.no-css-vars code,
+.no-css-vars pre {
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  background-color: #f8f8f8;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+}
+
+.no-css-variables code,
+.no-css-vars code {
+  padding: 2px 8px;
+}
+
+.no-css-variables pre,
+.no-css-vars pre {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.no-css-variables .dev-sidebar,
+.no-css-vars .dev-sidebar {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border-right: 1px solid #3e3e42;
+}
+
+.no-css-variables .dev-nav-link,
+.no-css-vars .dev-nav-link {
+  color: #cccccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.no-css-variables .dev-nav-link:hover,
+.no-css-vars .dev-nav-link:hover {
+  background-color: #2d2d30;
+  color: #ffffff;
+}
+
+.no-css-variables .dev-tech-badge,
+.no-css-vars .dev-tech-badge {
+  background-color: #2d2d30;
+  border: 1px solid #3e3e42;
+  color: #cccccc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+/* ===== CSS GRID POLYFILL ===== */
+
+/* Flexbox fallback for CSS Grid */
+@supports not (display: grid) {
+  .grid,
+  .page-grid,
+  .layout-with-sidebar,
+  .card-grid,
+  .project-grid,
+  .blog-grid {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  
+  .page-grid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .layout-with-sidebar {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    gap: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .dev-sidebar {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 300px;
+    -ms-flex: 0 0 300px;
+    flex: 0 0 300px;
+    width: 300px;
+  }
+  
+  .main-content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .card-grid,
+  .project-grid,
+  .blog-grid {
+    margin: -12px;
+  }
+  
+  .card-grid > *,
+  .project-grid > *,
+  .blog-grid > * {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 300px;
+    -ms-flex: 1 1 300px;
+    flex: 1 1 300px;
+    margin: 12px;
+    min-width: 300px;
+  }
+  
+  .grid-cols-1 > * {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  
+  .grid-cols-2 > * {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 calc(50% - 8px);
+    -ms-flex: 0 0 calc(50% - 8px);
+    flex: 0 0 calc(50% - 8px);
+  }
+  
+  .grid-cols-3 > * {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 calc(33.333% - 8px);
+    -ms-flex: 0 0 calc(33.333% - 8px);
+    flex: 0 0 calc(33.333% - 8px);
+  }
+  
+  .grid-cols-4 > * {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 calc(25% - 8px);
+    -ms-flex: 0 0 calc(25% - 8px);
+    flex: 0 0 calc(25% - 8px);
+  }
+}
+
+/* ===== FLEXBOX POLYFILL FOR OLDER BROWSERS ===== */
+
+/* Fallback for browsers without Flexbox support */
+@supports not (display: flex) {
+  .flex,
+  .layout-with-sidebar,
+  .dev-sidebar-content {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  .flex > *,
+  .layout-with-sidebar > *,
+  .dev-sidebar-content > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+  
+  .dev-sidebar {
+    width: 300px;
+  }
+  
+  .main-content {
+    width: auto;
+  }
+  
+  .flex-col {
+    display: block;
+  }
+  
+  .flex-col > * {
+    display: block;
+    width: 100%;
+  }
+  
+  .items-center {
+    vertical-align: middle;
+  }
+  
+  .justify-center {
+    text-align: center;
+  }
+  
+  .justify-between {
+    /* Fallback: use float for space-between */
+  }
+  
+  .justify-between > *:first-child {
+    float: left;
+  }
+  
+  .justify-between > *:last-child {
+    float: right;
+  }
+  
+  .justify-between::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* ===== INTERNET EXPLORER 11 SPECIFIC FIXES ===== */
+
+/* IE11 detection and fixes */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* IE11 flexbox fixes */
+  .layout-with-sidebar {
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-align: start;
+  }
+  
+  .dev-sidebar {
+    -ms-flex: 0 0 300px;
+    width: 300px;
+  }
+  
+  .main-content {
+    -ms-flex: 1;
+    width: auto;
+  }
+  
+  /* IE11 grid fallback using -ms-grid */
+  .ie-grid-container {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+  }
+  
+  .ie-grid-item:nth-child(1) { -ms-grid-column: 1; }
+  .ie-grid-item:nth-child(2) { -ms-grid-column: 2; }
+  .ie-grid-item:nth-child(3) { -ms-grid-column: 3; }
+  
+  /* IE11 CSS custom properties fallback */
+  .dev-sidebar {
+    background: #252526;
+    color: #cccccc;
+    border-right: 1px solid #3e3e42;
+  }
+  
+  .dev-nav-link {
+    color: #cccccc;
+    padding: 8px 12px;
+  }
+  
+  .dev-nav-link:hover {
+    background: #2d2d30;
+    color: #ffffff;
+  }
+  
+  /* IE11 object-fit fallback */
+  .object-fit-cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  
+  .object-fit-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* IE11 sticky positioning fallback */
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1100;
+  }
+  
+  /* IE11 viewport units fix */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: expression(document.body.clientHeight + "px");
+  }
+}
+
+/* ===== SAFARI SPECIFIC FIXES ===== */
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+  /* Fix for Safari button styling */
+  button,
+  .button,
+  .dev-newsletter-button {
+    -webkit-appearance: none;
+    border-radius: 4px;
+  }
+  
+  /* Fix for Safari input zoom on iOS */
+  @media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    textarea,
+    select,
+    .dev-newsletter-input {
+      font-size: 16px; /* Prevents zoom on iOS Safari */
+    }
+  }
+  
+  /* Safari flexbox bug fixes */
+  .flex {
+    -webkit-box-flex: 1;
+  }
+  
+  .flex-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 0%;
+  }
+  
+  /* Safari transform3d fix for better performance */
+  .gpu-accelerated {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* ===== FIREFOX SPECIFIC FIXES ===== */
+
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+  /* Firefox button padding fix */
+  button::-moz-focus-inner,
+  .button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /* Firefox select arrow fix */
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+  
+  /* Firefox flexbox fix */
+  .flex {
+    display: -moz-box;
+    display: -moz-flex;
+    display: flex;
+  }
+  
+  /* Firefox scrollbar styling */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #f1f5f9;
+  }
+  
+  .dev-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #3e3e42 #252526;
+  }
+}
+
+/* ===== CHROME/WEBKIT SPECIFIC FIXES ===== */
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Chrome autofill background fix */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  .dev-newsletter-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: #0f172a;
+  }
+  
+  /* Dark theme autofill fix */
+  .dev-sidebar input:-webkit-autofill,
+  .dev-newsletter-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #252526 inset;
+    -webkit-text-fill-color: #cccccc;
+  }
+  
+  /* Chrome search input styling */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  
+  /* Chrome scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+  
+  .dev-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .dev-sidebar::-webkit-scrollbar-track {
+    background: #252526;
+  }
+  
+  .dev-sidebar::-webkit-scrollbar-thumb {
+    background: #3e3e42;
+    border-radius: 3px;
+  }
+  
+  .dev-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+}
+
+/* ===== POLYFILLS FOR MODERN CSS FEATURES ===== */
+
+/* Object-fit polyfill */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+@supports not (object-fit: cover) {
+  .object-fit-cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .object-fit-container {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/* Sticky positioning fallback */
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+@supports not (position: sticky) {
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1100;
+  }
+}
+
+/* CSS Grid fallback using Flexbox */
+.grid-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+@supports not (display: grid) {
+  .grid-fallback {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -8px;
+  }
+  
+  .grid-fallback > * {
+    flex: 1 1 300px;
+    margin: 8px;
+  }
+}
+
+/* CSS custom properties fallback */
+@supports not (--css: variables) {
+  .fallback-colors {
+    color: #0f172a;
+    background-color: #ffffff;
+  }
+  
+  .fallback-colors a {
+    color: #2563eb;
+  }
+  
+  .fallback-colors .dev-sidebar {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+  
+  .fallback-colors .dev-code {
+    background-color: #f8f8f8;
+    border: 1px solid #e1e5e9;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+/* ===== VENDOR PREFIXES FOR ANIMATIONS ===== */
+
+/* Keyframes with vendor prefixes */
+@-webkit-keyframes dev-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@-moz-keyframes dev-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes dev-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@-webkit-keyframes dev-glow {
+  0%, 100% {
+    -webkit-box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px rgba(0, 122, 204, 0.6);
+    box-shadow: 0 0 20px rgba(0, 122, 204, 0.6);
+  }
+}
+
+@-moz-keyframes dev-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 122, 204, 0.6);
+  }
+}
+
+@keyframes dev-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 122, 204, 0.6);
+  }
+}
+
+/* Apply animations with vendor prefixes */
+.dev-profile-status,
+.dev-status-online {
+  -webkit-animation: dev-pulse 2s infinite;
+  -moz-animation: dev-pulse 2s infinite;
+  animation: dev-pulse 2s infinite;
+}
+
+.dev-tech-badge:hover {
+  -webkit-animation: dev-glow 1s ease-in-out;
+  -moz-animation: dev-glow 1s ease-in-out;
+  animation: dev-glow 1s ease-in-out;
+}
+
+/* ===== TRANSFORM VENDOR PREFIXES ===== */
+
+.transform-gpu {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.transform-center {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* ===== TRANSITION VENDOR PREFIXES ===== */
+
+.transition-all {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.transition-colors {
+  -webkit-transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  -moz-transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  -ms-transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out;
+}
+
+.transition-transform {
+  -webkit-transition: -webkit-transform 150ms ease-in-out;
+  -moz-transition: -moz-transform 150ms ease-in-out;
+  -ms-transition: -ms-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+}
+
+/* ===== BORDER-RADIUS VENDOR PREFIXES ===== */
+
+.border-radius-base {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.border-radius-lg {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.border-radius-full {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+/* ===== BOX-SHADOW VENDOR PREFIXES ===== */
+
+.shadow-sm {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-md {
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-lg {
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== LEGACY CLEARFIX ===== */
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ===== LEGACY FLOAT LAYOUTS ===== */
+
+/* Float-based layout fallback for very old browsers */
+.float-layout {
+  width: 100%;
+}
+
+.float-layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-sidebar {
+  float: left;
+  width: 300px;
+  margin-right: 32px;
+}
+
+.float-content {
+  overflow: hidden;
+}
+
+/* ===== LEGACY TYPOGRAPHY ===== */
+
+/* Font rendering improvements for older browsers */
+.font-smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Legacy font stack fallbacks */
+.font-sans-fallback {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.font-mono-fallback {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* ===== LEGACY FORM STYLING ===== */
+
+/* Enhanced form styling for older browsers */
+.legacy-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.legacy-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.legacy-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+}
+
+.legacy-button:hover {
+  background: #1d4ed8;
+}
+
+.legacy-button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* ===== LEGACY RESPONSIVE UTILITIES ===== */
+
+/* Media query fallbacks for older browsers */
+@media screen and (max-width: 767px) {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-block {
+    display: block;
+  }
+  
+  .mobile-full-width {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .desktop-hidden {
+    display: none;
+  }
+  
+  .desktop-block {
+    display: block;
+  }
+  
+  .desktop-flex {
+    display: flex;
+  }
+}
+
+/* ===== LEGACY PRINT STYLES ===== */
+
+@media print {
+  .legacy-no-print {
+    display: none !important;
+  }
+  
+  .legacy-print-block {
+    display: block !important;
+  }
+  
+  .legacy-print-break {
+    page-break-before: always;
+  }
+  
+  .legacy-print-avoid-break {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,126 @@
+/**
+ * Font Fallback System
+ * Provides system font fallbacks when custom fonts fail to load
+ */
+
+/* ===== SYSTEM FONT FALLBACKS ===== */
+
+/* Detect if custom fonts failed to load and provide fallbacks */
+
+/* JetBrains Mono fallback */
+@supports not (font-family: 'JetBrains Mono') {
+  :root {
+    --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  }
+}
+
+/* Inter fallback */
+@supports not (font-family: 'Inter') {
+  :root {
+    --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+/* ===== FONT LOADING ERROR HANDLING ===== */
+
+/* If fonts fail to load, use system fonts immediately */
+.font-loading-error {
+  --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* ===== PROGRESSIVE ENHANCEMENT ===== */
+
+/* Start with system fonts, then enhance with custom fonts */
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Apply custom fonts when they load */
+html.fonts-loaded {
+  font-family: var(--font-family-serif);
+}
+
+html.fonts-loaded h1,
+html.fonts-loaded h2,
+html.fonts-loaded h3,
+html.fonts-loaded h4,
+html.fonts-loaded h5,
+html.fonts-loaded h6,
+html.fonts-loaded .heading-font {
+  font-family: var(--font-family-sans);
+}
+
+html.fonts-loaded code,
+html.fonts-loaded pre,
+html.fonts-loaded kbd,
+html.fonts-loaded samp,
+html.fonts-loaded .font-mono {
+  font-family: var(--font-family-mono);
+}
+
+/* ===== FONT LOADING OPTIMIZATION ===== */
+
+/* Preload critical fonts */
+.font-preload {
+  font-display: swap;
+}
+
+/* ===== CROSS-BROWSER FONT SUPPORT ===== */
+
+/* Ensure consistent font rendering across browsers */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== FONT LOADING STATES ===== */
+
+/* Show loading state while fonts are loading */
+.font-loading {
+  font-family: system-ui, sans-serif;
+  opacity: 0.8;
+}
+
+.font-loaded {
+  font-family: var(--font-family-sans);
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Respect user font preferences */
+@media (prefers-reduced-motion: reduce) {
+  .font-loaded {
+    transition: none;
+  }
+}
+
+/* High contrast mode font adjustments */
+@media (prefers-contrast: high) {
+  * {
+    font-weight: 500;
+  }
+  
+  code, pre {
+    font-weight: 600;
+  }
+}
+
+/* ===== PRINT FONT OPTIMIZATION ===== */
+
+@media print {
+  * {
+    font-family: Georgia, serif !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif !important;
+  }
+  
+  code, pre {
+    font-family: 'Courier New', monospace !important;
+  }
+}

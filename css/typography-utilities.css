@@ -1,0 +1,969 @@
+/**
+ * Typography Utility Classes
+ * Comprehensive set of typography utilities for consistent text styling
+ * Uses system fonts for optimal performance
+ */
+
+/* ===== FONT FAMILY UTILITIES ===== */
+
+.font-sans {
+  font-family: var(--font-family-sans);
+}
+
+.font-serif {
+  font-family: var(--font-family-serif);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+/* Alternative modern sans-serif */
+.font-sans-alt {
+  font-family: var(--font-family-sans-alt);
+}
+
+/* ===== FONT SIZE UTILITIES ===== */
+
+.text-xs {
+  font-size: var(--font-size-xs);
+  line-height: 1.25;
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+  line-height: 1.375;
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+  line-height: 1.375;
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+  line-height: 1.25;
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+  line-height: 1.25;
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+  line-height: 1.125;
+}
+
+.text-5xl {
+  font-size: var(--font-size-5xl);
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: var(--font-size-6xl);
+  line-height: 1;
+}
+
+.text-7xl {
+  font-size: var(--font-size-7xl);
+  line-height: 1;
+}
+
+/* ===== RESPONSIVE FONT SIZES ===== */
+
+/* Fluid typography that scales smoothly */
+.text-fluid-sm {
+  font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+}
+
+.text-fluid-base {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+}
+
+.text-fluid-lg {
+  font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+}
+
+/* ===== FONT WEIGHT UTILITIES ===== */
+
+.font-thin {
+  font-weight: var(--font-weight-thin);
+}
+
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-extrabold {
+  font-weight: var(--font-weight-extrabold);
+}
+
+.font-black {
+  font-weight: var(--font-weight-black);
+}
+
+/* ===== LINE HEIGHT UTILITIES ===== */
+
+.leading-none {
+  line-height: var(--line-height-none);
+}
+
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+.leading-snug {
+  line-height: var(--line-height-snug);
+}
+
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.leading-loose {
+  line-height: var(--line-height-loose);
+}
+
+/* ===== LETTER SPACING UTILITIES ===== */
+
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+/* ===== TEXT ALIGNMENT UTILITIES ===== */
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* ===== TEXT COLOR UTILITIES ===== */
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-inverse {
+  color: var(--color-text-inverse);
+}
+
+.text-brand {
+  color: var(--color-primary);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+/* ===== TEXT DECORATION UTILITIES ===== */
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 1px;
+}
+
+.underline-thick {
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 2px;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.overline {
+  text-decoration: overline;
+}
+
+/* ===== TEXT TRANSFORM UTILITIES ===== */
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+/* ===== TEXT STYLE UTILITIES ===== */
+
+.italic {
+  font-style: italic;
+}
+
+.not-italic {
+  font-style: normal;
+}
+
+.oblique {
+  font-style: oblique;
+}
+
+/* ===== CONTENT STYLING UTILITIES ===== */
+
+/* Optimal reading width */
+.prose {
+  max-width: 65ch;
+  line-height: var(--line-height-relaxed);
+}
+
+.prose-sm {
+  max-width: 50ch;
+  font-size: var(--font-size-sm);
+}
+
+.prose-lg {
+  max-width: 75ch;
+  font-size: var(--font-size-lg);
+}
+
+.prose-xl {
+  max-width: 80ch;
+  font-size: var(--font-size-xl);
+}
+
+/* ===== HEADING UTILITIES ===== */
+
+.heading-display {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+  letter-spacing: -0.05em;
+}
+
+.heading-title {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.025em;
+}
+
+.heading-subtitle {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-secondary);
+}
+
+/* ===== SPECIAL TEXT STYLES ===== */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== QUOTE STYLES ===== */
+
+.quote {
+  font-style: italic;
+  position: relative;
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-primary);
+  color: var(--color-text-secondary);
+}
+
+.quote-large {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-light);
+}
+
+/* ===== DEVELOPER CODE STYLING ===== */
+
+.code-inline {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--dev-code-bg);
+  color: var(--color-text-primary);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--dev-code-border);
+  font-weight: var(--font-weight-medium);
+  font-feature-settings: var(--font-feature-mono);
+}
+
+.code-block {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  background-color: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-lg);
+  overflow-x: auto;
+  border: 1px solid var(--dev-ide-border);
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* Terminal-style code block */
+.code-terminal {
+  font-family: var(--font-family-mono);
+  background-color: var(--dev-terminal-bg);
+  color: var(--dev-terminal-text);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-radius-base);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-terminal::before {
+  content: "$ ";
+  color: var(--dev-syntax-comment);
+  user-select: none;
+}
+
+/* IDE-style code block */
+.code-ide {
+  font-family: var(--font-family-mono);
+  background-color: var(--dev-ide-editor);
+  color: var(--dev-terminal-text);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+  overflow-x: auto;
+  border: 1px solid var(--dev-ide-border);
+  position: relative;
+}
+
+/* Code with language label */
+.code-snippet {
+  position: relative;
+  margin: var(--space-4) 0;
+}
+
+.code-snippet::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: var(--space-3);
+  background-color: var(--color-neutral-700);
+  color: var(--color-neutral-200);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Keyboard input styling */
+.kbd {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-neutral-300);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: var(--font-weight-medium);
+  display: inline-block;
+}
+
+/* Sample output styling */
+.samp {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-700);
+  padding: 0.125em 0.375em;
+  border-radius: var(--border-radius-sm);
+  border-left: 3px solid var(--color-primary);
+  display: inline-block;
+}
+
+/* ===== LIST STYLING ===== */
+
+.list-styled {
+  padding-left: var(--space-6);
+}
+
+.list-styled li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+@media (min-width: 640px) {
+  .sm\\:text-xs { font-size: var(--font-size-xs); }
+  .sm\\:text-sm { font-size: var(--font-size-sm); }
+  .sm\\:text-base { font-size: var(--font-size-base); }
+  .sm\\:text-lg { font-size: var(--font-size-lg); }
+  .sm\\:text-xl { font-size: var(--font-size-xl); }
+  .sm\\:text-2xl { font-size: var(--font-size-2xl); }
+  .sm\\:text-3xl { font-size: var(--font-size-3xl); }
+  .sm\\:text-4xl { font-size: var(--font-size-4xl); }
+  
+  .sm\\:text-left { text-align: left; }
+  .sm\\:text-center { text-align: center; }
+  .sm\\:text-right { text-align: right; }
+}
+
+@media (min-width: 768px) {
+  .md\\:text-xs { font-size: var(--font-size-xs); }
+  .md\\:text-sm { font-size: var(--font-size-sm); }
+  .md\\:text-base { font-size: var(--font-size-base); }
+  .md\\:text-lg { font-size: var(--font-size-lg); }
+  .md\\:text-xl { font-size: var(--font-size-xl); }
+  .md\\:text-2xl { font-size: var(--font-size-2xl); }
+  .md\\:text-3xl { font-size: var(--font-size-3xl); }
+  .md\\:text-4xl { font-size: var(--font-size-4xl); }
+  .md\\:text-5xl { font-size: var(--font-size-5xl); }
+  
+  .md\\:text-left { text-align: left; }
+  .md\\:text-center { text-align: center; }
+  .md\\:text-right { text-align: right; }
+}
+
+@media (min-width: 1024px) {
+  .lg\\:text-xs { font-size: var(--font-size-xs); }
+  .lg\\:text-sm { font-size: var(--font-size-sm); }
+  .lg\\:text-base { font-size: var(--font-size-base); }
+  .lg\\:text-lg { font-size: var(--font-size-lg); }
+  .lg\\:text-xl { font-size: var(--font-size-xl); }
+  .lg\\:text-2xl { font-size: var(--font-size-2xl); }
+  .lg\\:text-3xl { font-size: var(--font-size-3xl); }
+  .lg\\:text-4xl { font-size: var(--font-size-4xl); }
+  .lg\\:text-5xl { font-size: var(--font-size-5xl); }
+  .lg\\:text-6xl { font-size: var(--font-size-6xl); }
+  
+  .lg\\:text-left { text-align: left; }
+  .lg\\:text-center { text-align: center; }
+  .lg\\:text-right { text-align: right; }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-muted,
+  .text-secondary,
+  .text-tertiary {
+    color: var(--color-text-primary);
+  }
+  
+  .text-gradient {
+    -webkit-text-fill-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient {
+    background: none;
+    -webkit-text-fill-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .text-gradient {
+    -webkit-text-fill-color: #000000;
+    color: #000000;
+  }
+  
+  .text-shadow-sm,
+  .text-shadow,
+  .text-shadow-lg {
+    text-shadow: none;
+  }
+  
+  .text-primary,
+  .text-secondary,
+  .text-tertiary,
+  .text-muted {
+    color: #000000;
+  }
+}
+/* ====
+= DEVELOPER-SPECIFIC TYPOGRAPHY UTILITIES ===== */
+
+/* Developer badge text */
+.dev-badge {
+  display: inline-block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1;
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* Technology stack text */
+.tech-stack {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-normal);
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* Developer status text */
+.dev-status {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.dev-status--online {
+  color: var(--dev-status-online);
+}
+
+.dev-status--busy {
+  color: var(--dev-status-busy);
+}
+
+.dev-status--away {
+  color: var(--dev-status-away);
+}
+
+.dev-status--offline {
+  color: var(--dev-status-offline);
+}
+
+/* Developer heading styles */
+.dev-heading {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  font-feature-settings: var(--font-feature-sans);
+}
+
+.dev-heading--hero {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tighter);
+  line-height: var(--line-height-none);
+}
+
+.dev-heading--section {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.dev-heading--subsection {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Developer body text optimizations */
+.dev-prose {
+  font-family: var(--font-family-serif);
+  line-height: var(--line-height-relaxed);
+  max-width: 65ch;
+}
+
+.dev-prose--code {
+  max-width: 90ch; /* Wider for code examples */
+}
+
+.dev-prose--narrow {
+  max-width: 50ch;
+}
+
+/* Developer link styles */
+.dev-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-colors);
+}
+
+.dev-link:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+}
+
+.dev-link--mono {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* Developer metadata text */
+.dev-meta {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Developer comment styles */
+.dev-comment {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-comment);
+  font-style: italic;
+  font-size: var(--font-size-sm);
+}
+
+.dev-comment::before {
+  content: "// ";
+  font-style: normal;
+}
+
+/* Developer highlight text */
+.dev-highlight {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
+  padding: 0.125em 0.25em;
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Developer variable text */
+.dev-var {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-variable);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9em;
+}
+
+/* Developer function text */
+.dev-function {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-function);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9em;
+}
+
+/* Developer keyword text */
+.dev-keyword {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-keyword);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.9em;
+}
+
+/* Developer string text */
+.dev-string {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-string);
+  font-size: 0.9em;
+}
+
+/* Developer number text */
+.dev-number {
+  font-family: var(--font-family-mono);
+  color: var(--dev-syntax-number);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9em;
+}
+
+/* ===== RESPONSIVE DEVELOPER TYPOGRAPHY ===== */
+
+@media (min-width: 640px) {
+  .sm\\:dev-heading--hero {
+    font-size: var(--font-size-6xl);
+  }
+  
+  .sm\\:dev-prose--wide {
+    max-width: 75ch;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\\:dev-heading--hero {
+    font-size: var(--font-size-6xl);
+  }
+  
+  .md\\:dev-heading--section {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .md\\:dev-prose--wide {
+    max-width: 80ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\\:dev-heading--hero {
+    font-size: var(--font-size-6xl);
+  }
+  
+  .lg\\:dev-prose--wide {
+    max-width: 85ch;
+  }
+  
+  .lg\\:code-block {
+    font-size: var(--font-size-base);
+    padding: var(--space-6);
+  }
+}
+
+/* ===== DEVELOPER DARK MODE TYPOGRAPHY ===== */
+
+@media (prefers-color-scheme: dark) {
+  .dev-badge {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+  }
+  
+  .dev-highlight {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+  
+  .kbd {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+    border-color: var(--color-neutral-600);
+  }
+}
+
+[data-theme="dark"] {
+  .dev-badge {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+  }
+  
+  .dev-highlight {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+  
+  .kbd {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+    border-color: var(--color-neutral-600);
+  }
+}
+
+/* ===== DEVELOPER ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Ensure code ligatures work properly */
+.font-mono,
+.code-inline,
+.code-block,
+.code-terminal,
+.code-ide,
+.dev-badge,
+.tech-stack,
+.dev-status,
+.dev-meta,
+.dev-comment,
+.dev-var,
+.dev-function,
+.dev-keyword,
+.dev-string,
+.dev-number {
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: var(--font-feature-mono);
+}
+
+/* High contrast mode for developer elements */
+@media (prefers-contrast: high) {
+  .code-inline,
+  .code-block,
+  .code-terminal,
+  .code-ide {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+  
+  .dev-badge {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+  }
+  
+  .dev-highlight {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+  }
+}
+
+/* Print styles for developer content */
+@media print {
+  .code-inline,
+  .code-block,
+  .code-terminal,
+  .code-ide {
+    background: #f5f5f5 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+  
+  .dev-badge {
+    background: #f0f0f0 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+  
+  .dev-highlight {
+    background: #ffff99 !important;
+    color: #000000 !important;
+  }
+  
+  .dev-var,
+  .dev-function,
+  .dev-keyword,
+  .dev-string,
+  .dev-number {
+    color: #000000 !important;
+  }
+}

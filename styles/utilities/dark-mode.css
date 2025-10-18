@@ -1,0 +1,516 @@
+/**
+ * Enhanced Dark Mode Styles
+ * WCAG AA compliant dark mode with improved contrast ratios
+ * Supports both system preference and manual toggle
+ */
+
+/* ===== DARK MODE COLOR OVERRIDES ===== */
+
+/* System preference dark mode */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Background colors */
+    --color-background: var(--color-neutral-900);
+    --color-background-secondary: var(--color-neutral-800);
+    --color-background-tertiary: var(--color-neutral-700);
+    
+    /* Text colors with improved contrast */
+    --color-text-primary: var(--color-neutral-50);
+    --color-text-secondary: var(--color-neutral-200);
+    --color-text-tertiary: var(--color-neutral-300);
+    --color-text-muted: var(--color-neutral-400);
+    --color-text-inverse: var(--color-neutral-900);
+    
+    /* Border colors */
+    --color-border: var(--color-neutral-700);
+    --color-border-light: var(--color-neutral-600);
+    --color-border-dark: var(--color-neutral-800);
+    
+    /* Adjust primary colors for better dark mode contrast */
+    --color-primary: var(--color-primary-400);
+    --color-primary-hover: var(--color-primary-300);
+    --color-primary-active: var(--color-primary-500);
+    
+    /* Semantic colors adjusted for dark mode */
+    --color-success: var(--color-success-light);
+    --color-warning: var(--color-warning-light);
+    --color-error: var(--color-error-light);
+    --color-info: var(--color-info-light);
+    
+    /* Developer-specific dark mode colors */
+    --dev-code-bg: var(--dev-code-bg-dark);
+    --dev-code-border: var(--dev-code-border-dark);
+    --dev-code-highlight-line: var(--dev-code-highlight-line-dark);
+    
+    /* Adjust shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Manual dark mode toggle */
+
+[data-theme="dark"] {
+  /* Background colors */
+  --color-background: var(--color-neutral-900);
+  --color-background-secondary: var(--color-neutral-800);
+  --color-background-tertiary: var(--color-neutral-700);
+  
+  /* Text colors with improved contrast */
+  --color-text-primary: var(--color-neutral-50);
+  --color-text-secondary: var(--color-neutral-200);
+  --color-text-tertiary: var(--color-neutral-300);
+  --color-text-muted: var(--color-neutral-400);
+  --color-text-inverse: var(--color-neutral-900);
+  
+  /* Border colors */
+  --color-border: var(--color-neutral-700);
+  --color-border-light: var(--color-neutral-600);
+  --color-border-dark: var(--color-neutral-800);
+  
+  /* Adjust primary colors for better dark mode contrast */
+  --color-primary: var(--color-primary-400);
+  --color-primary-hover: var(--color-primary-300);
+  --color-primary-active: var(--color-primary-500);
+  
+  /* Semantic colors adjusted for dark mode */
+  --color-success: var(--color-success-light);
+  --color-warning: var(--color-warning-light);
+  --color-error: var(--color-error-light);
+  --color-info: var(--color-info-light);
+  
+  /* Developer-specific dark mode colors */
+  --dev-code-bg: var(--dev-code-bg-dark);
+  --dev-code-border: var(--dev-code-border-dark);
+  --dev-code-highlight-line: var(--dev-code-highlight-line-dark);
+  
+  /* Adjust shadows for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== DARK MODE COMPONENT STYLES ===== */
+
+/* Body and base elements */
+
+[data-theme="dark"] body body, @media (prefers-color-scheme: dark) body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+
+/* Links in dark mode */
+
+[data-theme="dark"] a a, @media (prefers-color-scheme: dark) a {
+    color: var(--color-primary);
+  }
+
+[data-theme="dark"] a a:hover, @media (prefers-color-scheme: dark) a:hover {
+    color: var(--color-primary-hover);
+  }
+
+[data-theme="dark"] a a:active, @media (prefers-color-scheme: dark) a:active {
+    color: var(--color-primary-active);
+  }
+
+/* Headings in dark mode */
+
+[data-theme="dark"] h1 h1, [data-theme="dark"] h1 h2, [data-theme="dark"] h1 h3, [data-theme="dark"] h1 h4, [data-theme="dark"] h1 h5, [data-theme="dark"] h1 h6, [data-theme="dark"] h2 h1, [data-theme="dark"] h2 h2, [data-theme="dark"] h2 h3, [data-theme="dark"] h2 h4, [data-theme="dark"] h2 h5, [data-theme="dark"] h2 h6, [data-theme="dark"] h3 h1, [data-theme="dark"] h3 h2, [data-theme="dark"] h3 h3, [data-theme="dark"] h3 h4, [data-theme="dark"] h3 h5, [data-theme="dark"] h3 h6, [data-theme="dark"] h4 h1, [data-theme="dark"] h4 h2, [data-theme="dark"] h4 h3, [data-theme="dark"] h4 h4, [data-theme="dark"] h4 h5, [data-theme="dark"] h4 h6, [data-theme="dark"] h5 h1, [data-theme="dark"] h5 h2, [data-theme="dark"] h5 h3, [data-theme="dark"] h5 h4, [data-theme="dark"] h5 h5, [data-theme="dark"] h5 h6, [data-theme="dark"] h6 h1, [data-theme="dark"] h6 h2, [data-theme="dark"] h6 h3, [data-theme="dark"] h6 h4, [data-theme="dark"] h6 h5, [data-theme="dark"] h6 h6, @media (prefers-color-scheme: dark) h1, @media (prefers-color-scheme: dark) h2, @media (prefers-color-scheme: dark) h3, @media (prefers-color-scheme: dark) h4, @media (prefers-color-scheme: dark) h5, @media (prefers-color-scheme: dark) h6 {
+    color: var(--color-text-primary);
+  }
+
+/* Code blocks in dark mode */
+
+[data-theme="dark"] code code, [data-theme="dark"] code pre, [data-theme="dark"] pre code, [data-theme="dark"] pre pre, @media (prefers-color-scheme: dark) code, @media (prefers-color-scheme: dark) pre {
+    background-color: var(--dev-code-bg);
+    color: var(--dev-terminal-text);
+    border-color: var(--dev-code-border);
+  }
+
+/* Inline code */
+
+[data-theme="dark"] code:not(pre code) code:not(pre code), @media (prefers-color-scheme: dark) code:not(pre code) {
+    background-color: var(--color-neutral-800);
+    color: var(--dev-syntax-string);
+    padding: 0.125rem 0.25rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-neutral-700);
+  }
+
+/* Blockquotes in dark mode */
+
+[data-theme="dark"] blockquote blockquote, @media (prefers-color-scheme: dark) blockquote {
+    background-color: var(--color-background-secondary);
+    border-left-color: var(--color-primary);
+    color: var(--color-text-secondary);
+  }
+
+/* Tables in dark mode */
+
+[data-theme="dark"] table table, @media (prefers-color-scheme: dark) table {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+  }
+
+[data-theme="dark"] table th, @media (prefers-color-scheme: dark) th {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+  }
+
+[data-theme="dark"] table td, @media (prefers-color-scheme: dark) td {
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
+  }
+
+[data-theme="dark"] table tr:nth-child(even), @media (prefers-color-scheme: dark) tr:nth-child(even) {
+    background-color: var(--color-background-secondary);
+  }
+
+/* Form elements in dark mode */
+
+[data-theme="dark"] input input, [data-theme="dark"] input textarea, [data-theme="dark"] input select, [data-theme="dark"] textarea input, [data-theme="dark"] textarea textarea, [data-theme="dark"] textarea select, [data-theme="dark"] select input, [data-theme="dark"] select textarea, [data-theme="dark"] select select, @media (prefers-color-scheme: dark) input, @media (prefers-color-scheme: dark) textarea, @media (prefers-color-scheme: dark) select {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+  }
+
+[data-theme="dark"] input input:focus,
+  [data-theme="dark"] input textarea:focus,
+  [data-theme="dark"] input select:focus,
+  [data-theme="dark"] textarea input:focus,
+  [data-theme="dark"] textarea textarea:focus,
+  [data-theme="dark"] textarea select:focus,
+  [data-theme="dark"] select input:focus,
+  [data-theme="dark"] select textarea:focus,
+  [data-theme="dark"] select select:focus,
+  @media (prefers-color-scheme: dark) input:focus,
+  @media (prefers-color-scheme: dark) textarea:focus,
+  @media (prefers-color-scheme: dark) select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+  }
+
+[data-theme="dark"] input input::placeholder,
+  [data-theme="dark"] input textarea::placeholder,
+  [data-theme="dark"] textarea input::placeholder,
+  [data-theme="dark"] textarea textarea::placeholder,
+  [data-theme="dark"] select input::placeholder,
+  [data-theme="dark"] select textarea::placeholder,
+  @media (prefers-color-scheme: dark) input::placeholder,
+  @media (prefers-color-scheme: dark) textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+/* Buttons in dark mode */
+
+[data-theme="dark"] button button, @media (prefers-color-scheme: dark) button {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+  }
+
+[data-theme="dark"] button button:hover, @media (prefers-color-scheme: dark) button:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+
+[data-theme="dark"] button button:active, @media (prefers-color-scheme: dark) button:active {
+    background-color: var(--color-primary-active);
+    border-color: var(--color-primary-active);
+  }
+
+[data-theme="dark"] button button:disabled, @media (prefers-color-scheme: dark) button:disabled {
+    background-color: var(--color-neutral-700);
+    color: var(--color-text-muted);
+    border-color: var(--color-neutral-700);
+    cursor: not-allowed;
+  }
+
+/* Secondary buttons */
+
+[data-theme="dark"] .btn-secondary .btn-secondary, @media (prefers-color-scheme: dark) .btn-secondary {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+  }
+
+[data-theme="dark"] .btn-secondary .btn-secondary:hover, @media (prefers-color-scheme: dark) .btn-secondary:hover {
+    background-color: var(--color-background-tertiary);
+    border-color: var(--color-border-dark);
+  }
+
+/* ===== DARK MODE DEVELOPER COMPONENTS ===== */
+
+/* Developer sidebar in dark mode */
+
+[data-theme="dark"] .dev-sidebar .dev-sidebar, @media (prefers-color-scheme: dark) .dev-sidebar {
+    background-color: var(--dev-ide-sidebar);
+    border-color: var(--dev-ide-border);
+  }
+
+/* Developer terminal styles */
+
+[data-theme="dark"] .dev-terminal .dev-terminal, @media (prefers-color-scheme: dark) .dev-terminal {
+    background-color: var(--dev-terminal-bg);
+    color: var(--dev-terminal-text);
+    border-color: var(--dev-ide-border);
+  }
+
+/* Syntax highlighting in dark mode */
+
+[data-theme="dark"] .hljs .hljs, @media (prefers-color-scheme: dark) .hljs {
+    background-color: var(--dev-code-bg-dark) !important;
+    color: var(--dev-terminal-text) !important;
+  }
+
+[data-theme="dark"] .hljs .hljs-keyword, @media (prefers-color-scheme: dark) .hljs-keyword { color: var(--dev-syntax-keyword) !important; }
+
+[data-theme="dark"] .hljs .hljs-string, @media (prefers-color-scheme: dark) .hljs-string { color: var(--dev-syntax-string) !important; }
+
+[data-theme="dark"] .hljs .hljs-comment, @media (prefers-color-scheme: dark) .hljs-comment { color: var(--dev-syntax-comment) !important; }
+
+[data-theme="dark"] .hljs .hljs-number, @media (prefers-color-scheme: dark) .hljs-number { color: var(--dev-syntax-number) !important; }
+
+[data-theme="dark"] .hljs .hljs-function, @media (prefers-color-scheme: dark) .hljs-function { color: var(--dev-syntax-function) !important; }
+
+[data-theme="dark"] .hljs .hljs-variable, @media (prefers-color-scheme: dark) .hljs-variable { color: var(--dev-syntax-variable) !important; }
+
+[data-theme="dark"] .hljs .hljs-operator, @media (prefers-color-scheme: dark) .hljs-operator { color: var(--dev-syntax-operator) !important; }
+
+[data-theme="dark"] .hljs .hljs-punctuation, @media (prefers-color-scheme: dark) .hljs-punctuation { color: var(--dev-syntax-punctuation) !important; }
+
+[data-theme="dark"] .hljs .hljs-type, @media (prefers-color-scheme: dark) .hljs-type { color: var(--dev-syntax-type) !important; }
+
+[data-theme="dark"] .hljs .hljs-constant, @media (prefers-color-scheme: dark) .hljs-constant { color: var(--dev-syntax-constant) !important; }
+
+[data-theme="dark"] .hljs .hljs-property, @media (prefers-color-scheme: dark) .hljs-property { color: var(--dev-syntax-property) !important; }
+
+[data-theme="dark"] .hljs .hljs-tag, @media (prefers-color-scheme: dark) .hljs-tag { color: var(--dev-syntax-tag) !important; }
+
+[data-theme="dark"] .hljs .hljs-attribute, @media (prefers-color-scheme: dark) .hljs-attribute { color: var(--dev-syntax-attribute) !important; }
+
+[data-theme="dark"] .hljs .hljs-value, @media (prefers-color-scheme: dark) .hljs-value { color: var(--dev-syntax-value) !important; }
+
+/* Developer badges in dark mode */
+
+[data-theme="dark"] .dev-badge .dev-badge, @media (prefers-color-scheme: dark) .dev-badge {
+    border: 1px solid var(--color-border);
+  }
+
+/* Status indicators in dark mode */
+
+[data-theme="dark"] .status-online .status-online, @media (prefers-color-scheme: dark) .status-online {
+    color: var(--dev-status-online);
+  }
+
+[data-theme="dark"] .status-busy .status-busy, @media (prefers-color-scheme: dark) .status-busy {
+    color: var(--dev-status-busy);
+  }
+
+[data-theme="dark"] .status-away .status-away, @media (prefers-color-scheme: dark) .status-away {
+    color: var(--dev-status-away);
+  }
+
+[data-theme="dark"] .status-offline .status-offline, @media (prefers-color-scheme: dark) .status-offline {
+    color: var(--dev-status-offline);
+  }
+
+/* ===== DARK MODE ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast focus indicators for dark mode */
+
+[data-theme="dark"] *:focus *:focus, @media (prefers-color-scheme: dark) *:focus {
+    outline: 2px solid var(--color-primary-300);
+    outline-offset: 2px;
+  }
+
+/* Skip links in dark mode */
+
+[data-theme="dark"] .skip-link .skip-link, @media (prefers-color-scheme: dark) .skip-link {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: 2px solid var(--color-primary-300);
+  }
+
+/* Selection colors in dark mode */
+
+[data-theme="dark"] ::selection ::selection, @media (prefers-color-scheme: dark) ::selection {
+    background-color: var(--dev-terminal-selection);
+    color: var(--color-text-primary);
+  }
+
+/* ===== DARK MODE THEME TOGGLE BUTTON ===== */
+
+.theme-toggle {
+  position: relative;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  transition: var(--transition-all);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  grid-gap: var(--space-2);
+  gap: var(--space-2);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-background-secondary);
+  border-color: var(--color-primary);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle:active {
+  transform: translateY(1px);
+}
+
+/* Theme toggle icon */
+
+.theme-toggle-icon {
+  font-size: var(--font-size-base);
+  transition: var(--transition-transform);
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: scale(1.1);
+}
+
+/* Theme toggle text */
+
+.theme-toggle-text {
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===== DARK MODE ANIMATIONS ===== */
+
+/* Smooth theme transition */
+
+*,
+*::before,
+*::after {
+  transition: background-color var(--duration-200) var(--ease-in-out),
+              color var(--duration-200) var(--ease-in-out),
+              border-color var(--duration-200) var(--ease-in-out),
+              box-shadow var(--duration-200) var(--ease-in-out);
+}
+
+/* Disable transitions for users who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== DARK MODE PRINT STYLES ===== */
+
+@media print {
+  /* Force light colors for printing */
+    [data-theme="dark"] * *, @media (prefers-color-scheme: dark) * {
+      background-color: white !important;
+      color: black !important;
+      border-color: black !important;
+      box-shadow: none !important;
+    }
+  
+  /* Hide theme toggle in print */
+  .theme-toggle {
+    display: none !important;
+  }
+}
+
+/* ===== CROSS-BROWSER COMPATIBILITY ===== */
+
+/* Fallbacks for browsers without CSS custom properties */
+
+@supports not (--css: variables) {
+  [data-theme="dark"] body {
+    background-color: #0f172a !important;
+    color: #f1f5f9 !important;
+  }
+  
+  [data-theme="dark"] a {
+    color: #60a5fa !important;
+  }
+  
+  [data-theme="dark"] code,
+  [data-theme="dark"] pre {
+    background-color: #2d2d2d !important;
+    color: #d4d4d4 !important;
+    border-color: #404040 !important;
+  }
+  
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea,
+  [data-theme="dark"] select {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+  }
+  
+  [data-theme="dark"] button {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+  }
+}
+
+/* ===== DARK MODE UTILITIES ===== */
+
+/* Force light mode */
+
+.force-light-mode {
+  --color-background: #ffffff !important;
+  --color-text-primary: #0f172a !important;
+  --color-text-secondary: #475569 !important;
+  background-color: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Force dark mode */
+
+.force-dark-mode {
+  --color-background: #0f172a !important;
+  --color-text-primary: #f1f5f9 !important;
+  --color-text-secondary: #e2e8f0 !important;
+  background-color: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  [data-theme="dark"] {
+    --color-background: #000000;
+    --color-text-primary: #ffffff;
+    --color-primary: #ffffff;
+    --color-border: #ffffff;
+  }
+  
+  [data-theme="light"] {
+    --color-background: #ffffff;
+    --color-text-primary: #000000;
+    --color-primary: #000000;
+    --color-border: #000000;
+  }
+}

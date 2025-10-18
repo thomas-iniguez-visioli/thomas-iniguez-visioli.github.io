@@ -1,0 +1,366 @@
+/**
+ * Cross-Browser Compatibility Utilities
+ * Ensures consistent behavior across all target browsers
+ */
+
+/* ===== FEATURE DETECTION UTILITIES ===== */
+
+/* CSS Grid support detection */
+
+@supports (display: grid) {
+  .supports-grid {
+    display: grid;
+  }
+}
+
+@supports not (display: grid) {
+  .no-grid .layout-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .no-grid .grid-item {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+/* CSS Flexbox support detection */
+
+@supports (display: flex) {
+  .supports-flex {
+    display: flex;
+  }
+}
+
+@supports not (display: flex) {
+  .no-flex .flex {
+    display: table;
+    width: 100%;
+  }
+  
+  .no-flex .flex-item {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+/* CSS Custom Properties support detection */
+
+@supports (--css: variables) {
+  .supports-css-vars {
+    /* Modern browsers with CSS variables support */
+  }
+}
+
+@supports not (--css: variables) {
+  .no-css-vars {
+    /* Fallback styles for older browsers */
+    color: #0f172a;
+    background-color: #ffffff;
+  }
+  
+  .no-css-vars .dev-terminal {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+  
+  .no-css-vars .dev-code {
+    background-color: #f8f8f8;
+    border: 1px solid #e1e5e9;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+/* ===== BROWSER-SPECIFIC FIXES ===== */
+
+/* Internet Explorer 11 fixes */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* IE11 flexbox fixes */
+  .ie-flex-container {
+    display: flex;
+  }
+  
+  .ie-flex-item {
+    flex: 1 1 auto;
+  }
+  
+  /* IE11 grid fallback */
+  .ie-grid-container {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+  }
+  
+  .ie-grid-item:nth-child(1) { -ms-grid-column: 1; }
+  .ie-grid-item:nth-child(2) { -ms-grid-column: 2; }
+  .ie-grid-item:nth-child(3) { -ms-grid-column: 3; }
+}
+
+/* Safari-specific fixes */
+
+@supports (-webkit-appearance: none) {
+  /* Fix for Safari button styling */
+  .safari-button-fix {
+    -webkit-appearance: none;
+    border-radius: var(--border-radius-base, 4px);
+  }
+  
+  /* Fix for Safari input zoom on iOS */
+  @media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    textarea,
+    select {
+      font-size: 16px; /* Prevents zoom on iOS Safari */
+    }
+  }
+}
+
+/* Firefox-specific fixes */
+
+@-moz-document url-prefix() {
+  /* Firefox button padding fix */
+  button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /* Firefox select arrow fix */
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+}
+
+/* Chrome/Webkit specific fixes */
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Chrome autofill background fix */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-background, #ffffff) inset;
+    -webkit-text-fill-color: var(--color-text-primary, #0f172a);
+  }
+  
+  /* Chrome search input styling */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+/* ===== POLYFILLS AND FALLBACKS ===== */
+
+/* Object-fit polyfill for IE */
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Fallback for browsers without object-fit support */
+
+@supports not (object-fit: cover) {
+  .object-fit-cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+  
+  .object-fit-container {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/* Sticky positioning fallback */
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+@supports not (position: sticky) {
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: var(--z-index-sticky, 1100);
+  }
+}
+
+/* CSS Grid fallback using Flexbox */
+
+.grid-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: var(--space-4, 1rem);
+  gap: var(--space-4, 1rem);
+}
+
+@supports not (display: grid) {
+  .grid-fallback {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--space-4, 1rem) / -2);
+  }
+  
+  .grid-fallback > * {
+    flex: 1 1 300px;
+    margin: calc(var(--space-4, 1rem) / 2);
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --color-text-primary: #000000;
+    --color-background: #ffffff;
+  }
+  
+  .dev-code {
+    border: 2px solid #000000;
+  }
+  
+  button,
+  .button {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations for functionality */
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .loading-spinner::after {
+    content: "Loading...";
+  }
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+
+@media print {
+  /* Hide non-essential elements */
+  .no-print,
+  .sidebar,
+  .navigation,
+  .dev-status,
+  .dev-badges {
+    display: none !important;
+  }
+  
+  /* Optimize code blocks for print */
+  .dev-code,
+  pre,
+  code {
+    background: transparent !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* Ensure links are visible */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666666;
+  }
+  
+  /* Optimize typography for print */
+  body {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+  
+  h1 { font-size: 18pt !important; }
+  h2 { font-size: 16pt !important; }
+  h3 { font-size: 14pt !important; }
+}
+
+/* ===== UTILITY CLASSES FOR CROSS-BROWSER SUPPORT ===== */
+
+/* Force hardware acceleration */
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Fix for subpixel rendering issues */
+
+.subpixel-fix {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Clearfix for float layouts (legacy support) */
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Text selection styling */
+
+::selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+/* Scrollbar styling for webkit browsers */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100, #f1f5f9);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-400, #94a3b8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500, #64748b);
+}
+
+/* Firefox scrollbar styling */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-400, #94a3b8) var(--color-neutral-100, #f1f5f9);
+}

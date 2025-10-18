@@ -1,0 +1,378 @@
+/**
+ * Complete Grid System for Developer Theme
+ * Comprehensive responsive layout system with cross-browser support
+ * Mobile-first approach with 4px-based spacing utilities
+ */
+
+/* Import foundation variables */
+@import url('./variables.css');
+
+/* Import core grid system */
+@import url('./layout/grid.css');
+
+/* Import responsive utilities */
+@import url('./utilities/responsive.css');
+@import url('./utilities/enhanced-responsive.css');
+@import url('./utilities/enhanced-spacing.css');
+
+/* ===== GRID SYSTEM INTEGRATION ===== */
+
+/* Ensure proper box-sizing for all grid elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base grid container */
+.grid-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Enhanced grid system with better browser support */
+.enhanced-grid {
+  display: flex; /* Flexbox fallback */
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+@supports (display: grid) {
+  .enhanced-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+/* ===== DEVELOPER-SPECIFIC LAYOUTS ===== */
+
+/* Code block grid for showcasing multiple code examples */
+.code-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .code-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .code-grid.three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Project showcase grid */
+.project-grid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .project-grid.four-col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Skills/tech stack grid */
+.skills-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Blog post grid for archive pages */
+.blog-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== RESPONSIVE LAYOUT PATTERNS ===== */
+
+/* Hero section with centered content */
+.hero-grid {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    min-height: 70vh;
+    padding: var(--space-16) var(--space-8);
+  }
+}
+
+/* Feature grid for showcasing capabilities */
+.feature-grid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Testimonial/quote grid */
+.testimonial-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== ADVANCED GRID UTILITIES ===== */
+
+/* Auto-fit grids with minimum sizes */
+.auto-fit-sm {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.auto-fit-md {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.auto-fit-lg {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Dense grid packing */
+.grid-dense {
+  grid-auto-flow: dense;
+}
+
+/* Masonry-like layout fallback */
+.masonry-fallback {
+  column-count: 1;
+  column-gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .masonry-fallback {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-fallback {
+    column-count: 3;
+  }
+}
+
+.masonry-fallback > * {
+  break-inside: avoid;
+  margin-bottom: var(--space-6);
+}
+
+/* ===== GRID ITEM UTILITIES ===== */
+
+/* Grid item spanning */
+.col-span-1 { grid-column: span 1; }
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-6 { grid-column: span 6; }
+.col-span-12 { grid-column: span 12; }
+.col-span-full { grid-column: 1 / -1; }
+
+.row-span-1 { grid-row: span 1; }
+.row-span-2 { grid-row: span 2; }
+.row-span-3 { grid-row: span 3; }
+.row-span-4 { grid-row: span 4; }
+.row-span-full { grid-row: 1 / -1; }
+
+/* Grid item positioning */
+.col-start-1 { grid-column-start: 1; }
+.col-start-2 { grid-column-start: 2; }
+.col-start-3 { grid-column-start: 3; }
+.col-start-4 { grid-column-start: 4; }
+
+.col-end-1 { grid-column-end: 1; }
+.col-end-2 { grid-column-end: 2; }
+.col-end-3 { grid-column-end: 3; }
+.col-end-4 { grid-column-end: 4; }
+.col-end-auto { grid-column-end: auto; }
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Focus management for grid navigation */
+.grid[role="grid"] {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.grid[role="grid"] > *:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  z-index: var(--z-index-docked);
+}
+
+/* Screen reader improvements */
+.grid[aria-label] {
+  /* Grid has accessible label */
+}
+
+.grid > [role="gridcell"] {
+  /* Grid items are properly labeled */
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Contain layout for better performance */
+.grid-contain {
+  contain: layout style;
+}
+
+/* GPU acceleration for smooth animations */
+.grid-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ===== DEBUGGING UTILITIES ===== */
+
+/* Visual grid debugging (development only) */
+.debug-grid {
+  position: relative;
+}
+
+.debug-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: var(--space-4) var(--space-4);
+  pointer-events: none;
+  z-index: var(--z-index-overlay);
+}
+
+/* Grid item debugging */
+.debug-grid > * {
+  outline: 1px dashed rgba(0, 255, 0, 0.5);
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+
+@media print {
+  .grid,
+  .card-grid,
+  .project-grid,
+  .blog-grid {
+    display: block;
+  }
+  
+  .grid > *,
+  .card-grid > *,
+  .project-grid > *,
+  .blog-grid > * {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  .col-span-2,
+  .col-span-3,
+  .col-span-4,
+  .col-span-6,
+  .col-span-12 {
+    grid-column: auto;
+  }
+  
+  .debug-grid::before {
+    display: none;
+  }
+}
+
+/* ===== FUTURE-PROOFING ===== */
+
+/* Subgrid support for modern browsers */
+@supports (grid-template-columns: subgrid) {
+  .subgrid {
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+  }
+}
+
+/* Container queries support */
+@supports (container-type: inline-size) {
+  .container-grid {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 400px) {
+    .container-grid .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @container (min-width: 600px) {
+    .container-grid .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

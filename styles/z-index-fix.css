@@ -1,0 +1,518 @@
+/**
+ * Z-Index and Layering Fixes
+ * Resolves overlapping issues and establishes proper stacking context
+ */
+
+/* ===== Z-INDEX SCALE DEFINITION ===== */
+
+:root {
+  /* Define consistent z-index scale */
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skiplink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+}
+
+/* ===== HEADER FIXES ===== */
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: var(--transition-all);
+  padding: var(--space-4) 0;
+  /* Ensure header doesn't interfere with sidebar */
+  isolation: isolate;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile navigation overlay */
+@media (max-width: 767px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-index-modal);
+    background-color: var(--color-background);
+  }
+  
+  .nav-toggle {
+    position: relative;
+    z-index: calc(var(--z-index-modal) + 1);
+  }
+}
+
+/* ===== SIDEBAR FIXES ===== */
+
+.dev-sidebar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-docked);
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Create new stacking context */
+  isolation: isolate;
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 1023px) {
+  .dev-sidebar-toggle {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: calc(var(--z-index-modal) + 2);
+    background: var(--dev-ide-sidebar);
+    border: 1px solid var(--dev-ide-border);
+  }
+  
+  .dev-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-modal);
+    transform: translateX(-100%);
+    transition: transform var(--duration-300) var(--ease-out);
+    box-shadow: var(--shadow-2xl);
+  }
+  
+  .dev-sidebar.dev-sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .dev-sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: calc(var(--z-index-modal) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-opacity);
+  }
+  
+  .dev-sidebar-backdrop.dev-sidebar-backdrop-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ===== MAIN CONTENT FIXES ===== */
+
+.page-main {
+  position: relative;
+  z-index: var(--z-index-base);
+  /* Ensure main content doesn't overlap with fixed elements */
+  isolation: isolate;
+}
+
+.main-content {
+  position: relative;
+  z-index: var(--z-index-base);
+  background: var(--color-background);
+  /* Prevent content from going under sidebar */
+  min-height: 100vh;
+}
+
+/* ===== LAYOUT CONTAINER FIXES ===== */
+
+.layout-with-sidebar {
+  position: relative;
+  z-index: var(--z-index-base);
+  /* Ensure proper stacking context */
+  isolation: isolate;
+}
+
+.page-grid {
+  position: relative;
+  z-index: var(--z-index-base);
+  /* Create stacking context for entire page */
+  isolation: isolate;
+}
+
+/* ===== SKIP LINK FIXES ===== */
+
+.skip-link,
+.dev-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: var(--z-index-skiplink);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-all);
+  font-weight: var(--font-weight-medium);
+}
+
+.skip-link:focus,
+.dev-skip-link:focus {
+  top: 6px;
+}
+
+/* ===== DROPDOWN AND POPOVER FIXES ===== */
+
+.dropdown-menu {
+  position: absolute;
+  z-index: var(--z-index-dropdown);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  /* Ensure dropdown appears above other content */
+  isolation: isolate;
+}
+
+.popover {
+  position: absolute;
+  z-index: var(--z-index-popover);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  /* Ensure popover appears above dropdowns */
+  isolation: isolate;
+}
+
+/* ===== MODAL FIXES ===== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-index-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Create stacking context */
+  isolation: isolate;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.modal-container {
+  position: relative;
+  z-index: 1;
+  background: var(--color-background);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-2xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* ===== TOAST NOTIFICATION FIXES ===== */
+
+.toast-container {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: var(--z-index-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  z-index: 1;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-4);
+  pointer-events: auto;
+}
+
+/* ===== TOOLTIP FIXES ===== */
+
+.tooltip {
+  position: absolute;
+  z-index: var(--z-index-tooltip);
+  background: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--border-radius-base);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  /* Ensure tooltip appears above everything else */
+  isolation: isolate;
+}
+
+/* ===== BANNER FIXES ===== */
+
+.banner {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-banner);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-3);
+  text-align: center;
+}
+
+/* ===== FOCUS MANAGEMENT ===== */
+
+/* Ensure focus outlines appear above other elements */
+*:focus-visible {
+  position: relative;
+  z-index: calc(var(--z-index-tooltip) + 1);
+}
+
+/* ===== PRINT FIXES ===== */
+
+@media print {
+  /* Reset z-index for print */
+  .page-header,
+  .dev-sidebar,
+  .modal,
+  .toast-container,
+  .tooltip,
+  .dropdown-menu,
+  .popover {
+    position: static;
+    z-index: auto;
+  }
+  
+  /* Hide interactive elements */
+  .dev-sidebar-toggle,
+  .nav-toggle,
+  .modal,
+  .toast-container,
+  .tooltip {
+    display: none;
+  }
+}
+
+/* ===== ACCESSIBILITY FIXES ===== */
+
+/* Ensure screen reader content doesn't interfere with layout */
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  /* Don't create stacking context */
+  z-index: auto;
+}
+
+/* ===== CROSS-BROWSER FIXES ===== */
+
+/* Safari z-index bug fix */
+@supports (-webkit-appearance: none) {
+  .page-header,
+  .dev-sidebar,
+  .modal {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* IE11 z-index fixes */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .page-header {
+    z-index: 1100;
+  }
+  
+  .dev-sidebar {
+    z-index: 10;
+  }
+  
+  .modal {
+    z-index: 1400;
+  }
+}
+
+/* ===== DEBUGGING UTILITIES ===== */
+
+/* Debug z-index issues (only active when debug-mode class is present) */
+.debug-mode .page-header::before {
+  content: 'Header: ' var(--z-index-sticky);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+.debug-mode .dev-sidebar::before {
+  content: 'Sidebar: ' var(--z-index-docked);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: blue;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+.debug-mode .modal::before {
+  content: 'Modal: ' var(--z-index-modal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: green;
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+/* ===== STACKING CONTEXT ISOLATION ===== */
+
+/* Ensure each major layout section creates its own stacking context */
+.page-header,
+.dev-sidebar,
+.page-main,
+.page-footer {
+  isolation: isolate;
+}
+
+/* Ensure cards don't overlap incorrectly */
+.card {
+  position: relative;
+  z-index: var(--z-index-base);
+  isolation: isolate;
+}
+
+.card:hover {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* Ensure buttons don't get covered */
+.btn {
+  position: relative;
+  z-index: var(--z-index-base);
+}
+
+.btn:focus,
+.btn:hover {
+  z-index: calc(var(--z-index-base) + 1);
+}
+
+/* ===== RESPONSIVE Z-INDEX ADJUSTMENTS ===== */
+
+@media (max-width: 767px) {
+  /* Adjust z-index for mobile */
+  .page-header {
+    z-index: var(--z-index-sticky);
+  }
+  
+  .nav-menu {
+    z-index: var(--z-index-modal);
+  }
+  
+  .nav-toggle {
+    z-index: calc(var(--z-index-modal) + 1);
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Mobile sidebar adjustments */
+  .dev-sidebar-toggle {
+    z-index: calc(var(--z-index-modal) + 2);
+  }
+  
+  .dev-sidebar {
+    z-index: var(--z-index-modal);
+  }
+  
+  .dev-sidebar-backdrop {
+    z-index: calc(var(--z-index-modal) - 1);
+  }
+}
+
+/* ===== CONTENT OVERLAP PREVENTION ===== */
+
+/* Prevent content from sliding under fixed elements */
+.main-content {
+  position: relative;
+  /* Add padding to prevent content from hiding under fixed header */
+  padding-top: 0;
+}
+
+/* Ensure proper spacing for sticky header */
+@media (min-width: 768px) {
+  .main-content {
+    /* Account for header height */
+    min-height: calc(100vh - 80px);
+  }
+}
+
+/* ===== ANIMATION LAYER FIXES ===== */
+
+/* Ensure animated elements don't cause layering issues */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Ensure animations don't break stacking context */
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+  /* Maintain z-index during animation */
+  z-index: inherit;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+  /* Maintain z-index during animation */
+  z-index: inherit;
+}

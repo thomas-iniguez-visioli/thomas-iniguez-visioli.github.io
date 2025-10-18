@@ -1,0 +1,59 @@
+/*@import '../../node_modules/reveal.js/css/reveal.css';
+*/.hljs {
+  background-color: transparent;
+}.highlight table tbody td {
+  border: none;
+  padding: 0;
+}.highlight .code {
+  width: 100%;
+}body {
+  background: #fafafa;
+  color: #333;
+  transition: all .5s ease;
+}::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: fade(white, 50%);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}/* h1 {
+    font-size: 3.77em;
+  }
+
+  h2 {
+    font-size: 2.11em;
+  }
+
+  h3 {
+    font-size: 1.55em;
+  }
+
+  h4 {
+    font-size: 1em;
+  } */.reveal video,
+  .reveal iframe,
+  .reveal img {
+    max-height: 95vh;
+    max-width: 100%;
+  }.reveal h1 .bbc, .reveal h2 .bbc, .reveal h3 .bbc {
+      font-family: Helvetica;
+      font-size: 1.9em;
+      font-weight: 500;
+      text-shadow: none;
+    }.reveal footer,
+  .reveal .footer {
+    bottom: -25%;
+    position: absolute;
+    width: 100%;
+  }.reveal [data-state="random-color"] h1,
+  .reveal [data-state="random-color"] h2,
+  .reveal [data-state="random-color"] h3,
+  .reveal [data-state="random-color"] h4,
+  .reveal [data-state="random-color"] h5,
+  .reveal [data-state="random-color"] p,
+  .reveal [data-state="random-color"] small,
+  .reveal [data-state="random-color"] a {
+    color: inherit;
+    font-family: inherit;
+  }

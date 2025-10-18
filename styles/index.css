@@ -1,0 +1,1312 @@
+/**
+ * CSS Foundation - Cross-Browser Developer Theme
+ * 
+ * This file imports all foundation CSS modules in the correct order
+ * to establish a solid, cross-browser compatible base for the developer theme.
+ * 
+ * Order is important:
+ * 1. Variables - Define all design tokens first
+ * 2. Reset - Normalize browser defaults
+ * 3. Cross-browser - Handle compatibility issues
+ */
+
+/* Import CSS Variables and Design Tokens */
+
+/**
+ * Modern CSS Variables System - Enhanced for Developer Theme
+ * Replaces LESS variables with CSS custom properties
+ * Based on modern design system principles with developer-focused tokens
+ */
+
+:root {
+  /* ===== COLOR SYSTEM ===== */
+  
+  /* Primary Colors - Modern blue palette */
+  --color-primary: #2563eb;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  
+  /* Neutral Colors - Modern gray scale */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-success-light: #34d399;
+  --color-success-dark: #059669;
+  
+  --color-warning: #f59e0b;
+  --color-warning-light: #fbbf24;
+  --color-warning-dark: #d97706;
+  
+  --color-error: #ef4444;
+  --color-error-light: #f87171;
+  --color-error-dark: #dc2626;
+  
+  --color-info: #06b6d4;
+  --color-info-light: #22d3ee;
+  --color-info-dark: #0891b2;
+  
+  /* Background Colors */
+  --color-background: #ffffff;
+  --color-background-secondary: #f8fafc;
+  --color-background-tertiary: #f1f5f9;
+  
+  /* Text Colors */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #ffffff;
+  
+  /* Border Colors */
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+  --color-border-dark: #cbd5e1;
+  
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  
+  /* Font Families - Enhanced for developer theme */
+  --font-family-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-serif: 'Georgia', 'Times New Roman', Times, serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', Consolas, 'Courier New', monospace;
+  
+  /* Font Sizes - Modern scale */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  --font-size-6xl: 3.75rem;   /* 60px */
+  --font-size-7xl: 4.5rem;    /* 72px */
+  
+  /* Line Heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  
+  /* ===== SPACING SYSTEM ===== */
+  
+  /* Spacing Scale - Based on 4px grid */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem;  /* 2px */
+  --space-1: 0.25rem;     /* 4px */
+  --space-1-5: 0.375rem;  /* 6px */
+  --space-2: 0.5rem;      /* 8px */
+  --space-2-5: 0.625rem;  /* 10px */
+  --space-3: 0.75rem;     /* 12px */
+  --space-3-5: 0.875rem;  /* 14px */
+  --space-4: 1rem;        /* 16px */
+  --space-5: 1.25rem;     /* 20px */
+  --space-6: 1.5rem;      /* 24px */
+  --space-7: 1.75rem;     /* 28px */
+  --space-8: 2rem;        /* 32px */
+  --space-9: 2.25rem;     /* 36px */
+  --space-10: 2.5rem;     /* 40px */
+  --space-11: 2.75rem;    /* 44px */
+  --space-12: 3rem;       /* 48px */
+  --space-14: 3.5rem;     /* 56px */
+  --space-16: 4rem;       /* 64px */
+  --space-20: 5rem;       /* 80px */
+  --space-24: 6rem;       /* 96px */
+  --space-28: 7rem;       /* 112px */
+  --space-32: 8rem;       /* 128px */
+  --space-36: 9rem;       /* 144px */
+  --space-40: 10rem;      /* 160px */
+  --space-44: 11rem;      /* 176px */
+  --space-48: 12rem;      /* 192px */
+  --space-52: 13rem;      /* 208px */
+  --space-56: 14rem;      /* 224px */
+  --space-60: 15rem;      /* 240px */
+  --space-64: 16rem;      /* 256px */
+  --space-72: 18rem;      /* 288px */
+  --space-80: 20rem;      /* 320px */
+  --space-96: 24rem;      /* 384px */
+  
+  /* ===== LAYOUT SYSTEM ===== */
+  
+  /* Container Sizes */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  --container-max: 1200px;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* Z-Index Scale */
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skiplink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+  
+  /* ===== BORDER SYSTEM ===== */
+  
+  /* Border Widths */
+  --border-width-0: 0;
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+  --border-width-8: 8px;
+  
+  /* Border Radius */
+  --border-radius-none: 0;
+  --border-radius-sm: 0.125rem;   /* 2px */
+  --border-radius-base: 0.25rem;  /* 4px */
+  --border-radius-md: 0.375rem;   /* 6px */
+  --border-radius-lg: 0.5rem;     /* 8px */
+  --border-radius-xl: 0.75rem;    /* 12px */
+  --border-radius-2xl: 1rem;      /* 16px */
+  --border-radius-3xl: 1.5rem;    /* 24px */
+  --border-radius-full: 9999px;
+  
+  /* ===== SHADOW SYSTEM ===== */
+  
+  /* Box Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-none: none;
+  
+  /* ===== TRANSITION SYSTEM ===== */
+  
+  /* Transition Durations */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Transition Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Common Transitions */
+  --transition-all: all var(--duration-150) var(--ease-in-out);
+  --transition-colors: color var(--duration-150) var(--ease-in-out), 
+                       background-color var(--duration-150) var(--ease-in-out), 
+                       border-color var(--duration-150) var(--ease-in-out);
+  --transition-opacity: opacity var(--duration-150) var(--ease-in-out);
+  --transition-shadow: box-shadow var(--duration-150) var(--ease-in-out);
+  --transition-transform: transform var(--duration-150) var(--ease-in-out);
+
+  /* ===== DEVELOPER THEME SPECIFIC ===== */
+  
+  /* Developer Terminal Colors */
+  --dev-terminal-bg: #1e1e1e;
+  --dev-terminal-text: #d4d4d4;
+  --dev-terminal-cursor: #ffffff;
+  --dev-terminal-selection: #264f78;
+  
+  /* Syntax Highlighting Colors - VS Code Dark+ theme inspired */
+  --dev-syntax-keyword: #569cd6;
+  --dev-syntax-string: #ce9178;
+  --dev-syntax-comment: #6a9955;
+  --dev-syntax-number: #b5cea8;
+  --dev-syntax-function: #dcdcaa;
+  --dev-syntax-variable: #9cdcfe;
+  --dev-syntax-operator: #d4d4d4;
+  --dev-syntax-punctuation: #808080;
+  --dev-syntax-type: #4ec9b0;
+  --dev-syntax-constant: #4fc1ff;
+  --dev-syntax-property: #92c5f8;
+  --dev-syntax-tag: #569cd6;
+  --dev-syntax-attribute: #92c5f8;
+  --dev-syntax-value: #ce9178;
+  
+  /* Developer Status Colors */
+  --dev-status-online: #10b981;
+  --dev-status-busy: #f59e0b;
+  --dev-status-away: #6b7280;
+  --dev-status-offline: #ef4444;
+  --dev-status-dnd: #dc2626;
+  
+  /* IDE-inspired Colors */
+  --dev-ide-sidebar: #252526;
+  --dev-ide-editor: #1e1e1e;
+  --dev-ide-panel: #2d2d30;
+  --dev-ide-border: #3e3e42;
+  --dev-ide-accent: #007acc;
+  --dev-ide-selection: #264f78;
+  --dev-ide-line-highlight: #2a2d2e;
+  
+  /* Code Block Colors */
+  --dev-code-bg: #f8f8f8;
+  --dev-code-bg-dark: #2d2d2d;
+  --dev-code-border: #e1e5e9;
+  --dev-code-border-dark: #404040;
+  --dev-code-line-numbers: #858585;
+  --dev-code-highlight-line: #fffbdd;
+  --dev-code-highlight-line-dark: #2a2d2e;
+  
+  /* Developer Badge Colors */
+  --dev-badge-javascript: #f7df1e;
+  --dev-badge-typescript: #3178c6;
+  --dev-badge-react: #61dafb;
+  --dev-badge-vue: #4fc08d;
+  --dev-badge-angular: #dd0031;
+  --dev-badge-node: #339933;
+  --dev-badge-python: #3776ab;
+  --dev-badge-java: #ed8b00;
+  --dev-badge-csharp: #239120;
+  --dev-badge-php: #777bb4;
+  --dev-badge-ruby: #cc342d;
+  --dev-badge-go: #00add8;
+  --dev-badge-rust: #000000;
+  --dev-badge-git: #f05032;
+  --dev-badge-docker: #2496ed;
+  --dev-badge-kubernetes: #326ce5;
+  --dev-badge-aws: #ff9900;
+  --dev-badge-azure: #0078d4;
+  --dev-badge-gcp: #4285f4;
+  --dev-badge-vscode: #007acc;
+  --dev-badge-github: #181717;
+  --dev-badge-gitlab: #fc6d26;
+  --dev-badge-figma: #f24e1e;
+  --dev-badge-slack: #4a154b;
+  
+  /* Developer Skill Level Colors */
+  --dev-skill-beginner: #10b981;
+  --dev-skill-intermediate: #f59e0b;
+  --dev-skill-advanced: #ef4444;
+  --dev-skill-expert: #8b5cf6;
+}
+
+/* ===== LEGACY COMPATIBILITY ===== */
+
+/* Mapping old LESS variables to new CSS variables for gradual migration */
+
+:root {
+  /* Legacy color mappings */
+  --brand-primary: var(--color-primary);
+  --brand-success: var(--color-success);
+  --brand-warning: var(--color-warning);
+  --brand-danger: var(--color-error);
+  --brand-info: var(--color-info);
+  
+  /* Legacy text colors */
+  --text-color: var(--color-text-primary);
+  --text-muted: var(--color-text-muted);
+  
+  /* Legacy background */
+  --body-bg: var(--color-background);
+  
+  /* Legacy spacing */
+  --padding-base-vertical: var(--space-2);
+  --padding-base-horizontal: var(--space-3);
+  
+  /* Legacy borders */
+  --border-radius-base: var(--border-radius-base);
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override colors for dark mode */
+    --color-background: var(--color-neutral-900);
+    --color-background-secondary: var(--color-neutral-800);
+    --color-background-tertiary: var(--color-neutral-700);
+    
+    --color-text-primary: var(--color-neutral-100);
+    --color-text-secondary: var(--color-neutral-300);
+    --color-text-tertiary: var(--color-neutral-400);
+    --color-text-muted: var(--color-neutral-500);
+    
+    --color-border: var(--color-neutral-700);
+    --color-border-light: var(--color-neutral-600);
+    --color-border-dark: var(--color-neutral-800);
+    
+    /* Developer code blocks in dark mode */
+    --dev-code-bg: var(--dev-code-bg-dark);
+    --dev-code-border: var(--dev-code-border-dark);
+    --dev-code-highlight-line: var(--dev-code-highlight-line-dark);
+  }
+}
+
+/* Manual dark mode toggle support */
+
+[data-theme="dark"] {
+  --color-background: var(--color-neutral-900);
+  --color-background-secondary: var(--color-neutral-800);
+  --color-background-tertiary: var(--color-neutral-700);
+  
+  --color-text-primary: var(--color-neutral-100);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-muted: var(--color-neutral-500);
+  
+  --color-border: var(--color-neutral-700);
+  --color-border-light: var(--color-neutral-600);
+  --color-border-dark: var(--color-neutral-800);
+  
+  --dev-code-bg: var(--dev-code-bg-dark);
+  --dev-code-border: var(--dev-code-border-dark);
+  --dev-code-highlight-line: var(--dev-code-highlight-line-dark);
+}
+
+/* ===== CROSS-BROWSER FALLBACKS ===== */
+
+/* Fallbacks for browsers that don't support CSS custom properties */
+
+.no-css-variables {
+  /* Fallback colors */
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+.no-css-variables a {
+  color: #2563eb;
+}
+
+.no-css-variables code,
+.no-css-variables pre {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  background-color: #f8f8f8;
+  border: 1px solid #e1e5e9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.no-css-variables pre {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.no-css-variables .dev-terminal {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+}
+
+.no-css-variables .dev-badge {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Feature detection for CSS Grid fallback */
+
+@supports not (display: grid) {
+  .layout-grid {
+    display: block;
+  }
+  
+  .layout-grid > * {
+    margin-bottom: 1rem;
+  }
+  
+  .grid-2-cols > * {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+  }
+  
+  .grid-3-cols > * {
+    width: 31%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+  }
+}
+
+/* Feature detection for CSS Flexbox fallback */
+
+@supports not (display: flex) {
+  .flex {
+    display: block;
+  }
+  
+  .flex > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .flex-center {
+    text-align: center;
+  }
+  
+  .flex-between > *:first-child {
+    float: left;
+  }
+  
+  .flex-between > *:last-child {
+    float: right;
+  }
+  
+  .flex-between::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* Feature detection for CSS Custom Properties fallback */
+
+@supports not (--css: variables) {
+  /* Provide static fallback values for critical properties */
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, sans-serif;
+    color: #0f172a;
+    background-color: #ffffff;
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+    font-weight: 700;
+  }
+  
+  a {
+    color: #2563eb;
+  }
+  
+  code, pre {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: #f8f8f8;
+  }
+  
+  button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input, textarea {
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+}
+
+/* Import Modern CSS Reset */
+
+/**
+ * Modern CSS Reset - Enhanced for Developer Theme
+ * Based on modern best practices for cross-browser consistency
+ * Optimized for developer-focused content and accessibility
+ */
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Enhanced font rendering for developer content */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "kern";
+  font-kerning: normal;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: var(--line-height-normal, 1.5);
+  font-family: var(--font-family-sans, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, sans-serif);
+  font-size: var(--font-size-base, 1rem);
+  color: var(--color-text-primary, #0f172a);
+  background-color: var(--color-background, #ffffff);
+  /* Enhanced for developer theme */
+  font-feature-settings: "liga", "clig", "onum";
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* A elements that don't have a class get default styles */
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  color: var(--color-primary, #2563eb);
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  transition: var(--transition-colors, color 150ms ease-in-out);
+}
+
+a:not([class]):hover {
+  color: var(--color-primary-700, #1d4ed8);
+}
+
+a:not([class]).focus-visible {
+  outline: 2px solid var(--color-primary, #2563eb);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 2px);
+}
+
+a:not([class]):focus-visible {
+  outline: 2px solid var(--color-primary, #2563eb);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 2px);
+}
+
+/* Make images easier to work with */
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Enhanced image loading */
+
+img {
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 0.75rem;
+}
+
+/* Inherit fonts for inputs and buttons */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modern focus styles - Enhanced for developer theme */
+
+.focus-visible {
+  outline: 2px solid var(--color-primary, #2563eb);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 2px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary, #2563eb);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 2px);
+}
+
+/* Remove default button styles */
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Enhanced button reset */
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+
+/* Improve table display */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Better default for horizontal rules */
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  margin: var(--space-4, 1rem) 0;
+  height: 0;
+}
+
+/* Improve readability of preformatted text - Enhanced for developer theme */
+
+pre,
+code {
+  font-family: var(--font-family-mono, 'JetBrains Mono', 'Fira Code', Consolas, monospace);
+  font-size: 0.9em;
+  /* Enhanced code styling */
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "calt" 1, "liga" 1, "liga", "clig";
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  background-color: var(--dev-code-bg, #f8f8f8);
+  border: 1px solid var(--dev-code-border, #e1e5e9);
+  border-radius: var(--border-radius-base, 4px);
+  padding: var(--space-4, 1rem);
+  line-height: var(--line-height-relaxed, 1.625);
+}
+
+code {
+  background-color: var(--dev-code-bg, #f8f8f8);
+  border: 1px solid var(--dev-code-border, #e1e5e9);
+  border-radius: var(--border-radius-sm, 2px);
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Better default styles for form elements */
+
+input,
+textarea {
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--border-radius-base, 4px);
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  background-color: var(--color-background, #ffffff);
+  transition: var(--transition-colors, border-color 150ms ease-in-out);
+  /* Enhanced form styling */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Better default for fieldset */
+
+fieldset {
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--border-radius-base, 4px);
+  padding: var(--space-4, 1rem);
+}
+
+legend {
+  padding: 0 var(--space-2, 0.5rem);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+/* Enhanced select styling */
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23666' d='m2 0-2 2h4zm0 5 2-2h-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem;
+  padding-right: 2.5rem;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--border-radius-base, 4px);
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  background-color: var(--color-background, #ffffff);
+}
+
+/* Improve accessibility for screen readers */
+
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Skip link for accessibility - Enhanced for developer theme */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary, #2563eb);
+  color: var(--color-text-inverse, #ffffff);
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-base, 4px);
+  z-index: var(--z-index-skiplink, 1600);
+  transition: var(--transition-all, all 150ms ease-in-out);
+  font-weight: var(--font-weight-medium, 500);
+  font-size: var(--font-size-sm, 0.875rem);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Enhanced typography for developer content */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--line-height-tight, 1.25);
+  color: var(--color-text-primary, #0f172a);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+h1 {
+  font-size: var(--font-size-4xl, 2.25rem);
+}
+
+h2 {
+  font-size: var(--font-size-3xl, 1.875rem);
+}
+
+h3 {
+  font-size: var(--font-size-2xl, 1.5rem);
+}
+
+h4 {
+  font-size: var(--font-size-xl, 1.25rem);
+}
+
+h5 {
+  font-size: var(--font-size-lg, 1.125rem);
+}
+
+h6 {
+  font-size: var(--font-size-base, 1rem);
+}
+
+/* Enhanced paragraph styling */
+
+p {
+  margin-bottom: var(--space-4, 1rem);
+  line-height: var(--line-height-relaxed, 1.625);
+}
+
+/* Enhanced list styling */
+
+ul,
+ol {
+  margin-bottom: var(--space-4, 1rem);
+  padding-left: var(--space-6, 1.5rem);
+}
+
+li {
+  margin-bottom: var(--space-2, 0.5rem);
+}
+
+/* Enhanced blockquote styling */
+
+blockquote {
+  border-left: 4px solid var(--color-primary, #2563eb);
+  padding-left: var(--space-4, 1rem);
+  margin: var(--space-6, 1.5rem) 0;
+  font-style: italic;
+  color: var(--color-text-secondary, #475569);
+}
+
+/* Text selection styling */
+
+::selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+/* Import Cross-Browser Compatibility Utilities */
+
+/**
+ * Cross-Browser Compatibility Utilities
+ * Ensures consistent behavior across all target browsers
+ */
+
+/* ===== FEATURE DETECTION UTILITIES ===== */
+
+/* CSS Grid support detection */
+
+@supports (display: grid) {
+  .supports-grid {
+    display: grid;
+  }
+}
+
+@supports not (display: grid) {
+  .no-grid .layout-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .no-grid .grid-item {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+/* CSS Flexbox support detection */
+
+@supports (display: flex) {
+  .supports-flex {
+    display: flex;
+  }
+}
+
+@supports not (display: flex) {
+  .no-flex .flex {
+    display: table;
+    width: 100%;
+  }
+  
+  .no-flex .flex-item {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+/* CSS Custom Properties support detection */
+
+@supports (--css: variables) {
+  .supports-css-vars {
+    /* Modern browsers with CSS variables support */
+  }
+}
+
+@supports not (--css: variables) {
+  .no-css-vars {
+    /* Fallback styles for older browsers */
+    color: #0f172a;
+    background-color: #ffffff;
+  }
+  
+  .no-css-vars .dev-terminal {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+  
+  .no-css-vars .dev-code {
+    background-color: #f8f8f8;
+    border: 1px solid #e1e5e9;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+/* ===== BROWSER-SPECIFIC FIXES ===== */
+
+/* Internet Explorer 11 fixes */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* IE11 flexbox fixes */
+  .ie-flex-container {
+    display: flex;
+  }
+  
+  .ie-flex-item {
+    flex: 1 1 auto;
+  }
+  
+  /* IE11 grid fallback */
+  .ie-grid-container {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+  }
+  
+  .ie-grid-item:nth-child(1) { -ms-grid-column: 1; }
+  .ie-grid-item:nth-child(2) { -ms-grid-column: 2; }
+  .ie-grid-item:nth-child(3) { -ms-grid-column: 3; }
+}
+
+/* Safari-specific fixes */
+
+@supports (-webkit-appearance: none) {
+  /* Fix for Safari button styling */
+  .safari-button-fix {
+    -webkit-appearance: none;
+    border-radius: var(--border-radius-base, 4px);
+  }
+  
+  /* Fix for Safari input zoom on iOS */
+  @media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    textarea,
+    select {
+      font-size: 16px; /* Prevents zoom on iOS Safari */
+    }
+  }
+}
+
+/* Firefox-specific fixes */
+
+@-moz-document url-prefix() {
+  /* Firefox button padding fix */
+  button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /* Firefox select arrow fix */
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+}
+
+/* Chrome/Webkit specific fixes */
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Chrome autofill background fix */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-background, #ffffff) inset;
+    -webkit-text-fill-color: var(--color-text-primary, #0f172a);
+  }
+  
+  /* Chrome search input styling */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+/* ===== POLYFILLS AND FALLBACKS ===== */
+
+/* Object-fit polyfill for IE */
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Fallback for browsers without object-fit support */
+
+@supports not (object-fit: cover) {
+  .object-fit-cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+  
+  .object-fit-container {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/* Sticky positioning fallback */
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+@supports not (position: sticky) {
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: var(--z-index-sticky, 1100);
+  }
+}
+
+/* CSS Grid fallback using Flexbox */
+
+.grid-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: var(--space-4, 1rem);
+  gap: var(--space-4, 1rem);
+}
+
+@supports not (display: grid) {
+  .grid-fallback {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--space-4, 1rem) / -2);
+  }
+  
+  .grid-fallback > * {
+    flex: 1 1 300px;
+    margin: calc(var(--space-4, 1rem) / 2);
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --color-text-primary: #000000;
+    --color-background: #ffffff;
+  }
+  
+  .dev-code {
+    border: 2px solid #000000;
+  }
+  
+  button,
+  .button {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations for functionality */
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .loading-spinner::after {
+    content: "Loading...";
+  }
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+
+@media print {
+  /* Hide non-essential elements */
+  .no-print,
+  .sidebar,
+  .navigation,
+  .dev-status,
+  .dev-badges {
+    display: none !important;
+  }
+  
+  /* Optimize code blocks for print */
+  .dev-code,
+  pre,
+  code {
+    background: transparent !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* Ensure links are visible */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666666;
+  }
+  
+  /* Optimize typography for print */
+  body {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+  
+  h1 { font-size: 18pt !important; }
+  h2 { font-size: 16pt !important; }
+  h3 { font-size: 14pt !important; }
+}
+
+/* ===== UTILITY CLASSES FOR CROSS-BROWSER SUPPORT ===== */
+
+/* Force hardware acceleration */
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Fix for subpixel rendering issues */
+
+.subpixel-fix {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Clearfix for float layouts (legacy support) */
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Text selection styling */
+
+::selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-200, #bfdbfe);
+  color: var(--color-primary-900, #1e3a8a);
+}
+
+/* Scrollbar styling for webkit browsers */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100, #f1f5f9);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-400, #94a3b8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500, #64748b);
+}
+
+/* Firefox scrollbar styling */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-400, #94a3b8) var(--color-neutral-100, #f1f5f9);
+}
+
+/**
+ * Foundation is now loaded and provides:
+ * 
+ * ✅ Modern CSS reset with cross-browser support
+ * ✅ Comprehensive CSS variables system with developer-specific tokens
+ * ✅ Dark mode support (automatic and manual)
+ * ✅ Cross-browser compatibility utilities and fallbacks
+ * ✅ Accessibility enhancements
+ * ✅ Print optimizations
+ * ✅ Legacy browser support
+ * 
+ * Requirements satisfied:
+ * - 1.1: Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
+ * - 1.3: Fallbacks for older browsers
+ * - 1.4: Vendor prefixes (handled by PostCSS)
+ */

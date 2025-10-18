@@ -1,0 +1,617 @@
+/**
+ * Debug Utilities - Developer Theme
+ * Development and debugging utilities for layout inspection and troubleshooting
+ * Only active in development mode or when debug classes are explicitly used
+ */
+
+/* ===== LAYOUT DEBUG UTILITIES ===== */
+
+/* Debug all elements with colored borders */
+.debug-all * {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+  background-color: rgba(255, 0, 0, 0.05) !important;
+}
+
+.debug-all *:nth-child(2n) {
+  outline-color: rgba(0, 255, 0, 0.3) !important;
+  background-color: rgba(0, 255, 0, 0.05) !important;
+}
+
+.debug-all *:nth-child(3n) {
+  outline-color: rgba(0, 0, 255, 0.3) !important;
+  background-color: rgba(0, 0, 255, 0.05) !important;
+}
+
+.debug-all *:nth-child(4n) {
+  outline-color: rgba(255, 255, 0, 0.3) !important;
+  background-color: rgba(255, 255, 0, 0.05) !important;
+}
+
+.debug-all *:nth-child(5n) {
+  outline-color: rgba(255, 0, 255, 0.3) !important;
+  background-color: rgba(255, 0, 255, 0.05) !important;
+}
+
+/* Debug specific element types */
+.debug-grid {
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: var(--space-4) var(--space-4);
+}
+
+.debug-flexbox > * {
+  outline: 2px solid rgba(0, 255, 255, 0.5) !important;
+  background-color: rgba(0, 255, 255, 0.1) !important;
+}
+
+.debug-grid-container > * {
+  outline: 2px solid rgba(255, 165, 0, 0.5) !important;
+  background-color: rgba(255, 165, 0, 0.1) !important;
+}
+
+/* Debug spacing */
+.debug-spacing {
+  position: relative;
+}
+
+.debug-spacing::before {
+  content: "M:" attr(data-margin) " P:" attr(data-padding);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Debug z-index */
+.debug-z-index {
+  position: relative;
+}
+
+.debug-z-index::after {
+  content: "z:" attr(data-z-index);
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE DEBUG UTILITIES ===== */
+
+/* Show current breakpoint */
+.debug-breakpoint::before {
+  content: "XS";
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-base);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .debug-breakpoint::before {
+    content: "SM";
+    background-color: rgba(0, 128, 0, 0.8);
+  }
+}
+
+@media (min-width: 768px) {
+  .debug-breakpoint::before {
+    content: "MD";
+    background-color: rgba(0, 0, 255, 0.8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .debug-breakpoint::before {
+    content: "LG";
+    background-color: rgba(255, 165, 0, 0.8);
+  }
+}
+
+@media (min-width: 1280px) {
+  .debug-breakpoint::before {
+    content: "XL";
+    background-color: rgba(255, 0, 255, 0.8);
+  }
+}
+
+@media (min-width: 1536px) {
+  .debug-breakpoint::before {
+    content: "2XL";
+    background-color: rgba(255, 20, 147, 0.8);
+  }
+}
+
+/* Debug responsive visibility */
+.debug-responsive-xs {
+  background-color: rgba(255, 0, 0, 0.2) !important;
+}
+
+.debug-responsive-xs::after {
+  content: "XS Only";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+}
+
+@media (min-width: 640px) {
+  .debug-responsive-xs {
+    display: none !important;
+  }
+  
+  .debug-responsive-sm {
+    background-color: rgba(0, 255, 0, 0.2) !important;
+  }
+  
+  .debug-responsive-sm::after {
+    content: "SM+";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 255, 0, 0.8);
+    color: white;
+    padding: var(--space-1);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (min-width: 768px) {
+  .debug-responsive-sm {
+    display: none !important;
+  }
+  
+  .debug-responsive-md {
+    background-color: rgba(0, 0, 255, 0.2) !important;
+  }
+  
+  .debug-responsive-md::after {
+    content: "MD+";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 255, 0.8);
+    color: white;
+    padding: var(--space-1);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (min-width: 1024px) {
+  .debug-responsive-md {
+    display: none !important;
+  }
+  
+  .debug-responsive-lg {
+    background-color: rgba(255, 165, 0, 0.2) !important;
+  }
+  
+  .debug-responsive-lg::after {
+    content: "LG+";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 165, 0, 0.8);
+    color: white;
+    padding: var(--space-1);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ===== PERFORMANCE DEBUG UTILITIES ===== */
+
+/* Debug slow elements */
+.debug-slow {
+  animation: debug-slow-blink 2s infinite;
+}
+
+.debug-slow::before {
+  content: "SLOW";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Debug large elements */
+.debug-large {
+  outline: 3px solid rgba(255, 0, 0, 0.8) !important;
+}
+
+.debug-large::after {
+  content: "LARGE: " attr(data-size);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== ACCESSIBILITY DEBUG UTILITIES ===== */
+
+/* Debug missing alt text */
+img:not([alt]) {
+  outline: 3px solid red !important;
+}
+
+img:not([alt])::after {
+  content: "Missing ALT";
+  position: absolute;
+  background-color: red;
+  color: white;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+}
+
+/* Debug missing labels */
+input:not([aria-label]):not([aria-labelledby]):not([title]) {
+  outline: 3px solid orange !important;
+}
+
+/* Debug low contrast */
+.debug-contrast-low {
+  background-color: rgba(255, 255, 0, 0.3) !important;
+  outline: 2px solid rgba(255, 255, 0, 0.8) !important;
+}
+
+.debug-contrast-low::before {
+  content: "LOW CONTRAST";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 0, 0.9);
+  color: black;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Debug focus issues */
+.debug-focus *:focus {
+  outline: 3px solid rgba(0, 255, 255, 0.8) !important;
+  outline-offset: 2px !important;
+}
+
+/* ===== CONTENT DEBUG UTILITIES ===== */
+
+/* Debug empty elements */
+.debug-empty:empty {
+  min-height: 2rem;
+  background-color: rgba(255, 0, 0, 0.2) !important;
+  outline: 2px dashed rgba(255, 0, 0, 0.5) !important;
+}
+
+.debug-empty:empty::before {
+  content: "EMPTY ELEMENT";
+  display: block;
+  text-align: center;
+  line-height: 2rem;
+  color: rgba(255, 0, 0, 0.8);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Debug long content */
+.debug-long-content {
+  position: relative;
+}
+
+.debug-long-content::after {
+  content: "LONG: " attr(data-length) " chars";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 165, 0, 0.9);
+  color: white;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== DEVELOPER TOOLS DEBUG UTILITIES ===== */
+
+/* Debug CSS Grid */
+.debug-css-grid {
+  background-image: 
+    linear-gradient(rgba(255, 0, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.3) 1px, transparent 1px);
+  background-size: var(--space-8) var(--space-8);
+}
+
+.debug-css-grid > * {
+  background-color: rgba(255, 0, 255, 0.1) !important;
+  outline: 1px solid rgba(255, 0, 255, 0.5) !important;
+}
+
+/* Debug Flexbox */
+.debug-css-flexbox {
+  background-color: rgba(0, 255, 255, 0.1) !important;
+  outline: 2px solid rgba(0, 255, 255, 0.5) !important;
+}
+
+.debug-css-flexbox > * {
+  background-color: rgba(0, 255, 255, 0.05) !important;
+  outline: 1px solid rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Debug positioning */
+.debug-position-relative {
+  background-color: rgba(0, 255, 0, 0.1) !important;
+  outline: 1px dashed rgba(0, 255, 0, 0.5) !important;
+}
+
+.debug-position-absolute {
+  background-color: rgba(255, 0, 0, 0.1) !important;
+  outline: 1px dashed rgba(255, 0, 0, 0.5) !important;
+}
+
+.debug-position-fixed {
+  background-color: rgba(255, 165, 0, 0.1) !important;
+  outline: 1px dashed rgba(255, 165, 0, 0.5) !important;
+}
+
+.debug-position-sticky {
+  background-color: rgba(255, 0, 255, 0.1) !important;
+  outline: 1px dashed rgba(255, 0, 255, 0.5) !important;
+}
+
+/* ===== JAVASCRIPT DEBUG UTILITIES ===== */
+
+/* Debug JavaScript errors */
+.debug-js-error {
+  background-color: rgba(255, 0, 0, 0.2) !important;
+  outline: 3px solid rgba(255, 0, 0, 0.8) !important;
+}
+
+.debug-js-error::before {
+  content: "JS ERROR";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  z-index: 9999;
+  pointer-events: none;
+  animation: debug-error-blink 1s infinite;
+}
+
+/* Debug event listeners */
+.debug-events {
+  position: relative;
+}
+
+.debug-events::after {
+  content: "EVENTS: " attr(data-events);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 255, 0.9);
+  color: white;
+  padding: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== PRINT DEBUG UTILITIES ===== */
+
+/* Debug print styles */
+@media print {
+  .debug-print-hidden {
+    background-color: #ffcccc !important;
+    outline: 2px solid #ff0000 !important;
+  }
+  
+  .debug-print-hidden::before {
+    content: "HIDDEN IN PRINT";
+    display: block;
+    text-align: center;
+    color: #ff0000;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+/* ===== DEBUG ANIMATIONS ===== */
+
+@keyframes debug-slow-blink {
+  0%, 50% {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+  51%, 100% {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes debug-error-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.5;
+  }
+}
+
+/* ===== CONDITIONAL DEBUG UTILITIES ===== */
+
+/* Only show debug utilities in development */
+body:not(.debug-mode) .debug-all,
+body:not(.debug-mode) .debug-grid,
+body:not(.debug-mode) .debug-flexbox,
+body:not(.debug-mode) .debug-breakpoint,
+body:not(.debug-mode) .debug-spacing,
+body:not(.debug-mode) .debug-z-index {
+  /* Debug utilities are hidden by default */
+}
+
+body.debug-mode .debug-all * {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+  background-color: rgba(255, 0, 0, 0.05) !important;
+}
+
+/* ===== ACCESSIBILITY CONSIDERATIONS ===== */
+
+/* Ensure debug utilities don't interfere with screen readers */
+.debug-all::before,
+.debug-grid::before,
+.debug-spacing::before,
+.debug-z-index::after,
+.debug-breakpoint::before,
+.debug-slow::before,
+.debug-large::after,
+.debug-contrast-low::before,
+.debug-empty:empty::before,
+.debug-long-content::after,
+.debug-js-error::before,
+.debug-events::after {
+  speak: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .debug-slow,
+  .debug-js-error::before {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .debug-all *,
+  .debug-flexbox > *,
+  .debug-grid-container > *,
+  .debug-css-grid > *,
+  .debug-css-flexbox > * {
+    outline-width: 2px !important;
+  }
+  
+  .debug-breakpoint::before,
+  .debug-slow::before,
+  .debug-large::after,
+  .debug-contrast-low::before,
+  .debug-js-error::before,
+  .debug-events::after {
+    border: 1px solid #ffffff;
+  }
+}
+
+/* ===== DEVELOPER CONSOLE INTEGRATION ===== */
+
+/* Utilities that work with browser dev tools */
+.debug-console-log {
+  /* This class can be used with JavaScript to log element info */
+}
+
+.debug-console-warn {
+  /* This class can be used with JavaScript to warn about element issues */
+}
+
+.debug-console-error {
+  /* This class can be used with JavaScript to error about element problems */
+}
+
+/* ===== MOBILE DEBUG UTILITIES ===== */
+
+@media (max-width: 639px) {
+  .debug-mobile-only {
+    background-color: rgba(255, 192, 203, 0.3) !important;
+    outline: 2px solid rgba(255, 192, 203, 0.8) !important;
+  }
+  
+  .debug-mobile-only::before {
+    content: "MOBILE ONLY";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 192, 203, 0.9);
+    color: black;
+    padding: var(--space-1);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
+
+/* Touch device debug */
+@media (pointer: coarse) {
+  .debug-touch-target {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    background-color: rgba(0, 255, 0, 0.2) !important;
+    outline: 1px solid rgba(0, 255, 0, 0.5) !important;
+  }
+  
+  .debug-touch-target::after {
+    content: "44px+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 255, 0, 0.9);
+    color: white;
+    padding: var(--space-1);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
