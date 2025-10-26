@@ -1,0 +1,486 @@
+/**
+ * Layout Fixes
+ * Resolves positioning conflicts and layout issues
+ */
+
+/* ===== RESET PROBLEMATIC POSITIONING ===== */
+
+/* Ensure no unexpected absolute positioning */
+* {
+  /* Reset any problematic positioning */
+  position: static;
+}
+
+/* Explicitly set positioning for elements that need it */
+.page-header {
+  position: sticky !important;
+  top: 0;
+}
+
+.dev-sidebar {
+  position: sticky !important;
+  top: 0;
+}
+
+.skip-link,
+.dev-skip-link {
+  position: absolute !important;
+}
+
+/* Mobile specific positioning */
+@media (max-width: 1023px) {
+  .dev-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+  }
+  
+  .dev-sidebar-toggle {
+    position: fixed !important;
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+  
+  .dev-sidebar-backdrop {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-menu {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/* ===== LAYOUT CONTAINER FIXES ===== */
+
+.page-grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Prevent overflow issues */
+  overflow-x: hidden;
+}
+
+@supports (display: grid) {
+  .page-grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+      "header"
+      "main"
+      "footer";
+  }
+}
+
+.layout-with-sidebar {
+  display: flex;
+  flex: 1;
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@supports (display: grid) {
+  .layout-with-sidebar {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-areas: "sidebar content";
+    gap: 0;
+  }
+}
+
+/* ===== SIDEBAR LAYOUT FIXES ===== */
+
+.dev-sidebar {
+  width: 320px;
+  height: 100vh;
+  flex-shrink: 0;
+  /* Prevent content overflow */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Ensure sidebar doesn't cause horizontal scroll */
+  max-width: 320px;
+}
+
+@supports (display: grid) {
+  .dev-sidebar {
+    grid-area: sidebar;
+  }
+}
+
+/* ===== MAIN CONTENT FIXES ===== */
+
+.main-content {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
+  /* Ensure content doesn't overflow */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@supports (display: grid) {
+  .main-content {
+    grid-area: content;
+    min-width: 0;
+  }
+}
+
+/* ===== RESPONSIVE LAYOUT FIXES ===== */
+
+@media (max-width: 1023px) {
+  .layout-with-sidebar {
+    flex-direction: column;
+  }
+  
+  @supports (display: grid) {
+    .layout-with-sidebar {
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "content";
+    }
+  }
+  
+  .dev-sidebar {
+    width: 320px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .dev-sidebar.dev-sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .dev-sidebar {
+    width: 280px;
+  }
+}
+
+/* ===== HEADER LAYOUT FIXES ===== */
+
+.page-header {
+  width: 100%;
+  /* Prevent header from causing horizontal scroll */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* Prevent content overflow */
+  overflow: hidden;
+}
+
+/* ===== CONTENT WRAPPER FIXES ===== */
+
+.dev-container,
+.container {
+  width: 100%;
+  max-width: 100%;
+  /* Prevent container from causing overflow */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.dev-content-wrapper {
+  width: 100%;
+  /* Ensure content wrapper doesn't overflow */
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* ===== CARD LAYOUT FIXES ===== */
+
+.cards-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  /* Prevent grid from overflowing */
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  /* Prevent cards from overflowing */
+  overflow: hidden;
+  word-wrap: break-word;
+  /* Ensure cards don't cause layout issues */
+  min-width: 0;
+}
+
+/* ===== FLEXBOX FIXES ===== */
+
+.flex {
+  display: flex;
+  /* Prevent flex items from overflowing */
+  min-width: 0;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+/* ===== GRID FIXES ===== */
+
+.grid {
+  display: grid;
+  /* Prevent grid from overflowing */
+  overflow: hidden;
+}
+
+.grid > * {
+  /* Prevent grid items from overflowing */
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ===== TEXT OVERFLOW FIXES ===== */
+
+/* Prevent text from causing horizontal scroll */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+p, div, span {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== IMAGE FIXES ===== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  /* Prevent images from overflowing */
+  object-fit: contain;
+}
+
+/* ===== CODE BLOCK FIXES ===== */
+
+pre, code {
+  /* Prevent code from overflowing */
+  overflow-x: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.code-block {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* ===== TABLE FIXES ===== */
+
+table {
+  width: 100%;
+  max-width: 100%;
+  /* Prevent tables from overflowing */
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  table {
+    display: table;
+    white-space: normal;
+  }
+}
+
+/* ===== FORM FIXES ===== */
+
+input, textarea, select {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== ANIMATION FIXES ===== */
+
+/* Prevent animations from causing layout issues */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Ensure animations don't break layout */
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+  /* Prevent animation from affecting layout */
+  will-change: transform;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+  will-change: opacity;
+}
+
+/* ===== SCROLL FIXES ===== */
+
+/* Prevent horizontal scroll on body */
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ===== MOBILE SPECIFIC FIXES ===== */
+
+@media (max-width: 767px) {
+  /* Prevent mobile viewport issues */
+  .page-grid,
+  .layout-with-sidebar,
+  .main-content {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Fix mobile menu positioning */
+  .nav-menu {
+    width: 100vw;
+    height: 100vh;
+    /* Prevent menu from causing scroll issues */
+    overflow: hidden;
+  }
+}
+
+/* ===== PRINT FIXES ===== */
+
+@media print {
+  /* Reset positioning for print */
+  .page-header,
+  .dev-sidebar {
+    position: static !important;
+  }
+  
+  .layout-with-sidebar {
+    display: block;
+  }
+  
+  .dev-sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* ===== ACCESSIBILITY FIXES ===== */
+
+/* Ensure focus doesn't cause layout shifts */
+*:focus {
+  outline-offset: 2px;
+}
+
+/* Prevent reduced motion from breaking layout */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== CROSS-BROWSER FIXES ===== */
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  .dev-sidebar,
+  .page-header {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+  .layout-with-sidebar {
+    display: flex;
+  }
+}
+
+/* IE11 specific fixes */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .layout-with-sidebar {
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+  }
+  
+  .dev-sidebar {
+    -ms-flex: 0 0 320px;
+  }
+  
+  .main-content {
+    -ms-flex: 1;
+  }
+}
+
+/* ===== DEBUG MODE ===== */
+
+.debug-mode * {
+  outline: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.debug-mode .page-header {
+  outline: 2px solid red;
+}
+
+.debug-mode .dev-sidebar {
+  outline: 2px solid blue;
+}
+
+.debug-mode .main-content {
+  outline: 2px solid green;
+}

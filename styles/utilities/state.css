@@ -1,0 +1,729 @@
+/**
+ * State Utilities - Developer Theme
+ * Loading, error, success, and other state indicators
+ * Includes animations and visual feedback for user interactions
+ */
+
+/* ===== LOADING STATE UTILITIES ===== */
+
+/* Loading spinner */
+
+.loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid var(--color-neutral-300);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Loading spinner sizes */
+
+.loading-sm::after {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: -0.375rem 0 0 -0.375rem;
+  border-width: 1px;
+}
+
+.loading-lg::after {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.75rem 0 0 -0.75rem;
+  border-width: 3px;
+}
+
+.loading-xl::after {
+  width: 2rem;
+  height: 2rem;
+  margin: -1rem 0 0 -1rem;
+  border-width: 3px;
+}
+
+/* Loading dots animation */
+
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: var(--space-1);
+  gap: var(--space-1);
+}
+
+.loading-dots::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  animation: loading-dots 1.4s infinite ease-in-out both;
+}
+
+.loading-dots::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  animation: loading-dots 1.4s infinite ease-in-out both;
+  animation-delay: -0.32s;
+  margin-right: var(--space-1);
+}
+
+/* Loading pulse animation */
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Loading skeleton */
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-200) 25%,
+    var(--color-neutral-100) 50%,
+    var(--color-neutral-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--border-radius-base);
+}
+
+.loading-skeleton-text {
+  height: 1rem;
+  margin-bottom: var(--space-2);
+}
+
+.loading-skeleton-text:last-child {
+  width: 75%;
+  margin-bottom: 0;
+}
+
+.loading-skeleton-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.loading-skeleton-button {
+  height: 2.5rem;
+  width: 6rem;
+}
+
+/* Loading overlay */
+
+.loading-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-overlay::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin: -1rem 0 0 -1rem;
+  border: 3px solid var(--color-neutral-300);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  z-index: 11;
+}
+
+/* ===== SUCCESS STATE UTILITIES ===== */
+
+.state-success {
+  color: var(--color-success) !important;
+  background-color: var(--color-success-light) !important;
+  border-color: var(--color-success) !important;
+}
+
+.state-success-bg {
+  background-color: var(--color-success-light) !important;
+  color: var(--color-success-dark) !important;
+}
+
+.state-success-border {
+  border-color: var(--color-success) !important;
+}
+
+.state-success-text {
+  color: var(--color-success) !important;
+}
+
+/* Success icon indicator */
+
+.success-icon::before {
+  content: "✓";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-success);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: var(--space-2);
+}
+
+/* Success message styling */
+
+.success-message {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+  border: 1px solid var(--color-success);
+  border-radius: var(--border-radius-base);
+  border-left: 4px solid var(--color-success);
+}
+
+/* ===== ERROR STATE UTILITIES ===== */
+
+.state-error {
+  color: var(--color-error) !important;
+  background-color: var(--color-error-light) !important;
+  border-color: var(--color-error) !important;
+}
+
+.state-error-bg {
+  background-color: var(--color-error-light) !important;
+  color: var(--color-error-dark) !important;
+}
+
+.state-error-border {
+  border-color: var(--color-error) !important;
+}
+
+.state-error-text {
+  color: var(--color-error) !important;
+}
+
+/* Error icon indicator */
+
+.error-icon::before {
+  content: "✕";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-error);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: var(--space-2);
+}
+
+/* Error message styling */
+
+.error-message {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+  border: 1px solid var(--color-error);
+  border-radius: var(--border-radius-base);
+  border-left: 4px solid var(--color-error);
+}
+
+/* ===== WARNING STATE UTILITIES ===== */
+
+.state-warning {
+  color: var(--color-warning) !important;
+  background-color: var(--color-warning-light) !important;
+  border-color: var(--color-warning) !important;
+}
+
+.state-warning-bg {
+  background-color: var(--color-warning-light) !important;
+  color: var(--color-warning-dark) !important;
+}
+
+.state-warning-border {
+  border-color: var(--color-warning) !important;
+}
+
+.state-warning-text {
+  color: var(--color-warning) !important;
+}
+
+/* Warning icon indicator */
+
+.warning-icon::before {
+  content: "⚠";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-warning);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: var(--space-2);
+}
+
+/* Warning message styling */
+
+.warning-message {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+  border: 1px solid var(--color-warning);
+  border-radius: var(--border-radius-base);
+  border-left: 4px solid var(--color-warning);
+}
+
+/* ===== INFO STATE UTILITIES ===== */
+
+.state-info {
+  color: var(--color-info) !important;
+  background-color: var(--color-info-light) !important;
+  border-color: var(--color-info) !important;
+}
+
+.state-info-bg {
+  background-color: var(--color-info-light) !important;
+  color: var(--color-info-dark) !important;
+}
+
+.state-info-border {
+  border-color: var(--color-info) !important;
+}
+
+.state-info-text {
+  color: var(--color-info) !important;
+}
+
+/* Info icon indicator */
+
+.info-icon::before {
+  content: "i";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-info);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-right: var(--space-2);
+}
+
+/* Info message styling */
+
+.info-message {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-info-light);
+  color: var(--color-info-dark);
+  border: 1px solid var(--color-info);
+  border-radius: var(--border-radius-base);
+  border-left: 4px solid var(--color-info);
+}
+
+/* ===== DEVELOPER-SPECIFIC STATE UTILITIES ===== */
+
+/* Build status indicators */
+
+.build-success {
+  background-color: var(--dev-status-online);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.build-failed {
+  background-color: var(--color-error);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.build-pending {
+  background-color: var(--dev-status-busy);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  animation: pulse 2s infinite;
+}
+
+/* Code execution status */
+
+.code-running {
+  position: relative;
+  background-color: var(--dev-terminal-bg);
+  border-left: 4px solid var(--dev-status-busy);
+}
+
+.code-running::after {
+  content: "Running...";
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  background-color: var(--dev-status-busy);
+  color: white;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  animation: pulse 1.5s infinite;
+}
+
+.code-success {
+  border-left: 4px solid var(--dev-status-online);
+}
+
+.code-error {
+  border-left: 4px solid var(--color-error);
+}
+
+/* Developer status indicators */
+
+.dev-online {
+  color: var(--dev-status-online);
+}
+
+.dev-online::before {
+  content: "●";
+  margin-right: var(--space-1);
+  animation: pulse 2s infinite;
+}
+
+.dev-busy {
+  color: var(--dev-status-busy);
+}
+
+.dev-busy::before {
+  content: "●";
+  margin-right: var(--space-1);
+}
+
+.dev-away {
+  color: var(--dev-status-away);
+}
+
+.dev-away::before {
+  content: "●";
+  margin-right: var(--space-1);
+}
+
+.dev-offline {
+  color: var(--dev-status-offline);
+}
+
+.dev-offline::before {
+  content: "●";
+  margin-right: var(--space-1);
+}
+
+/* ===== INTERACTIVE STATE UTILITIES ===== */
+
+/* Disabled state */
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Active state */
+
+.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Selected state */
+
+.selected {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
+  border-color: var(--color-primary);
+}
+
+/* Hover state utilities */
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Focus state utilities */
+
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--color-primary);
+}
+
+.focus-ring-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: var(--color-error);
+}
+
+.focus-ring-success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  border-color: var(--color-success);
+}
+
+/* ===== PROGRESS INDICATORS ===== */
+
+.progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-full);
+  transition: width 0.3s ease;
+}
+
+.progress-bar-animated .progress-bar-fill {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripes 1s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes loading-dots {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes progress-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1rem 0;
+  }
+}
+
+/* ===== RESPONSIVE STATE UTILITIES ===== */
+
+@media (min-width: 640px) {
+  .sm\:loading-lg::after {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: -0.75rem 0 0 -0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:loading-xl::after {
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem 0 0 -1rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  .loading::after,
+  .loading-dots::before,
+  .loading-dots::after,
+  .loading-pulse,
+  .loading-skeleton,
+  .build-pending,
+  .code-running::after,
+  .dev-online::before,
+  .progress-bar-animated .progress-bar-fill {
+    animation: none;
+  }
+  
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+  .loading::after {
+    border-color: #000000;
+    border-top-color: #ffffff;
+  }
+  
+  .success-message,
+  .error-message,
+  .warning-message,
+  .info-message {
+    border-width: 2px;
+  }
+  
+  .build-success,
+  .build-failed,
+  .build-pending {
+    border: 1px solid #ffffff;
+  }
+}
+
+/* Dark mode support */
+
+@media (prefers-color-scheme: dark) {
+  .loading-overlay::before {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .loading-skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-neutral-700) 25%,
+      var(--color-neutral-600) 50%,
+      var(--color-neutral-700) 75%
+    );
+  }
+}
+
+[data-theme="dark"] .loading-overlay::before {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+[data-theme="dark"] .loading-skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-neutral-700) 25%,
+      var(--color-neutral-600) 50%,
+      var(--color-neutral-700) 75%
+    );
+  }
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .loading,
+  .loading-dots,
+  .loading-pulse,
+  .loading-skeleton,
+  .loading-overlay,
+  .build-pending,
+  .code-running::after {
+    display: none !important;
+  }
+  
+  .success-message,
+  .error-message,
+  .warning-message,
+  .info-message {
+    background: #f5f5f5 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+  
+  .build-success,
+  .build-failed {
+    background: #f0f0f0 !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+  }
+}
