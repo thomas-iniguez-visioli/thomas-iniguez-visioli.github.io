@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>portfolio</title>
+  <icon>https://thomas-iniguez-visioli.github.io/icon.png</icon>
+  <subtitle>en maintenance</subtitle>
+  <link href="https://thomas-iniguez-visioli.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://thomas-iniguez-visioli.github.io/"/>
+  <updated>2026-02-15T23:46:10.525Z</updated>
+  <id>https://thomas-iniguez-visioli.github.io/</id>
+  
+  <author>
+    <name>thomas iniguez visioli</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vbcq-extend</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2026/01/26/vbcq_volley_repos/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2026/01/26/vbcq_volley_repos/</id>
+    <published>2026-01-26T13:00:00.000Z</published>
+    <updated>2026-02-15T23:46:10.525Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Description-des-depots-de-l’organisation-vbcq-volley&quot;&gt;&lt;a href=&quot;#Description-des-depots-de-l’organisation-vbcq-volley&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://thomas-iniguez-visioli.github.io/categories/journal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>système de support prefecture</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2026/01/26/PREFSUP_DESCRIPTION/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2026/01/26/PREFSUP_DESCRIPTION/</id>
+    <published>2026-01-26T10:33:11.000Z</published>
+    <updated>2026-02-15T23:46:10.523Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Description-du-Projet-Prefsup&quot;&gt;&lt;a href=&quot;#Description-du-Projet-Prefsup&quot; class=&quot;headerlink&quot; title=&quot;Description du Projet :</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://thomas-iniguez-visioli.github.io/categories/journal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>RGPD</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2025/07/05/projet-RGPD/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2025/07/05/projet-RGPD/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2025-10-30T07:59:25.043Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Là où j’ai aidé à faire appliquer le rgpd&lt;br&gt;&lt;a href=&quot;https://france-nuit.github.io/article/&quot;&gt;[redacted]&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://thomas-iniguez-visioli.github.io/categories/reading-note/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>youtube</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2025/07/05/projet-youtube/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2025/07/05/projet-youtube/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2025-10-30T07:59:38.960Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;un outil pour regarder youtube sans pub&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://thomas-iniguez-visioli.github.io/categories/reading-note/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>uptime</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2025/07/05/projet-uptime/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2025/07/05/projet-uptime/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2025-10-30T07:59:31.583Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;pour voir si un site est en panne&lt;br&gt;&lt;a href=&quot;https://thomas-iniguez-visioli.github.io/status/&quot;&gt;[lien</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://thomas-iniguez-visioli.github.io/categories/reading-note/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>france-nuit</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2025/07/05/projet-france-nuit/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2025/07/05/projet-france-nuit/</id>
+    <published>2025-07-05T09:33:11.108Z</published>
+    <updated>2025-10-30T07:59:09.041Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;projet de site internet parodique destiné à parodier France soir&lt;br&gt;&lt;a href=&quot;https://france-nuit.github.io/&quot;&gt;un lien&lt;/a&gt;&lt;br&gt;en</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://thomas-iniguez-visioli.github.io/categories/reading-note/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vbcq</title>
+    <link href="https://thomas-iniguez-visioli.github.io/2025/07/05/vbcq/"/>
+    <id>https://thomas-iniguez-visioli.github.io/2025/07/05/vbcq/</id>
+    <published>2025-07-05T09:33:11.000Z</published>
+    <updated>2025-10-30T07:41:08.975Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;vbcq&lt;br&gt;&lt;a href=&quot;https://thomas-iniguez-visioli.github.io/preuve1.html&quot;&gt;premier lien&lt;/a&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://thomas-iniguez-visioli.github.io/categories/journal/"/>
+    
+    
+  </entry>
+  
+</feed>
