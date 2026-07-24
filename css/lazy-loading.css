@@ -1,0 +1,215 @@
+/* ------------------------------------ */
+/* --- Lazy Loading Styles --- */
+/* ------------------------------------ */
+
+/* Lazy loading placeholders */
+.lazy-placeholder {
+  background: linear-gradient(90deg, 
+    rgba(0, 255, 65, 0.1) 0%, 
+    rgba(0, 255, 65, 0.2) 50%, 
+    rgba(0, 255, 65, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: matrix-shimmer 1.5s infinite;
+  border: 1px solid var(--dark-green);
+  position: relative;
+  overflow: hidden;
+}
+
+.lazy-placeholder::before {
+  content: "LOADING...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--matrix-green);
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  text-shadow: 0 0 5px var(--matrix-green);
+  z-index: 1;
+}
+
+@keyframes matrix-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Loading state */
+.lazy-loading {
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Loaded state */
+.lazy-loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Error state */
+.lazy-error {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff0000;
+  position: relative;
+}
+
+.lazy-error::before {
+  content: "ERROR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff0000;
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  text-shadow: 0 0 5px #ff0000;
+}
+
+/* Image-specific lazy loading styles */
+img.lazy-placeholder {
+  min-height: 200px;
+  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+img.lazy-loaded {
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+  border: 1px solid var(--dark-green);
+}
+
+/* Component lazy loading */
+[data-lazy] {
+  min-height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+[data-lazy].lazy-loading {
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px dashed var(--dark-green);
+}
+
+[data-lazy].lazy-loaded {
+  background: transparent;
+  border: none;
+}
+
+/* Progressive loading animations */
+.progressive-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Matrix-style loading dots */
+.matrix-loading-dots {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 20px;
+}
+
+.matrix-loading-dots div {
+  position: absolute;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--matrix-green);
+  animation: matrix-dots 1.2s linear infinite;
+  box-shadow: 0 0 5px var(--matrix-green);
+}
+
+.matrix-loading-dots div:nth-child(1) { left: 8px; animation-delay: 0s; }
+.matrix-loading-dots div:nth-child(2) { left: 32px; animation-delay: -0.4s; }
+.matrix-loading-dots div:nth-child(3) { left: 56px; animation-delay: -0.8s; }
+
+@keyframes matrix-dots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive lazy loading */
+@media (max-width: 768px) {
+  img.lazy-placeholder {
+    min-height: 150px;
+    min-width: 150px;
+  }
+  
+  .lazy-placeholder::before {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  img.lazy-placeholder {
+    min-height: 100px;
+    min-width: 100px;
+  }
+  
+  .lazy-placeholder::before {
+    font-size: 0.6rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .lazy-placeholder {
+    background: #000;
+    border: 2px solid var(--matrix-green);
+  }
+  
+  .lazy-error {
+    background: #000;
+    border: 2px solid #ff0000;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .lazy-placeholder,
+  .lazy-loading,
+  .lazy-loaded,
+  .progressive-fade-in {
+    animation: none;
+    transition: none;
+  }
+  
+  .matrix-loading-dots div {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .lazy-placeholder::before,
+  .lazy-error::before,
+  .matrix-loading-dots {
+    display: none;
+  }
+  
+  .lazy-placeholder,
+  .lazy-loading,
+  .lazy-loaded {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+}
