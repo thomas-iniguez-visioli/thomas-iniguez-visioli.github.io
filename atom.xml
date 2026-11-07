@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>portfolio</title>
+  <icon>https://arbinger.is-a.dev/icon.png</icon>
+  <subtitle>en maintenance</subtitle>
+  <link href="https://arbinger.is-a.dev/atom.xml" rel="self"/>
+  
+  <link href="https://arbinger.is-a.dev/"/>
+  <updated>2026-05-07T14:01:50.869Z</updated>
+  <id>https://arbinger.is-a.dev/</id>
+  
+  <author>
+    <name>thomas iniguez visioli</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vbcq-extend</title>
+    <link href="https://arbinger.is-a.dev/2026/01/26/vbcq_volley_repos/"/>
+    <id>https://arbinger.is-a.dev/2026/01/26/vbcq_volley_repos/</id>
+    <published>2026-01-26T13:00:00.000Z</published>
+    <updated>2026-05-07T14:01:50.869Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Vue d’ensemble des dépôts de l’organisation GitHub &lt;strong&gt;&lt;a href=&quot;https://github.com/vbcq-volley&quot;&gt;vbcq-volley&lt;/a&gt;&lt;/strong&gt;, mise à</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://arbinger.is-a.dev/categories/journal/"/>
+    
+    
+    <category term="github" scheme="https://arbinger.is-a.dev/tags/github/"/>
+    
+    <category term="open-source" scheme="https://arbinger.is-a.dev/tags/open-source/"/>
+    
+    <category term="organisation" scheme="https://arbinger.is-a.dev/tags/organisation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>système de support prefecture</title>
+    <link href="https://arbinger.is-a.dev/2026/01/26/PREFSUP_DESCRIPTION/"/>
+    <id>https://arbinger.is-a.dev/2026/01/26/PREFSUP_DESCRIPTION/</id>
+    <published>2026-01-26T10:33:11.000Z</published>
+    <updated>2026-04-30T07:40:00.137Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Description-du-Projet-Prefsup&quot;&gt;&lt;a href=&quot;#Description-du-Projet-Prefsup&quot; class=&quot;headerlink&quot; title=&quot;Description du Projet :</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://arbinger.is-a.dev/categories/journal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>RGPD</title>
+    <link href="https://arbinger.is-a.dev/2025/07/05/projet-RGPD/"/>
+    <id>https://arbinger.is-a.dev/2025/07/05/projet-RGPD/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2026-03-19T18:07:33.718Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Contribution à la &lt;strong&gt;mise en conformité RGPD&lt;/strong&gt; d’un site web, en charge d’implémenter les bonnes pratiques de protection des</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://arbinger.is-a.dev/categories/reading-note/"/>
+    
+    
+    <category term="juridique" scheme="https://arbinger.is-a.dev/tags/juridique/"/>
+    
+    <category term="conformité" scheme="https://arbinger.is-a.dev/tags/conformite/"/>
+    
+    <category term="web" scheme="https://arbinger.is-a.dev/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>youtube</title>
+    <link href="https://arbinger.is-a.dev/2025/07/05/projet-youtube/"/>
+    <id>https://arbinger.is-a.dev/2025/07/05/projet-youtube/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2026-03-02T12:31:40.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;youtube&lt;/strong&gt; est un outil desktop personnel pour regarder YouTube sans publicité, sans tracking et sans avoir besoin d’un</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://arbinger.is-a.dev/categories/reading-note/"/>
+    
+    
+    <category term="outils" scheme="https://arbinger.is-a.dev/tags/outils/"/>
+    
+    <category term="vie-privée" scheme="https://arbinger.is-a.dev/tags/vie-privee/"/>
+    
+    <category term="desktop" scheme="https://arbinger.is-a.dev/tags/desktop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>uptime</title>
+    <link href="https://arbinger.is-a.dev/2025/07/05/projet-uptime/"/>
+    <id>https://arbinger.is-a.dev/2025/07/05/projet-uptime/</id>
+    <published>2025-07-05T09:33:11.109Z</published>
+    <updated>2026-03-02T12:31:40.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;uptime&lt;/strong&gt; est un tableau de bord de surveillance de disponibilité de sites web, permettant de vérifier en temps réel si un</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://arbinger.is-a.dev/categories/reading-note/"/>
+    
+    
+    <category term="monitoring" scheme="https://arbinger.is-a.dev/tags/monitoring/"/>
+    
+    <category term="devops" scheme="https://arbinger.is-a.dev/tags/devops/"/>
+    
+    <category term="outils" scheme="https://arbinger.is-a.dev/tags/outils/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>france-nuit</title>
+    <link href="https://arbinger.is-a.dev/2025/07/05/projet-france-nuit/"/>
+    <id>https://arbinger.is-a.dev/2025/07/05/projet-france-nuit/</id>
+    <published>2025-07-05T09:33:11.108Z</published>
+    <updated>2026-03-02T12:31:40.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;france-nuit&lt;/strong&gt; est un projet de site d’actualités parodique inspiré de France Soir, développé pour expérimenter la</summary>
+        
+      
+    
+    
+    
+    <category term="reading-note" scheme="https://arbinger.is-a.dev/categories/reading-note/"/>
+    
+    
+    <category term="web" scheme="https://arbinger.is-a.dev/tags/web/"/>
+    
+    <category term="parodie" scheme="https://arbinger.is-a.dev/tags/parodie/"/>
+    
+    <category term="front-end" scheme="https://arbinger.is-a.dev/tags/front-end/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vbcq</title>
+    <link href="https://arbinger.is-a.dev/2025/07/05/vbcq/"/>
+    <id>https://arbinger.is-a.dev/2025/07/05/vbcq/</id>
+    <published>2025-07-05T09:33:11.000Z</published>
+    <updated>2026-03-02T12:31:40.622Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;vbcq&lt;/strong&gt; est l’écosystème web que j’ai développé et maintenu pour le &lt;strong&gt;Volley Ball Corpo Quimper&lt;/strong&gt; — une</summary>
+        
+      
+    
+    
+    
+    <category term="journal" scheme="https://arbinger.is-a.dev/categories/journal/"/>
+    
+    
+    <category term="volley" scheme="https://arbinger.is-a.dev/tags/volley/"/>
+    
+    <category term="association" scheme="https://arbinger.is-a.dev/tags/association/"/>
+    
+    <category term="full-stack" scheme="https://arbinger.is-a.dev/tags/full-stack/"/>
+    
+  </entry>
+  
+</feed>
